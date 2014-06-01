@@ -1,0 +1,98 @@
+WORKING ON
+
+ITERATIONS
+All iterations start with uml diagramming and design notes unless otherwise specified or context makes it unapplicable.
+*i*
+set it up on github and heroku, refer to the relevant parts of http://www.railstutorial.org/
+
+*i*
+change person status to person category
+
+*i*
+make home page other than person or things
+use http://www.railstutorial.org/
+
+*i*
+currently using railsgirls bootstrap css stuff. Use your own. Either use http://www.railstutorial.org/ or some other resource to learn how. There is a bootstrap gem.
+
+*i*
+create users using Devise
+http://guides.railsgirls.com/devise/
+
+*i*
+setup rspec for what little you've got going
+http://guides.railsgirls.com/testing-rspec
+http://www.railstutorial.org/
+perhaps some other rspec tutorials
+
+*i*
+sketch a basic ui in pencil and paper
+create non-functional html-js ui in app
+    acutally, it may not need to be that non-functional
+    Where the app asks you for things, don't put it in the database, just make up your own things.
+keep tweeking it until you've got it the way you like it
+
+*i*
+Bucket
+    only "Things I need to do" and "Ready"
+
+*i*
+all the buckets
+
+*i*
+stopwatch
+
+*i*
+Timer and stopwatch, hard-coded pomodoro schedule
+
+*i*
+user created work schedules
+
+*i*
+user created buckets
+
+*next iterations*
+any obvious improvements that need to be made or is this now in a usable form?
+Learn android, make this an actual task you need to do in the app
+make new iterations for android/rails-api
+from now on any added features are released in concert with the android version
+What about pre-release servers on which to test things?
+learn how to make vim do html.erb indentation correctly, and fix all files' indentation.
+read books in more detail:
+kanban
+gtd
+pom
+getting results the agile way
+willpower
+research productivity/time-management etc.
+
+DESIGN
+*intial design*
+Person_Or_Thing object
+thingness or personness is determined by symbol value
+Bucket object
+buckets are: things you need/want to do, waiting, ready, doing, done, loved ones, other people
+work-break-schedule
+timer
+
+**story**
+Enter in your things and people (pets are people too)
+    enter in all the things you need to do into "things you need to do"
+    enter in all the things you want to do into "things you want to do"
+    enter in loved ones, aquaintainces, co-workers, add things like bowling buddies
+        Loved ones are the most important right now.
+    If any of the things you want to or need to do involve people in your life, add them as well.
+Pick 5 of what you think the highest priority things are
+    Rephrase that thing so you know what the outcome is. What does "done" look like?
+    Are they associated with any people? Associate them. Create those people if you haven't yet.
+    What other things need to be done, have to happen, for this thing to be done? Put those things in this thing, you may either search for them or create them.
+For each thing within each 5 things, look at them, what needs to be done for it? Keep going. Add stuff to calendars. here too.
+Then the system looks at the first things that need to be done. These are the tasks that are ready to be done. The stuff that's waiting for this stuff is in the waiting section.
+Have the user pick 3 things from the ready section, and then have them estimate how long each of the three things will take.
+Now ask them if they'd like to work on it now and if they'd like to time it. Suggest a work/break schedule based on pomodoro. 
+Do the thing, if they time things, time it. Work break schedule isn't assigned to any task, and there are multiple schedles (pomodoro, an hour for just working out, 15-3, etc). There's the stopwatch and the timer. There's always the option to keep going for another block or just keep going indefinitely.
+keep stats of all this.
+Have the person mark a task as done when it's done.
+What about estimation, review etc? Will have to think about it.
+Do the next thing. Always give them the option to add more things to the new-stuff bucket, take stuff from the new-bucket to waiting, trash, or reference, modify waiting.
+There should be a hard limit to the number of things in waiting and ready? There should definitely be a hard limit to the number of wip's. But these should be adjustable?
