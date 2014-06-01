@@ -48,6 +48,6 @@ end
 # http://www.railstutorial.org/book/beginning
 # Do I want to get rid of these version numbers?
 group :production do
-  gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
+  gem 'pg'
+  gem 'rails_12factor'
 end
