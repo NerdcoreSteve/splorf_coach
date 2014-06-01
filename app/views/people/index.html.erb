@@ -6,7 +6,7 @@
       <th>First name</th>
       <th>Last name</th>
       <th>Description</th>
-      <th>Status</th>
+      <th>Category</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,7 +19,7 @@
         <td><%= person.first_name %></td>
         <td><%= person.last_name %></td>
         <td><%= person.description %></td>
-        <td><%= person.status %></td>
+        <td><%= person.category %></td>
         <td><%= link_to 'Show', person %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>

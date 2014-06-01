@@ -83,6 +83,15 @@ getting results the agile way
 willpower
 research productivity/time-management etc.
 
+QUESTIONS
+I know how to do a migration to change a field name, but how do I get the html.erb form to change with it?
+I had to manually edit these files to change status to category:
+app/views/people/show.html.erb
+app/views/people/_form.html.erb
+app/views/people/index.html.erb
+and a crap ton of other files
+This page may show the way...
+
 DESIGN
 *intial design*
 Person_Or_Thing object
