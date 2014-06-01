@@ -1,11 +1,5 @@
 WORKING ON
 installing postgres for dev
-group :development do
-  gem 'pg'
-  gem 'rails_12factor'
-end
-Do I even need to bother with the group code?
-what is rails_12factor?
 
 ITERATIONS
 All iterations start with uml diagramming and design notes unless otherwise specified or context makes it unapplicable.
@@ -44,6 +38,7 @@ create non-functional html-js ui in app
     Where the app asks you for things, don't put it in the database, just make up your own things.
 keep tweeking it until you've got it the way you like it
 I'm sure this iteration listing will generate many more before I get to the wiki
+use sass, partials, and look into using coffeescript
 
 *i*
 move these notes and others to the github wiki
@@ -86,6 +81,7 @@ make new iterations for android/rails-api
 from now on any added features are released in concert with the android version
 What about pre-release servers on which to test things?
 learn how to make vim do html.erb indentation correctly, and fix all files' indentation.
+Do I want version numbers in my Gemfile?
 read books in more detail:
 kanban
 gtd

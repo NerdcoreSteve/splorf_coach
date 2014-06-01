@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.5'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -41,14 +42,17 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# production heroku postgres code copied from
+# group code copied from
 # http://www.railstutorial.org/book/beginning
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
-# Use sqlite3 as the dev database for now
-group :development do
-  gem 'sqlite3'
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'selenium-webdriver'
+  gem 'capybara'
 end
