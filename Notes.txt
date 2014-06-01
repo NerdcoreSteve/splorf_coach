@@ -12,7 +12,6 @@ license this thing with that weird gnu cloud license.
 
 *i*
 change to postgres on your local
-do I want to get rid of the version numbers in the Gemfile?
 
 *i*
 change person status to person category
