@@ -5,13 +5,6 @@ ITERATIONS
 All iterations start with uml diagramming and design notes unless otherwise specified or context makes it unapplicable.
 
 *i*
-change to postgres on your local
-do I then need to have the if dev, if prod stuff in my gemfile?
-
-*i*
-change person status to person category
-
-*i*
 make home page other than person or things
 use http://www.railstutorial.org/
 
