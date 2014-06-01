@@ -11,6 +11,7 @@ license this thing with that weird gnu cloud license.
 
 *i*
 change to postgres on your local
+do I then need to have the if dev, if prod stuff in my gemfile?
 
 *i*
 change person status to person category
