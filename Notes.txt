@@ -1,11 +1,10 @@
 WORKING ON
+http://vast-tor-1644.herokuapp.com/things
+"We're sorry, but something went wrong.
+If you are the application owner check the logs for more information."
 
 ITERATIONS
 All iterations start with uml diagramming and design notes unless otherwise specified or context makes it unapplicable.
-*i*
-set it up on github and heroku, refer to the relevant parts of http://www.railstutorial.org/
-keep obscure name for now
-
 *i*
 checkout http://www.youtube.com/watch?v=Gzj723LkRJY
 license this thing with that weird gnu cloud license.
