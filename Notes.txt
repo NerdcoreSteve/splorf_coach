@@ -5,24 +5,18 @@ ITERATIONS
 All iterations start with uml diagramming and design notes unless otherwise specified or context makes it unapplicable.
 
 *i*
-make home page other than person or things
-use http://www.railstutorial.org/
-
-*i*
-currently using railsgirls bootstrap css stuff. Use your own. Either use http://www.railstutorial.org/ or some other resource to learn how. There is a bootstrap gem.
-
-*i*
 create users using Devise
 http://guides.railsgirls.com/devise/
+
+*i*
+profile pics with gravatar, use rails girls guide
 
 *i*
 setup rspec for what little you've got going
 http://guides.railsgirls.com/testing-rspec
 http://www.railstutorial.org/
 perhaps some other rspec tutorials
-
-*i*
-change heroku name to splorf_coach
+users should be only able to access their stuff and people
 
 *i*
 sketch a basic ui in pencil and paper
@@ -32,14 +26,6 @@ create non-functional html-js ui in app
 keep tweeking it until you've got it the way you like it
 I'm sure this iteration listing will generate many more before I get to the wiki
 use sass, partials, and look into using coffeescript
-
-*i*
-move these notes and others to the github wiki
-There are nested task lists
-https://github.com/blog/1841-nested-task-lists
-Put dia file in wiki as well as a png
-This might be a better thing to do than your Notes.txt
-Maybe keep ideas in private repo?
 
 *i*
 Bucket
@@ -61,15 +47,37 @@ user created work schedules
 user created buckets
 
 *i*
+users can share people, tasks, etc.
+
+*i*
+users connect to their people listings if they want
+
+*i*
 what else do I need to do to make this thing usable/secure?
 
 *i*
 start using this thing and make notes about it with it.
 
+*i*
+move these notes and others to the github wiki
+There are nested task lists
+https://github.com/blog/1841-nested-task-lists
+Put dia file in wiki as well as a png
+This might be a better thing to do than your Notes.txt
+Maybe keep ideas in private repo?
+
+*i*
+change heroku name to splorf_coach
+
+*i*
+learn android and make android app that talks to restful api
+
 *next iterations*
+track distractions and allow userdefined stats and tracking.
+home redirects to a url with static_pages/home, how can I just have it be on the main url?
+currently using railsgirls bootstrap css stuff. Use your own. Either use http://www.railstutorial.org/ or some other resource to learn how. There is a bootstrap gem.
 add the ability to do video, audio, pictures for things/people
 any obvious improvements that need to be made or is this now in a usable form?
-Learn android, make this an actual task you need to do in the app
 make new iterations for android/rails-api
 from now on any added features are released in concert with the android version
 What about pre-release servers on which to test things?
