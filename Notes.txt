@@ -5,8 +5,11 @@ ITERATIONS
 All iterations start with uml diagramming and design notes unless otherwise specified or context makes it unapplicable.
 
 *i*
-create users using Devise
-http://guides.railsgirls.com/devise/
+people and things are only associated with individual users
+
+*i*
+if possible/(not a pain in the neck)
+authorization involves sending an email verification and then clicking on the link
 
 *i*
 profile pics with gravatar, use rails girls guide
