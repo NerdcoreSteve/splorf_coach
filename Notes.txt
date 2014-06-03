@@ -6,10 +6,15 @@ All iterations start with uml diagramming and design notes unless otherwise spec
 
 *i*
 people and things are only associated with individual users
+Don't need to use cancan for now.
 
-*i*
-if possible/(not a pain in the neck)
-authorization involves sending an email verification and then clicking on the link
+    *i*
+    people and things belong to users
+    http://guides.rubyonrails.org/association_basics.html
+
+    *i*
+    users can only view/modify/delete people and things that belong to them
+    once done, ask on forum if this is secure enough
 
 *i*
 profile pics with gravatar, use rails girls guide
@@ -53,6 +58,10 @@ user created buckets
 users can share people, tasks, etc.
 
 *i*
+adding a habit is a specialized thing
+the app helps you monitor how well you are adopting a habit and helps you measure when you have finished adopting it so you can put it in done. But it also monitors the habit to see if you slack off and puts, get back into the habit in your waiting or ready or some other bucket.
+
+*i*
 users connect to their people listings if they want
 
 *i*
@@ -76,6 +85,7 @@ change heroku name to splorf_coach
 learn android and make android app that talks to restful api
 
 *next iterations*
+do I want to make the user lockable?
 track distractions and allow userdefined stats and tracking.
 home redirects to a url with static_pages/home, how can I just have it be on the main url?
 currently using railsgirls bootstrap css stuff. Use your own. Either use http://www.railstutorial.org/ or some other resource to learn how. There is a bootstrap gem.
