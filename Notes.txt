@@ -16,6 +16,11 @@ Don't need to use cancan for now.
     If nothing else you can ask in the forum.
 
 *i*
+fix committer script so that it pushes new branches
+    probably should do it when they're created.
+    http://stackoverflow.com/questions/2765421/how-to-push-a-new-local-branch-to-remote-repo-and-track-it-too
+
+*i*
 profile pics with gravatar, use rails girls guide
 
 *i*
