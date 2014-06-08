@@ -4,12 +4,13 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = policy_scope(Person)
   end
 
   # GET /people/1
   # GET /people/1.json
   def show
+    authorize @person
   end
 
   # GET /people/new
@@ -19,12 +20,14 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
+    authorize @person
   end
 
   # POST /people
   # POST /people.json
   def create
     @person = Person.new(person_params)
+    @person.user_id = current_user.id
 
     respond_to do |format|
       if @person.save
@@ -40,6 +43,7 @@ class PeopleController < ApplicationController
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
+    authorize @person
     respond_to do |format|
       if @person.update(person_params)
         format.html { redirect_to @person, notice: 'Person was successfully updated.' }
@@ -54,6 +58,7 @@ class PeopleController < ApplicationController
   # DELETE /people/1
   # DELETE /people/1.json
   def destroy
+    authorize @person
     @person.destroy
     respond_to do |format|
       format.html { redirect_to people_url }

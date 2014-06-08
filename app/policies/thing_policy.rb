@@ -1,0 +1,2 @@
+class ThingPolicy < ApplicationPolicy
+end

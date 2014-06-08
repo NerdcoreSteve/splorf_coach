@@ -9,12 +9,11 @@ people and things are only associated with individual users
 Don't need to use cancan for now.
 
     *i*
-    people and things belong to users
-    http://guides.rubyonrails.org/association_basics.html
+    show nicer error pages for when you're not authorized to see a person or thing
 
     *i*
-    users can only view/modify/delete people and things that belong to them
-    once done, ask on forum if this is secure enough
+    it seems like there is a lot of duplicate code. Is there a better way to do this?
+    If nothing else you can ask in the forum.
 
 *i*
 profile pics with gravatar, use rails girls guide
@@ -62,7 +61,11 @@ adding a habit is a specialized thing
 the app helps you monitor how well you are adopting a habit and helps you measure when you have finished adopting it so you can put it in done. But it also monitors the habit to see if you slack off and puts, get back into the habit in your waiting or ready or some other bucket.
 
 *i*
+calendar and sync with calendar
+
+*i*
 users connect to their people listings if they want
+So my listing of my wife will actually be connected to their user account in some way.
 
 *i*
 what else do I need to do to make this thing usable/secure?
@@ -83,35 +86,52 @@ change heroku name to splorf_coach
 
 *i*
 learn android and make android app that talks to restful api
-
-*next iterations*
-do I want to make the user lockable?
-track distractions and allow userdefined stats and tracking.
-home redirects to a url with static_pages/home, how can I just have it be on the main url?
-currently using railsgirls bootstrap css stuff. Use your own. Either use http://www.railstutorial.org/ or some other resource to learn how. There is a bootstrap gem.
-add the ability to do video, audio, pictures for things/people
-any obvious improvements that need to be made or is this now in a usable form?
-make new iterations for android/rails-api
 from now on any added features are released in concert with the android version
+
+*next?*
+sync with twitter, facebook, diaspora, tumblr, wordpress and others
+
+integrates with email?
+    I'd love to have an empty inbox
+
+write a script for refactoring or find one
+    https://railsforum.com/topic/1967-changing-the-column-name-without-having-to-modify-a-bunch-of-other-code/#entry3877
+    https://www.google.com/search?client=ubuntu&channel=fs&q=rails+refactor+script&ie=utf-8&oe=utf-8
+    post to this forum and maybe make blog post about it.
+
+somehow anonymize user data?
+
+What data do I collect? What are the opt-in-out policies? What is fair? It seems like machine learning could be helpful to users.
+
+do I want to make the user lockable?
+
+track distractions and allow userdefined stats and tracking.
+
+home redirects to a url with static_pages/home, how can I just have it be on the main url?
+
+currently using railsgirls bootstrap css stuff. Use your own. Either use http://www.railstutorial.org/ or some other resource to learn how. There is a bootstrap gem.
+
+add the ability to do video, audio, pictures for things/people
+
 What about pre-release servers on which to test things?
+
 learn how to make vim do html.erb indentation correctly, and fix all files' indentation.
+    currently indents by 4, want to indent by 2
+
+look for rails code style guides.
+
 Do I want version numbers in my Gemfile?
+
 read books in more detail:
-kanban
-gtd
-pom
-getting results the agile way
-willpower
+    kanban
+    gtd
+    pom
+    getting results the agile way
+    willpower
+
 research productivity/time-management etc.
 
 QUESTIONS
-I know how to do a migration to change a field name, but how do I get the html.erb form to change with it?
-I had to manually edit these files to change status to category:
-app/views/people/show.html.erb
-app/views/people/_form.html.erb
-app/views/people/index.html.erb
-and a crap ton of other files
-This page may show the way...
 
 DESIGN
 *intial design*

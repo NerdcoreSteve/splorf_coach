@@ -4,12 +4,13 @@ class ThingsController < ApplicationController
   # GET /things
   # GET /things.json
   def index
-    @things = Thing.all
+    @things = policy_scope(Thing)
   end
 
   # GET /things/1
   # GET /things/1.json
   def show
+    authorize @thing
   end
 
   # GET /things/new
@@ -19,12 +20,14 @@ class ThingsController < ApplicationController
 
   # GET /things/1/edit
   def edit
+    authorize @thing
   end
 
   # POST /things
   # POST /things.json
   def create
     @thing = Thing.new(thing_params)
+    @thing.user_id = current_user.id
 
     respond_to do |format|
       if @thing.save
@@ -40,6 +43,7 @@ class ThingsController < ApplicationController
   # PATCH/PUT /things/1
   # PATCH/PUT /things/1.json
   def update
+    authorize @thing
     respond_to do |format|
       if @thing.update(thing_params)
         format.html { redirect_to @thing, notice: 'Thing was successfully updated.' }
@@ -54,6 +58,7 @@ class ThingsController < ApplicationController
   # DELETE /things/1
   # DELETE /things/1.json
   def destroy
+    authorize @thing
     @thing.destroy
     respond_to do |format|
       format.html { redirect_to things_url }
