@@ -1,25 +1,8 @@
 ITERATIONS
-All iterations start with uml diagramming and design notes unless otherwise specified or context makes it unapplicable.
+All iterations start with uml diagramming, design notes/drawings, and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
 *i*
-people and things are only associated with individual users
-Don't need to use cancan for now.
-
-    *i*
-    it seems like there is a lot of duplicate code. Is there a better way to do this?
-    ask on the forum
-    https://railsforum.com/forum/6-controllers-views/
-    http://pathfindersoftware.com/2008/07/drying-up-rails-controllers-polymorphic-and-super-controllers/
-
-*i*
-fix committer script so that it pushes new branches
-    probably should do it when they're created.
-    http://stackoverflow.com/questions/2765421/how-to-push-a-new-local-branch-to-remote-repo-and-track-it-too
-
-*i*
-profile pics with gravatar, use rails girls guide
-
-*i*
+update uml or get rid of uml?
 setup rspec for what little you've got going
 http://guides.railsgirls.com/testing-rspec
 http://www.railstutorial.org/
@@ -90,6 +73,10 @@ learn android and make android app that talks to restful api
 from now on any added features are released in concert with the android version
 
 *next?*
+it seems like there is a lot of duplicate code. Is there a better way to do this?
+https://railsforum.com/topic/1985-drying-up-my-controllers/
+http://pathfindersoftware.com/2008/07/drying-up-rails-controllers-polymorphic-and-super-controllers/
+
 Right now, if you're not authorized to see or edit something, you get redirected to the index. Can the user get redirected to whatever previous page they were on?
 
 sync with twitter, facebook, diaspora, tumblr, wordpress and others
@@ -101,6 +88,7 @@ write a script for refactoring or find one
     https://railsforum.com/topic/1967-changing-the-column-name-without-having-to-modify-a-bunch-of-other-code/#entry3877
     https://www.google.com/search?client=ubuntu&channel=fs&q=rails+refactor+script&ie=utf-8&oe=utf-8
     post to this forum and maybe make blog post about it.
+    use drying_up_controllers_etc, you'll need to pull from master to it though.
 
 somehow anonymize user data?
 
