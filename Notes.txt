@@ -1,13 +1,21 @@
 ITERATIONS
-All iterations start with uml diagramming, design notes/drawings, and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
+All iterations start with design notes/drawings and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
 *i*
-update uml or get rid of uml?
 setup rspec for what little you've got going
 http://guides.railsgirls.com/testing-rspec
 http://www.railstutorial.org/
 perhaps some other rspec tutorials
 users should be only able to access their stuff and people
+    *i*
+    test that users can only view their own stuff
+        do I use user_spec.rb ?
+    what else?
+
+*i*
+make sure that no fields can be blank in the database, the rails book talked a little about this.
+also make sure the has_many and belongs_to relationships are reflected in the database?
+Can I also do rspec tests for the database?
 
 *i*
 sketch a basic ui in pencil and paper
@@ -73,6 +81,12 @@ learn android and make android app that talks to restful api
 from now on any added features are released in concert with the android version
 
 *next?*
+make contact form for 
+http://localhost:3000/static_pages/contact
+
+What do I put in help?
+http://localhost:3000/static_pages/help
+
 it seems like there is a lot of duplicate code. Is there a better way to do this?
 https://railsforum.com/topic/1985-drying-up-my-controllers/
 http://pathfindersoftware.com/2008/07/drying-up-rails-controllers-polymorphic-and-super-controllers/
@@ -123,6 +137,8 @@ read books in more detail:
 research productivity/time-management etc.
 
 QUESTIONS
+Do I need uml for rails development?
+
 Do I need to do this?
 class ApplicationController < ActionController::Base
   after_action :verify_authorized, :except => :index
@@ -130,7 +146,19 @@ end
 https://github.com/elabs/pundit
 
 DESIGN
-*intial design*
+*current design*
+Thing
+    name:string
+    description:text
+    status:string
+
+Person
+    first_name:string
+    last_name:string
+    description:text
+
+
+*potential design*
 Person_Or_Thing object
 thingness or personness is determined by symbol value
 Bucket object
