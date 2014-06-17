@@ -4,9 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 setup rspec tests
 users should be only able to access their stuff and people
-There is rspec documentation/support for pundit
-https://github.com/elabs/pundit
-http://thunderboltlabs.com/blog/2013/03/27/testing-pundit-policies-with-rspec/
 
 *i*
 make sure that no fields can be blank in the database, the rails book talked a little about this.
