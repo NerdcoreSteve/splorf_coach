@@ -2,24 +2,21 @@ ITERATIONS
 All iterations start with design notes/drawings and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
 *i*
-setup rspec for what little you've got going
-http://guides.railsgirls.com/testing-rspec
-http://www.railstutorial.org/
-perhaps some other rspec tutorials
+setup rspec tests
 users should be only able to access their stuff and people
-    *i*
-    test that users can only view their own stuff
-        do I use user_spec.rb ?
-    what else?
+There is rspec documentation/support for pundit
+https://github.com/elabs/pundit
+http://thunderboltlabs.com/blog/2013/03/27/testing-pundit-policies-with-rspec/
 
 *i*
 make sure that no fields can be blank in the database, the rails book talked a little about this.
 also make sure the has_many and belongs_to relationships are reflected in the database?
+no duplicate email addresses for users in database...
 Can I also do rspec tests for the database?
 
 *i*
 sketch a basic ui in pencil and paper
-create non-functional html-js ui in app
+create non-functional html-css-js ui in app
     acutally, it may not need to be that non-functional
     Where the app asks you for things, don't put it in the database, just make up your own things.
 keep tweeking it until you've got it the way you like it
@@ -27,8 +24,8 @@ I'm sure this iteration listing will generate many more before I get to the wiki
 use sass, partials, and look into using coffeescript
 
 *i*
-Bucket
-    only "Things I need to do" and "Ready"
+Buckets
+    only "in bucket", "ready bucket", and "done bucket"
 
 *i*
 all the buckets
@@ -69,9 +66,7 @@ start using this thing and make notes about it with it.
 move these notes and others to the github wiki
 There are nested task lists
 https://github.com/blog/1841-nested-task-lists
-Put dia file in wiki as well as a png
 This might be a better thing to do than your Notes.txt
-Maybe keep ideas in private repo?
 
 *i*
 change heroku name to splorf_coach
@@ -81,15 +76,32 @@ learn android and make android app that talks to restful api
 from now on any added features are released in concert with the android version
 
 *next?*
+https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-edit-their-password
+
+Is there any other testing I ought to be doing?
+https://github.com/elabs/pundit
+describe "users/show" do
+  before(:each) do
+    user = assign(:user, build_stubbed(:user))
+    controller.stub(:current_user).and_return user
+  end
+
+  it "renders the destroy action" do
+    allow(view).to receive(:policy).and_return double(edit?: false, destroy?: true)
+
+    render
+    expect(rendered).to match 'Destroy'
+  end
+end
+
 make contact form for 
 http://localhost:3000/static_pages/contact
 
 What do I put in help?
 http://localhost:3000/static_pages/help
 
-it seems like there is a lot of duplicate code. Is there a better way to do this?
+Do I want to bother making a superclass for the person and thing controllers?
 https://railsforum.com/topic/1985-drying-up-my-controllers/
-http://pathfindersoftware.com/2008/07/drying-up-rails-controllers-polymorphic-and-super-controllers/
 
 Right now, if you're not authorized to see or edit something, you get redirected to the index. Can the user get redirected to whatever previous page they were on?
 
@@ -137,6 +149,9 @@ read books in more detail:
 research productivity/time-management etc.
 
 QUESTIONS
+Why do I need to do an include for ControllerMacros?
+https://railsforum.com/topic/1997-controller-macrosrb-undefined-local-variable-or-method-login-user/#entry3945
+
 Do I need uml for rails development?
 
 Do I need to do this?
