@@ -56,7 +56,6 @@ group :development, :test do
   gem 'shoulda'
   gem 'factory_girl'
   gem 'factory_girl_rails'
-  gem 'database_cleaner'
 end
 
 group :test do
