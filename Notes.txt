@@ -72,6 +72,11 @@ change heroku name to splorf_coach
 learn android and make android app that talks to restful api
 from now on any added features are released in concert with the android version
 
+*i*
+sync web timer with app timer
+if I'm using a timer in the android app, that same timer should be running in the web app.
+Is this too operationally expensive?
+
 *next?*
 https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-edit-their-password
 
@@ -146,12 +151,10 @@ read books in more detail:
 research productivity/time-management etc.
 
 QUESTIONS
-Why do I need to do an include for ControllerMacros?
-https://railsforum.com/topic/1997-controller-macrosrb-undefined-local-variable-or-method-login-user/#entry3945
-
 Do I need uml for rails development?
 
 Do I need to do this?
+(not sure what it's for, testing?)
 class ApplicationController < ActionController::Base
   after_action :verify_authorized, :except => :index
 end

@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
+  #https://github.com/elabs/pundit
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  after_action :verify_authorized, :except => :index
+  after_action :verify_policy_scoped, :only => :index
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
