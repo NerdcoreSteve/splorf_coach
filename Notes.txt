@@ -3,7 +3,14 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 
 *i*
 setup rspec tests
-users should be only able to access their stuff and people
+finish writing up pundit tests
+    just do them for all listed actions
+    How do I verify that every action authorizes? Is that a view test?
+Write controller tests
+    in particular, do the index tests in the controller specs
+What else do I want to test?
+    write those up if they're there, then merge to branch, commit to github and heroku
+        make sure heroku works.
 
 *i*
 make sure that no fields can be blank in the database, the rails book talked a little about this.
@@ -78,6 +85,10 @@ if I'm using a timer in the android app, that same timer should be running in th
 Is this too operationally expensive?
 
 *next?*
+I just don't understand how to test policy scope this way:
+https://github.com/elabs/pundit/issues/123
+For now I'm testing this in the controller specs
+
 https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-edit-their-password
 
 Is there any other testing I ought to be doing?

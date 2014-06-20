@@ -16,6 +16,7 @@ class ThingsController < ApplicationController
   # GET /things/new
   def new
     @thing = Thing.new
+    authorize @thing
   end
 
   # GET /things/1/edit
@@ -28,6 +29,7 @@ class ThingsController < ApplicationController
   def create
     @thing = Thing.new(thing_params)
     @thing.user_id = current_user.id
+    authorize @thing
 
     respond_to do |format|
       if @thing.save

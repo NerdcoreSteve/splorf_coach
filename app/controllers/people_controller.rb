@@ -16,6 +16,7 @@ class PeopleController < ApplicationController
   # GET /people/new
   def new
     @person = Person.new
+    authorize @person
   end
 
   # GET /people/1/edit
@@ -28,6 +29,7 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
     @person.user_id = current_user.id
+    authorize @person
 
     respond_to do |format|
       if @person.save

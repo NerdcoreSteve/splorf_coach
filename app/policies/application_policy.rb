@@ -13,16 +13,12 @@ class ApplicationPolicy
     @record = record
   end
 
-  def index?
-    false
-  end
-
   def show?
     belongs_to_user?
   end
 
   def create?
-    false
+    true
   end
 
   def new?
