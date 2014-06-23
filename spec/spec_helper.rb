@@ -14,6 +14,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+  #https://github.com/plataformatec/devise#test-helpers
+  config.include Devise::TestHelpers, type: :controller
+
   #https://github.com/thoughtbot/factory_girl
   config.include FactoryGirl::Syntax::Methods
 

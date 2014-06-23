@@ -2,17 +2,6 @@ ITERATIONS
 All iterations start with design notes/drawings and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
 *i*
-setup rspec tests
-finish writing up pundit tests
-    just do them for all listed actions
-    How do I verify that every action authorizes? Is that a view test?
-Write controller tests
-    in particular, do the index tests in the controller specs
-What else do I want to test?
-    write those up if they're there, then merge to branch, commit to github and heroku
-        make sure heroku works.
-
-*i*
 make sure that no fields can be blank in the database, the rails book talked a little about this.
 also make sure the has_many and belongs_to relationships are reflected in the database?
 no duplicate email addresses for users in database...
