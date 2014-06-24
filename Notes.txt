@@ -2,12 +2,6 @@ ITERATIONS
 All iterations start with design notes/drawings and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
 *i*
-make sure that no fields can be blank in the database, the rails book talked a little about this.
-also make sure the has_many and belongs_to relationships are reflected in the database?
-no duplicate email addresses for users in database...
-Can I also do rspec tests for the database?
-
-*i*
 sketch a basic ui in pencil and paper
 create non-functional html-css-js ui in app
     acutally, it may not need to be that non-functional
@@ -74,6 +68,10 @@ if I'm using a timer in the android app, that same timer should be running in th
 Is this too operationally expensive?
 
 *next?*
+also make sure the has_many and belongs_to relationships are reflected in the database?
+
+Can I also do rspec tests for the database?
+
 I just don't understand how to test policy scope this way:
 https://github.com/elabs/pundit/issues/123
 For now I'm testing this in the controller specs
