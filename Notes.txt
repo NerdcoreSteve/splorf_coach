@@ -179,7 +179,83 @@ buckets are: things you need/want to do, waiting, ready, doing, done, loved ones
 work-break-schedule
 timer
 
-**story**
+**new design**
+all these also belong to a single user (for now, later multiple users can share)
+bucket:
+    name: string
+    description: text
+    upper_limit: (optional) (set for "Stuff I'm Working On" on by default)
+    has_many things, people, habits which belong_to only this bucket
+    default buckets are:
+        "New Stuff"
+        "Stuff Waiting On Other Stuff"
+        "Stuff That's Ready To Do"
+        "Stuff I'm Working On"
+        "Stuff That's Done"
+        "Stuff To Remember"
+        "People"
+thing:
+    name: string
+    notes: text (optional)
+    important: boolean
+person:
+    first_name: string
+    middle_name: string (optional)
+    last_name: string
+    email: string (optional) (look for or make regex validation)
+    phone_number: string (optional) (look for or make regex validation)
+    notes: text (optional)
+    important: boolean
+habit:
+    name: string
+    important: boolean
+    notes: text (optional)
+habit_metrics
+    
+    date: date
+    
+    
+
+**new story**
+On every page there is the title of the page, below are three buttons:
+    "+thing", "+habit", "+person"
+All lists show priorty things, people, habits at the top.
+By default the "New Stuff" page is open it shows a list of all new things and habits.
+Press "+thing
+a new page pops up for you to create a new thing
+
+
+[will need to add things in later stages because of waiting]
+add habit: keep house clean
+add thing: cancel old bank account
+add person: Billy Boyfriend
+add person: Darrel Contact Atbusinesseson
+open up 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**old story**
 Enter in your things and people (pets are people too)
     enter in all the things you need to do into "things you need to do"
     enter in all the things you want to do into "things you want to do"

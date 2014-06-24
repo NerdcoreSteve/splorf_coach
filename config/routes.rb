@@ -1,4 +1,11 @@
 SplorfCoach::Application.routes.draw do
+  get "mock/new_stuff"
+  get "mock/waiting"
+  get "mock/ready"
+  get "mock/wip"
+  get "mock/done"
+  get "mock/remember"
+  get "mock/people"
   devise_for :users
   get "static_pages/home"
   get "static_pages/help"
