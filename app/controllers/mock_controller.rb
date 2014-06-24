@@ -1,5 +1,6 @@
 class MockController < ApplicationController
   skip_after_action :verify_authorized
+  layout "mock"
 
   def new_stuff
   end
