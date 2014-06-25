@@ -9,6 +9,8 @@ create non-functional html-css-js ui in app
 keep tweeking it until you've got it the way you like it
 I'm sure this iteration listing will generate many more before I get to the wiki
 use sass, partials, and look into using coffeescript
+drag and drop order priority
+categories of stuff and people
 
 *i*
 Buckets
@@ -16,6 +18,10 @@ Buckets
 
 *i*
 all the buckets
+
+*i*
+looks like view tests are a good idea after all.
+No route matches [GET] "/users/sign_out"
 
 *i*
 stopwatch
