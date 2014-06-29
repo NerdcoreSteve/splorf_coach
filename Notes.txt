@@ -11,6 +11,8 @@ I'm sure this iteration listing will generate many more before I get to the wiki
 use sass, partials, and look into using coffeescript
 drag and drop order priority
 categories of stuff and people
+    *i*
+    figure out boostrap
 
 *i*
 Buckets
@@ -74,6 +76,11 @@ if I'm using a timer in the android app, that same timer should be running in th
 Is this too operationally expensive?
 
 *next?*
+is this line necessary in config/application.rb
+config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
+Did I need to put the sprockets gem in my Gemfile? is it already there by default?
+
 also make sure the has_many and belongs_to relationships are reflected in the database?
 
 Can I also do rspec tests for the database?

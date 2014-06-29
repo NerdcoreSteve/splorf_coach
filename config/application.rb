@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+#https://github.com/twbs/bootstrap-sass/issues/409
+::Sass::Script::Number.precision = 10
 
 module SplorfCoach
   class Application < Rails::Application
@@ -13,6 +15,8 @@ module SplorfCoach
     config.generators do |g|
       g.factory_girl false
     end
+
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
