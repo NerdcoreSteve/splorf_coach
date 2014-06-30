@@ -76,6 +76,8 @@ if I'm using a timer in the android app, that same timer should be running in th
 Is this too operationally expensive?
 
 *next?*
+what if the browser can't load svg?
+
 is this line necessary in config/application.rb
 config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 

@@ -1,3 +1,27 @@
 // Place all the styles related to the Mock controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// TODO find an open-source alternative
+//color triad made from https://kuler.adobe.com/create/color-wheel/?base=2&rule=Triad&selected=0&name=My%20Kuler%20Theme&mode=rgb&rgbvalues=0.852057096904487,0.93,0.5865836861114502,0.46862745098039216,0.6852836792496231,1,0.8567015968222962,1,0.3686274509803922,0.99,0.4226487550806552,0.3494117647058823,1,0.30196078431372547,0.2118538324418634&swatchOrder=0,1,2,3,4
+$white: #FFFFFF;
+$black: #000000;
+$dark-gray: #555555;
+$color1: #FFFEBE;
+$color2: #EFEB00;
+$color3: #008AE1;
+$color4: #EF0000;
+$color5: #EA0000;
+
+$body-bg: $color1;
+$text-color: $black;
+$navbar-default-bg: $color2;
+$navbar-default-color: $black;
+$navbar-default-link-color: $dark-gray;
+$navbar-default-link-hover-color: $color5;
+
+body { padding-top: 55px; }
+footer { margin-top: 100px; }
+table, td, th { vertical-align: middle; }
+
+@import "bootstrap";
+
