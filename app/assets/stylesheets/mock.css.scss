@@ -19,9 +19,30 @@ $navbar-default-color: $black;
 $navbar-default-link-color: $dark-gray;
 $navbar-default-link-hover-color: $color5;
 
-body { padding-top: 55px; }
+
+body { padding-top: 70px; }
 footer { margin-top: 100px; }
 table, td, th { vertical-align: middle; }
+
+.navbar .nav, .navbar .nav > li {
+    float:none;
+    display:inline-block;
+    vertical-align: top;
+}
+
+.navbar {
+    text-align:center;
+}
+
+#bucket_dropdown {
+    margin-left:160px;
+    font-size:250%;
+}
+
+#upper_left_logo {
+    margin-left: 5px;
+    margin-top: 10px;
+}
 
 @import "bootstrap";
 
