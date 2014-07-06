@@ -38,22 +38,24 @@ $navbar-height: 70px;
     margin-left: -5px;
 }
 
-#bucket_dropdown {
+#bucket-dropdown {
     font-size: 150%;
 }
 
-body {padding-top:50px;}
+body {
+    padding-top: 50px;
+}
 
-.cursor {cursor:pointer}
+.cursor {
+    cursor: pointer
+}
 
+@media (max-width:767px) {
+    .navbar-text {
+        padding-left: 15px;
+    }
 
-
-/* your going to need to fiddle with the css to make the menu consistent left padding-margin */
-
-/* consistent left padding */
- @media (max-width:767px) {
-    .my-custom-nav .navbar-collapse .navbar-nav > li {padding-left:15px!important;}
-
-    .my-custom-nav .user-dropdown > .dropdown-menu > li {padding-left:5px!important;}
-
+    .navbar .bucket-dropdown > .dropdown-menu > li {
+        padding-left: 5px;
+    }
 }
