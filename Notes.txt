@@ -4,15 +4,26 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
     mock ui
     *i*
-    figure out what bootstrap things you want to make a list of things/habits
-    make them drag and drop so you can order them accordingly
-    order indicates priority
-    http://stackoverflow.com/questions/20424477/responsive-sortable-list-supporting-drag-drop-for-bootstrap
-    http://www.bootply.com/117769
-    http://jqueryui.com/sortable/
-    http://rubydoc.info/gems/jquery-ui-rails/4.0.1/frames
-    *i*
-    stars for importance, all starred stuff automatically is put at top
+    drag drop bucket items
+        *i*
+        the drag-drop script doesn't currently work
+        *i*
+        make ruby irb script that generates some number of panel items
+        *i*
+        each panel item should have a colored heading, and a description,
+        when you click on the heading it will expand to a description and other junk
+        what else should be in each panel?
+        or maybe it should be an "open" and "close" button?
+        modal for editing each bucket item?
+        *i*
+        stars for importance, all starred stuff automatically is put at top
+        *i*
+        fix spacing between items
+        *links*
+        http://stackoverflow.com/questions/20424477/responsive-sortable-list-supporting-drag-drop-for-bootstrap
+        http://www.bootply.com/117769
+        http://jqueryui.com/sortable/
+        http://rubydoc.info/gems/jquery-ui-rails/4.0.1/frames
     *i*
     look into rails ajax, what I'd like to do is mess around with the controller so
     I give the mock page mock data. You click on a bucket and then it's contents show.
@@ -96,6 +107,10 @@ if I'm using a timer in the android app, that same timer should be running in th
 Is this too operationally expensive?
 
 *next?*
+The navbar doesn't look that great. Really just alignment issues. bucket dropdown is weird too.
+
+how do I indicate that bucket item order indicates priority? Do I need to?
+
 make the ui look really really good, test in all computer and mobile browsers you can
 
 what if the browser can't load svg?

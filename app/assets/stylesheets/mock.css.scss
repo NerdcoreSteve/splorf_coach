@@ -38,8 +38,12 @@ $navbar-height: 70px;
     margin-left: -5px;
 }
 
-.plus-buttons {
+.plus-button {
     font-size: 150%;
+}
+
+#plus-button-group {
+    padding-bottom: 10px;
 }
 
 #bucket-dropdown-head-text {
@@ -47,16 +51,28 @@ $navbar-height: 70px;
 }
 
 body {
-    padding-top: 90px;
+    padding-top: 95px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 .cursor {
     cursor: pointer
 }
 
+#draggable-panel-list .panel-heading {
+    cursor: move;
+}
+
 @media (max-width:767px) {
     body {
-        padding-top: 100px;
+        padding-top: 105px;
+        padding-right: 2px;
+        padding-left: 2px;
+    }
+
+    #plus-button-group {
+        padding-bottom: 6px;
     }
 
     .navbar-text {

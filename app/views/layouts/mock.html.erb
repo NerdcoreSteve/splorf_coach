@@ -60,16 +60,30 @@
                 </ul>
             </div>
         </div>
-        <div class="btn-group btn-group-justified btn-group-lg">
+
+        <div id="plus-button-group" class="btn-group btn-group-justified btn-group-lg">
             <div class="btn-group">
-                <button type="button" class="btn btn-default plus-buttons">+Thing</button>
+                <button type="button" class="btn btn-default plus-button">+Thing</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-default plus-buttons">+Habit</button>
+                <button type="button" class="btn btn-default plus-button">+Habit</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-default plus-buttons">+Person</button>
+                <button type="button" class="btn btn-default plus-button">+Person</button>
             </div>
         </div>
+
+        <%#TODO make a ruby erb loop that makes a few of these panels%>
+        <%#TODO What does list-unstyled do? %>
+        <ul id="draggable-panel-list" class="list-unstyled">
+            <li class="panel panel-info">
+                <div class="panel-heading">You can drag this panel.</div>
+                <div class="panel-body">Content ...</div>
+            </li>
+            <li class="panel panel-info">
+                <div class="panel-heading">You can drag this panel too.</div>
+                <div class="panel-body">Content ...</div>
+            </li>
+        </ul>
     </body>
 </html>
