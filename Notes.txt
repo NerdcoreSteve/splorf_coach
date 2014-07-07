@@ -8,6 +8,8 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
     *i*
     make them drag and drop so you can order them accordingly
     order indicates priority
+    http://stackoverflow.com/questions/20424477/responsive-sortable-list-supporting-drag-drop-for-bootstrap
+    http://www.bootply.com/117769
     *i*
     stars for importance, all starred stuff automatically is put at top
     *i*
@@ -16,8 +18,14 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
     *i*
     categories of stuff and people
     *i*
+    I think there are probably a lot of unneccessary mock files floating around
+    get rid of 'em
+    *i*
     mess around with non-mock css to make the site usable and then merge branch to
     trunk and push to heroku
+
+*i*
+What bootstrap, gnu and other license information needs to be displayed on the site and where?
 
 *i*
 make sure everything, including the views, are properly tested, do you best to write the test
@@ -86,6 +94,8 @@ if I'm using a timer in the android app, that same timer should be running in th
 Is this too operationally expensive?
 
 *next?*
+make the ui look really really good, test in all computer and mobile browsers you can
+
 what if the browser can't load svg?
 
 is this line necessary in config/application.rb
