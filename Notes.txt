@@ -2,28 +2,42 @@ ITERATIONS
 All iterations start with design notes/drawings and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
 *i*
-sketch a basic ui in pencil and paper
-create non-functional html-css-js ui in app
-    acutally, it may not need to be that non-functional
-    Where the app asks you for things, don't put it in the database, just make up your own things.
-keep tweeking it until you've got it the way you like it
-I'm sure this iteration listing will generate many more before I get to the wiki
-use sass, partials, and look into using coffeescript
-drag and drop order priority
-categories of stuff and people
+    mock ui
     *i*
-    figure out boostrap
+    figure out what bootstrap things you want to make a list of things/habits
+    *i*
+    make them drag and drop so you can order them accordingly
+    order indicates priority
+    *i*
+    stars for importance, all starred stuff automatically is put at top
+    *i*
+    look into rails ajax, what I'd like to do is mess around with the controller so
+    I give the mock page mock data. You click on a bucket and then it's contents show.
+    *i*
+    categories of stuff and people
+    *i*
+    mess around with non-mock css to make the site usable and then merge branch to
+    trunk and push to heroku
 
 *i*
-Buckets
-    only "in bucket", "ready bucket", and "done bucket"
+make sure everything, including the views, are properly tested, do you best to write the test
+before you code from here on out
 
 *i*
-all the buckets
+changes models to match mock ui design
 
 *i*
-looks like view tests are a good idea after all.
-No route matches [GET] "/users/sign_out"
+make ui actually functional, plug view into appropriate controllers, etc.
+
+*i*
+bootstrapify all ui, I think a lot of the forms and things don't use bootstrap forms
+There's probably lots of stuff like that
+
+*i*
+What else needs to be done to make it usable?
+
+*i*
+users can create their own buckets
 
 *i*
 stopwatch
@@ -33,9 +47,6 @@ Timer and stopwatch, hard-coded pomodoro schedule
 
 *i*
 user created work schedules
-
-*i*
-user created buckets
 
 *i*
 users can share people, tasks, etc.
@@ -67,8 +78,7 @@ This might be a better thing to do than your Notes.txt
 change heroku name to splorf_coach
 
 *i*
-learn android and make android app that talks to restful api
-from now on any added features are released in concert with the android version
+scaloid android app connects to this app via rest api
 
 *i*
 sync web timer with app timer
