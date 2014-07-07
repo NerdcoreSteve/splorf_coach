@@ -1,10 +1,16 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-#TODO stop using classes for this and use ids, put ids on the dropdowns
+#It's a little worrying that .bucket-dropdown hides when .navbar-collapse shows
+#This is what's required, but no javascript or html actually tells it to do this.
+#It seems to be some happy-accident side effect
 
-$(document).on('click', '.bucket-dropdown-head', ( ->
-));
+navbar_collapse_shown = false
 
-$(document).on('click', '.navbar-toggle', ( ->
-));
+$(document).on('show.bs.dropdown', '.bucket-dropdown', ( ->
+    if navbar_collapse_shown
+        $('.navbar-collapse').collapse('hide')
+        navbar_collapse_shown = false
+    $('.bucket-dropdown').dropdown()
+))
+
+$(document).on('show.bs.collapse', '.navbar-collapse', ( ->
+    navbar_collapse_shown = true
+))
