@@ -5,11 +5,12 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
     mock ui
     *i*
     figure out what bootstrap things you want to make a list of things/habits
-    *i*
     make them drag and drop so you can order them accordingly
     order indicates priority
     http://stackoverflow.com/questions/20424477/responsive-sortable-list-supporting-drag-drop-for-bootstrap
     http://www.bootply.com/117769
+    http://jqueryui.com/sortable/
+    http://rubydoc.info/gems/jquery-ui-rails/4.0.1/frames
     *i*
     stars for importance, all starred stuff automatically is put at top
     *i*
@@ -65,6 +66,7 @@ the app helps you monitor how well you are adopting a habit and helps you measur
 
 *i*
 calendar and sync with calendar
+probably a jquery ui widget
 
 *i*
 users connect to their people listings if they want
