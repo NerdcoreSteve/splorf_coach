@@ -49,6 +49,7 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown bucket-dropdown">
                     <ul class="dropdown-menu">
+                        <%#TODO loop through array here too%>
                         <li><a href="#">Waiting</a></li>
                         <li><a href="#">Ready</a></li>
                         <li><a href="#">WIP</a></li>
@@ -61,6 +62,7 @@
             </div>
         </div>
 
+        <%#TODO I could probably do this with an array of plus button labels and a loop%>
         <div id="plus-button-group" class="btn-group btn-group-justified btn-group-lg">
             <div class="btn-group">
                 <button type="button" class="btn btn-default plus-button">+Thing</button>
@@ -76,8 +78,18 @@
         <ul id="sortable-bucket-item-list" class="list-unstyled">
             <% 3.times do |i|%>
                 <li class="panel panel-info">
-                    <div class="panel-heading">Panel <%= i + 1 %></div>
-                    <div class="panel-body">Content <%= i + 1 %></div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse"
+                              data-parent="#accordion"
+                              href="#collapse<%= i + 1 %>">
+                                Thing: description of thing
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse<%= i + 1 %>" class="panel-collapse collapse">
+                        <div class="panel-body">Content <%= i + 1 %></div>
+                    </div>
                 </li>
             <% end %>
         </ul>

@@ -18,5 +18,6 @@ $(document).on('show.bs.collapse', '.navbar-collapse', ( ->
 #TODO I don't quite know what's going on here, got from jquery docs
 $( ->
     $( "#sortable-bucket-item-list" ).sortable()
+    #TODO Don't I want to enable selection for hotkeys?
     $( "#sortable-bucket-item-list" ).disableSelection()
 )
