@@ -49,30 +49,24 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown bucket-dropdown">
                     <ul class="dropdown-menu">
-                        <%#TODO loop through array here too%>
-                        <li><a href="#">Waiting</a></li>
-                        <li><a href="#">Ready</a></li>
-                        <li><a href="#">WIP</a></li>
-                        <li><a href="#">Done</a></li>
-                        <li><a href="#">Remember</a></li>
-                        <li><a href="#">People</a></li>
+                        <% bucket_names = ['Waiting', 'Ready', 'WIP', 'Done', 'Remember', 'People']
+                           bucket_names.each do |bucket_name| %>
+                            <li><%= link_to bucket_name, '#'%></li>
+                        <% end %>
                     </ul>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <%#TODO I could probably do this with an array of plus button labels and a loop%>
         <div id="plus-button-group" class="btn-group btn-group-justified btn-group-lg">
-            <div class="btn-group">
-                <button type="button" class="btn btn-default plus-button">+Thing</button>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default plus-button">+Habit</button>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default plus-button">+Person</button>
-            </div>
+            <% ['Thing', 'Habit', 'Person'].each do |button_label| %>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default plus-button">
+                        +<%= button_label %>
+                    </button>
+                </div>
+            <% end %>
         </div>
 
         <ul id="sortable-bucket-item-list" class="list-unstyled">
