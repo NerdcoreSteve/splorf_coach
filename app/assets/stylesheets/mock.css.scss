@@ -61,8 +61,16 @@ body {
 }
 
 #sortable-bucket-item-list .panel-heading {
-        cursor: move;
+    cursor: pointer
 } 
+.panel-body {
+    input, textarea {
+        width: 100%;
+    }
+    textarea {
+       resize: none;
+    }
+}
 
 @media (max-width:767px) {
     body {

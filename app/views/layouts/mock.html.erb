@@ -49,7 +49,7 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown bucket-dropdown">
                     <ul class="dropdown-menu">
-                        <% bucket_names = ['Waiting', 'Ready', 'WIP', 'Done', 'Remember', 'People']
+                        <% bucket_names = ['Waiting', 'Ready', 'WIP', 'Done', 'Reference', 'People']
                            bucket_names.each do |bucket_name| %>
                             <li><%= link_to bucket_name, '#'%></li>
                         <% end %>
@@ -72,17 +72,27 @@
         <ul id="sortable-bucket-item-list" class="list-unstyled">
             <% 3.times do |i|%>
                 <li class="panel panel-info">
-                    <div class="panel-heading">
+                    <div class="panel-heading"
+                         data-toggle="collapse"
+                         data-parent="#accordion"
+                         data-target="#collapse<%=i%>">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse"
-                              data-parent="#accordion"
-                              href="#collapse<%= i + 1 %>">
-                                Thing: description of thing
-                            </a>
+                            Thing: description of thing
                         </h4>
                     </div>
-                    <div id="collapse<%= i + 1 %>" class="panel-collapse collapse">
-                        <div class="panel-body">Content <%= i + 1 %></div>
+                    <div id="collapse<%=i%>" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <input type="text"
+                                   name="usrname"
+                                   placeholder="Description of thing"><br>
+                            <textarea placeholder="Notes for thing"></textarea>
+                            <button type="button" class="btn btn-default">
+                                Save
+                            </button>
+                            <button type="button" class="btn btn-default">
+                                Cancel
+                            </button>
+                        </div>
                     </div>
                 </li>
             <% end %>

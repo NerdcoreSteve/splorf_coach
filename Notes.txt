@@ -6,13 +6,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
     *i*
     drag drop bucket items
         *i*
-        each panel item should have a colored heading, and a description,
-        when you click on the heading it will expand to a description and other junk
-        what else should be in each panel?
-        or maybe it should be an "open" and "close" button?
-        modal for editing each bucket item?
-        *i*
-        stars for importance, all starred stuff automatically is put at top
         *i*
         fix spacing between items
             *links*
@@ -103,6 +96,10 @@ if I'm using a timer in the android app, that same timer should be running in th
 Is this too operationally expensive?
 
 *next?*
+stars for importance, all starred stuff automatically is put at top
+
+Maybe have a dropdown button in the nav instead of a dropdown?
+
 The navbar doesn't look that great. Really just alignment issues. bucket dropdown is weird too.
 
 how do I indicate that bucket item order indicates priority? Do I need to?

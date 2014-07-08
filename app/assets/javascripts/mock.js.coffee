@@ -15,9 +15,8 @@ $(document).on('show.bs.collapse', '.navbar-collapse', ( ->
     navbar_collapse_shown = true
 ))
 
-#TODO I don't quite know what's going on here, got from jquery docs
+#TODO Why does this have to be wrapped in a function?
 $( ->
-    $( "#sortable-bucket-item-list" ).sortable()
-    #TODO Don't I want to enable selection for hotkeys?
-    $( "#sortable-bucket-item-list" ).disableSelection()
+    $("#sortable-bucket-item-list").sortable()
+    $("#sortable-bucket-item-list").sortable({ cursor: "move" });
 )
