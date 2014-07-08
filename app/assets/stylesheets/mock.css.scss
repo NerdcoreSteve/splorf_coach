@@ -60,9 +60,9 @@ body {
     cursor: pointer
 }
 
-#draggable-panel-list .panel-heading {
-    cursor: move;
-}
+#sortable .panel-heading {
+        cursor: move;
+} 
 
 @media (max-width:767px) {
     body {

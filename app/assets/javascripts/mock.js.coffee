@@ -15,15 +15,8 @@ $(document).on('show.bs.collapse', '.navbar-collapse', ( ->
     navbar_collapse_shown = true
 ))
 
-#from http://stackoverflow.com/questions/20424477/responsive-sortable-list-supporting-drag-drop-for-bootstrap
-#1, there's javascript stuff going on here I don't understand and
-#2, it doesn't currently work
-panel_list = $('#draggable-panel-list')
-panel_list.sortable({
-    handle: '.panel-heading', 
-    update: ->
-        $('.panel', panel_list).each( (index, elem) ->
-            $listItem = $(elem)
-            newIndex = $listItem.index()
-        )
-})
+#TODO I don't quite know what's going on here, got from jquery docs
+$( ->
+    $( "#sortable" ).sortable()
+    $( "#sortable" ).disableSelection()
+)
