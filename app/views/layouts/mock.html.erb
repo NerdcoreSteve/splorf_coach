@@ -73,19 +73,13 @@
             </div>
         </div>
 
-        <ul id="sortable" class="list-unstyled">
-            <li class="panel panel-info">
-                <div class="panel-heading">Panel 1</div>
-                <div class="panel-body">Content 1</div>
-            </li>
-            <li class="panel panel-info">
-                <div class="panel-heading">You can drag this panel.</div>
-                <div class="panel-body">Content ...</div>
-            </li>
-            <li class="panel panel-info">
-                <div class="panel-heading">You can drag this panel.</div>
-                <div class="panel-body">Content ...</div>
-            </li>
+        <ul id="sortable-bucket-item-list" class="list-unstyled">
+            <% 3.times do |i|%>
+                <li class="panel panel-info">
+                    <div class="panel-heading">Panel <%= i + 1 %></div>
+                    <div class="panel-body">Content <%= i + 1 %></div>
+                </li>
+            <% end %>
         </ul>
     </body>
 </html>

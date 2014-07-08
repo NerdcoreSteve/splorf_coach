@@ -17,6 +17,6 @@ $(document).on('show.bs.collapse', '.navbar-collapse', ( ->
 
 #TODO I don't quite know what's going on here, got from jquery docs
 $( ->
-    $( "#sortable" ).sortable()
-    $( "#sortable" ).disableSelection()
+    $( "#sortable-bucket-item-list" ).sortable()
+    $( "#sortable-bucket-item-list" ).disableSelection()
 )

@@ -6,8 +6,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
     *i*
     drag drop bucket items
         *i*
-        make ruby irb script that generates some number of panel items
-        *i*
         each panel item should have a colored heading, and a description,
         when you click on the heading it will expand to a description and other junk
         what else should be in each panel?
@@ -17,8 +15,10 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
         stars for importance, all starred stuff automatically is put at top
         *i*
         fix spacing between items
-        *links*
-        http://jqueryui.com/sortable/
+            *links*
+            http://jqueryui.com/sortable/
+        *i*
+        key shortcuts and highlighting/animation that indicates what's going on
     *i*
     look into rails ajax, what I'd like to do is mess around with the controller so
     I give the mock page mock data. You click on a bucket and then it's contents show.
