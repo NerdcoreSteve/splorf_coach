@@ -4,15 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
     mock ui
     *i*
-    drag drop bucket items
-        *i*
-        *i*
-        fix spacing between items
-            *links*
-            http://jqueryui.com/sortable/
-        *i*
-        key shortcuts and highlighting/animation that indicates what's going on
-    *i*
     look into rails ajax, what I'd like to do is mess around with the controller so
     I give the mock page mock data. You click on a bucket and then it's contents show.
     http://api.jqueryui.com/sortable/#method-toArray
@@ -24,6 +15,9 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
     *i*
     mess around with non-mock css to make the site usable and then merge branch to
     trunk and push to heroku
+
+*i*
+key shortcuts and highlighting/animation that indicates what's going on
 
 *i*
 What bootstrap, gnu and other license information needs to be displayed on the site and where?
@@ -96,6 +90,9 @@ if I'm using a timer in the android app, that same timer should be running in th
 Is this too operationally expensive?
 
 *next?*
+fix spacing between items
+http://jqueryui.com/sortable/
+
 stars for importance, all starred stuff automatically is put at top
 
 Maybe have a dropdown button in the nav instead of a dropdown?

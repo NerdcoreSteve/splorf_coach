@@ -4,19 +4,16 @@
 
 navbar_collapse_shown = false
 
-$(document).on('show.bs.dropdown', '.bucket-dropdown', ( ->
+#TODO why can't I do $('.bucket-dropdown').on 'show.bs.dropdown' ?
+$(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
     if navbar_collapse_shown
-        $('.navbar-collapse').collapse('hide')
+        $('.navbar-collapse').collapse 'hide'
         navbar_collapse_shown = false
-    $('.bucket-dropdown').dropdown()
-))
+    $('.bucket-dropdown').dropdown
 
-$(document).on('show.bs.collapse', '.navbar-collapse', ( ->
-    navbar_collapse_shown = true
-))
+$(document).on 'show.bs.collapse', '.navbar-collapse', -> navbar_collapse_shown = true
 
-#TODO Why does this have to be wrapped in a function?
-$( ->
-    $("#sortable-bucket-item-list").sortable()
-    $("#sortable-bucket-item-list").sortable({ cursor: "move" });
-)
+#TODO Why does this have to be inside a function?
+$ ->
+    $("#sortable-bucket-item-list").sortable
+    $("#sortable-bucket-item-list").sortable { cursor: "move" }
