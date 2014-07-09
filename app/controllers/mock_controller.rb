@@ -1,25 +1,8 @@
 class MockController < ApplicationController
   skip_after_action :verify_authorized
-  layout "mock"
+  layout false
 
-  def new_stuff
+  def home
   end
 
-  def waiting
-  end
-
-  def ready
-  end
-
-  def wip
-  end
-
-  def done
-  end
-
-  def remember
-  end
-
-  def people
-  end
 end
