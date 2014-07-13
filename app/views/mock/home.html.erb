@@ -37,7 +37,7 @@
                 <div class="navbar-text cursor bucket-dropdown-head"
                      data-toggle="dropdown"
                      data-target=".bucket-dropdown">
-                    <span id="bucket-dropdown-head-text">New Stuff</span>
+                    <span id="bucket-dropdown-head-text"></span>
                     <b class="caret"></b>
                 </div>         
                 <div class="collapse navbar-collapse">
@@ -48,11 +48,7 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="dropdown bucket-dropdown">
-                    <ul class="dropdown-menu">
-                        <% bucket_names = ['Waiting', 'Ready', 'WIP', 'Done', 'Reference', 'People']
-                           bucket_names.each do |bucket_name| %>
-                            <li><%= link_to bucket_name, '#'%></li>
-                        <% end %>
+                    <ul id="ajax-list" class="dropdown-menu">
                     </ul>
                     </li>
                 </ul>

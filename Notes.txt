@@ -6,6 +6,8 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
     *i*
     Use the controller
         *i*
+        learn about rails ajax
+        *i*
         populate the bucket head and dropdown from an ajax call to the controller
         *i*
         populate item list from an ajax call to the controller
