@@ -4,14 +4,15 @@
 
 navbar_collapse_shown = false
 
+$.ajax(url: "/mock/bucket_items").done (json) ->
+    $.each json, (index, bucket_item) ->
+        console.log bucket_item
+
 #TODO what about ajax failure?
 populate_bucket_dropdown = (selected_bucket) ->
     $.ajax(url: "/mock/buckets").done (json) ->
         $("#bucket-dropdown-head-text").empty().append selected_bucket
-        console.log selected_bucket
-        console.log json
         json.splice json.indexOf(selected_bucket), 1
-        console.log json
         $("#bucket-dropdown-list").empty()
         $.each json, (index, bucket) ->
             $("#bucket-dropdown-list").append "<li><a href='#'>#{bucket}</a></li>"
