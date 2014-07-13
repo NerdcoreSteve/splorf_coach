@@ -1,6 +1,7 @@
 SplorfCoach::Application.routes.draw do
   get "mock/home"
   get "mock/buckets"
+  get "mock/bucket_items"
   devise_for :users
   get "static_pages/home"
   get "static_pages/help"

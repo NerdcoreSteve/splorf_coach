@@ -48,13 +48,14 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="dropdown bucket-dropdown">
-                    <ul id="ajax-list" class="dropdown-menu">
+                    <ul id="bucket-dropdown-list" class="dropdown-menu">
                     </ul>
                     </li>
                 </ul>
             </div>
         </div>
 
+        <%#TODO This should also be locked to the top just as the nav bar is%>
         <div id="plus-button-group" class="btn-group btn-group-justified btn-group-lg">
             <% ['Thing', 'Habit', 'Person'].each do |button_label| %>
                 <div class="btn-group">

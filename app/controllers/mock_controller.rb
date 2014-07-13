@@ -6,9 +6,10 @@ class MockController < ApplicationController
   end
 
   def buckets
-    @buckets = ['New Stuff', 'Waiting', 'Ready', 'WIP', 'Done', 'Reference', 'People']
+    @buckets = ['New Stuff', 'Waiting', 'Ready', 'Wip', 'Done', 'Reference', 'People']
     respond_to do |format|
       format.json { render json: @buckets }
     end
   end
+
 end

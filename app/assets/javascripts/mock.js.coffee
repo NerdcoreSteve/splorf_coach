@@ -5,16 +5,25 @@
 navbar_collapse_shown = false
 
 #TODO what about ajax failure?
-populate_bucket_dropdown = (selected_bucket_index) ->
+populate_bucket_dropdown = (selected_bucket) ->
     $.ajax(url: "/mock/buckets").done (json) ->
-        $("#bucket-dropdown-head-text").empty().append json[selected_bucket_index]
-        json.splice selected_bucket_index, 1
-        $("#ajax-list").empty
+        $("#bucket-dropdown-head-text").empty().append selected_bucket
+        console.log selected_bucket
+        console.log json
+        json.splice json.indexOf(selected_bucket), 1
+        console.log json
+        $("#bucket-dropdown-list").empty()
         $.each json, (index, bucket) ->
-            $("#ajax-list").append "<li><a href='#'>#{bucket}</a></li>"
+            $("#bucket-dropdown-list").append "<li><a href='#'>#{bucket}</a></li>"
+
+#TODO why can't I do .click?
+$(document).on 'click', '#bucket-dropdown-list li a', (e) ->
+    e.preventDefault()
+    populate_bucket_dropdown $(this).parent().text()
 
 #TODO initial dropdown population shouldn't be an ajax call
-populate_bucket_dropdown(1)
+#TODO nor should it be tied to a hard-coded bucket name
+populate_bucket_dropdown('New Stuff')
 
 #TODO why can't I do $('.bucket-dropdown').on 'show.bs.dropdown' ?
 $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
