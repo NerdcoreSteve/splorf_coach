@@ -51,10 +51,6 @@ $(document).on 'click', '#bucket-dropdown-list li a', (e) ->
     e.preventDefault()
     populate_bucket_dropdown_and_items $(this).parent().text()
 
-#TODO initial dropdown population shouldn't be an ajax call
-#TODO nor should it be tied to a hard-coded bucket name
-populate_bucket_dropdown_and_items 'New Stuff' 
-
 #TODO why can't I do $('.bucket-dropdown').on 'show.bs.dropdown' ?
 $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
     if navbar_collapse_shown
@@ -68,3 +64,12 @@ $(document).on 'show.bs.collapse', '.navbar-collapse', -> navbar_collapse_shown 
 $ ->
     $("#sortable-bucket-item-list").sortable
     $("#sortable-bucket-item-list").sortable { cursor: "move" }
+
+#TODO initial dropdown population shouldn't be an ajax call
+#TODO nor should it be tied to a hard-coded bucket name
+#TODO maybe this should be done with partials that are rendered serverside on load
+#TODO but on a click the html partials are requested for again.
+#TODO the $(window).load is done to avoid a bug where if the page loses focus before
+#TODO loading completes the ajax content isn't populated in the dropdown and item list
+$(window).load ->
+    populate_bucket_dropdown_and_items 'New Stuff' 

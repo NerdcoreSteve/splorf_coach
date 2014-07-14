@@ -4,21 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    fix bug, append only works when you view the page while it loads
-        *i*
-        It didn't happen when it was People?
-        *i*
-        do partials instead of json for your two ajax calls
-        *i*
-        use the same partials to initially render the page (i.e. no ajax calls on page load
-        only on clicking the dropdown)
-        *i*
-        Can I still make this happen if I'm super quick about moving to another tab?
-        if so make a note to fix it later, it's not that big a bug
-        *reference*
-        search rails ajax partial
-        https://coderwall.com/p/kqb3xq
-    *i*
     different fields and junk for habits/people/things, and buckets
     *i*
     plus buttons need to stay on top when you scroll
