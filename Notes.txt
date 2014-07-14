@@ -4,8 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    fix bug, append only works when you view the page while it loads
-    *i*
     different item list calls depending on what bucket is selected
         *i*
         finish hash for all buckets
@@ -13,6 +11,16 @@ mock ui
         put function in variable
         call it on app load
         bucket-dropdown-list on click call that function from variable
+    *i*
+    fix bug, append only works when you view the page while it loads
+        *i*
+        do partials instead of json for your two ajax calls
+        *i*
+        use the same partials to initially render the page (i.e. no ajax calls on page load
+        only on clicking the dropdown)
+        *reference*
+        search rails ajax partial
+        https://coderwall.com/p/kqb3xq
     *i*
     different fields and junk for habits/people/things, and buckets
     *i*
@@ -23,13 +31,10 @@ mock ui
         add new panel when you hit plus
     *i*
     key shortcuts and highlighting/animation that indicates what's going on
+    do similar highlighing for mouse input to make things consistent
     *i*
     is the mock done? if so mess around with non-mock css to make the site usable and then 
     merge branch to trunk and push to heroku
-
-*i*
-What bootstrap, gnu and other license information needs to be displayed on the site and where?
-Also, where do I link to source code?
 
 *i*
 make ui actually functional, plug view into appropriate controllers, etc.
@@ -42,6 +47,10 @@ what about authentication and ajax calls?
 
 *i*
 allow stuff in the waiting bucket to connect to other bucket items
+
+*i*
+What bootstrap, gnu and other license information needs to be displayed on the site and where?
+Also, where do I link to source code?
 
 *i*
 What else needs to be done to make it usable?
