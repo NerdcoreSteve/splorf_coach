@@ -2,37 +2,49 @@ ITERATIONS
 All iterations start with design notes/drawings and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
 *i*
-    mock ui
+mock ui
     *i*
-    Use the controller
-        *i*
-        populate item list from an ajax call to the controller
-        *i*
-        different item list calls depending on what bucket is selected
-        I think I want some kind of parameterized ajax request
-        *reference*
-        look into rails ajax, what I'd like to do is mess around with the controller so
-        I give the mock page mock data. You click on a bucket and then it's contents show.
-        http://api.jqueryui.com/sortable/#method-toArray
+    fix bug, append only works when you view the page while it loads
     *i*
-    is it a full mock?
+    different item list calls depending on what bucket is selected
+        *i*
+        finish hash for all buckets
+        *i*
+        put function in variable
+        call it on app load
+        bucket-dropdown-list on click call that function from variable
+    *i*
+    different fields and junk for habits/people/things, and buckets
+    *i*
+    plus buttons need to stay on top when you scroll
+    *i*
+    make plus buttons work
+        *i*
+        add new panel when you hit plus
     *i*
     key shortcuts and highlighting/animation that indicates what's going on
     *i*
-    mess around with non-mock css to make the site usable and then merge branch to
-    trunk and push to heroku
+    is the mock done? if so mess around with non-mock css to make the site usable and then 
+    merge branch to trunk and push to heroku
 
 *i*
 What bootstrap, gnu and other license information needs to be displayed on the site and where?
-
-*i*
-changes models to match mock ui design
+Also, where do I link to source code?
 
 *i*
 make ui actually functional, plug view into appropriate controllers, etc.
+changes models to match mock ui design
+also might make changes to ui as I bring it in
 be sure to write tests before you add something
-view tests are in order now too
+more tests
+    probably all: view, controller, model
 what about authentication and ajax calls?
+
+*i*
+allow stuff in the waiting bucket to connect to other bucket items
+
+*i*
+What else needs to be done to make it usable?
 
 *i*
 bootstrapify all ui, I think a lot of the forms and things don't use bootstrap forms
@@ -46,9 +58,6 @@ users can create their own buckets
 
 *i*
 users can share people, tasks, etc.
-
-*i*
-What else needs to be done to make it usable?
 
 *i*
 stopwatch

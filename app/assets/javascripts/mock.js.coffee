@@ -4,7 +4,8 @@
 
 navbar_collapse_shown = false
 
-$.ajax(url: "/mock/bucket_items").done (json) ->
+#TODO Should I be rendering a partial instead?
+$.ajax(type:"Post", url: "/mock/bucket_items", data:{'bucket':'Waiting'}).done (json) ->
     $.each json, (index, bucket_item) ->
         bucket_item_panel = """
             <li class='panel panel-info'>
@@ -35,6 +36,7 @@ $.ajax(url: "/mock/bucket_items").done (json) ->
         $('#sortable-bucket-item-list').append bucket_item_panel
 
 #TODO what about ajax failure?
+#TODO Should I be rendering a partial instead?
 populate_bucket_dropdown = (selected_bucket) ->
     $.ajax(url: "/mock/buckets").done (json) ->
         $("#bucket-dropdown-head-text").empty().append selected_bucket
