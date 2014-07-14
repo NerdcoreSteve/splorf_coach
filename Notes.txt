@@ -4,14 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    different item list calls depending on what bucket is selected
-        *i*
-        finish hash for all buckets
-        *i*
-        put function in variable
-        call it on app load
-        bucket-dropdown-list on click call that function from variable
-    *i*
     fix bug, append only works when you view the page while it loads
         *i*
         It didn't happen when it was People?

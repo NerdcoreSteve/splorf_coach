@@ -4,55 +4,56 @@
 
 navbar_collapse_shown = false
 
-#TODO Should I be rendering a partial instead?
-$.ajax(type:"Post", url: "/mock/bucket_items", data:{'bucket':'People'}).done (json) ->
-    $.each json, (index, bucket_item) ->
-        bucket_item_panel = """
-            <li class='panel panel-info'>
-                <div class='panel-heading'
-                     data-toggle='collapse'
-                     data-parent='#accordion'
-                     data-target='#collapse#{index}'>
-                    <h4 class='panel-title'>
-                        #{bucket_item['type']}: #{bucket_item['description']}
-                    </h4>
-                </div>
-                <div id='collapse#{index}' class='panel-collapse collapse'>
-                    <div class='panel-body'>
-                        <input type='text' value='#{bucket_item['description']}'><br>
-                        <textarea>#{bucket_item['notes']}</textarea>
-                        <button type='button' class='btn btn-default'>
-                            Save
-                        </button>
-                        <button type='button' class='btn btn-default'>
-                            Cancel
-                        </button>
-                        <button type='button' class='btn btn-default'>
-                            Done
+populate_bucket_items = (bucket) ->
+    $('#sortable-bucket-item-list').empty()
+    $.ajax(type:"Post", url: "/mock/bucket_items", data:{'bucket':bucket}).done (json) ->
+        $.each json, (index, bucket_item) ->
+            bucket_item_panel = """
+                <li class='panel panel-info'>
+                    <div class='panel-heading'
+                         data-toggle='collapse'
+                         data-parent='#accordion'
+                         data-target='#collapse#{index}'>
+                        <h4 class='panel-title'>
+                            #{bucket_item['type']}: #{bucket_item['description']}
+                        </h4>
                     </div>
-                </div>
-            </li>
-        """
-        $('#sortable-bucket-item-list').append bucket_item_panel
+                    <div id='collapse#{index}' class='panel-collapse collapse'>
+                        <div class='panel-body'>
+                            <input type='text' value='#{bucket_item['description']}'><br>
+                            <textarea>#{bucket_item['notes']}</textarea>
+                            <button type='button' class='btn btn-default'>
+                                Save
+                            </button>
+                            <button type='button' class='btn btn-default'>
+                                Cancel
+                            </button>
+                            <button type='button' class='btn btn-default'>
+                                Done
+                        </div>
+                    </div>
+                </li>
+            """
+            $('#sortable-bucket-item-list').append bucket_item_panel
 
 #TODO what about ajax failure?
-#TODO Should I be rendering a partial instead?
-populate_bucket_dropdown = (selected_bucket) ->
+populate_bucket_dropdown_and_items = (selected_bucket) ->
     $.ajax(url: "/mock/buckets").done (json) ->
         $("#bucket-dropdown-head-text").empty().append selected_bucket
         json.splice json.indexOf(selected_bucket), 1
         $("#bucket-dropdown-list").empty()
         $.each json, (index, bucket) ->
             $("#bucket-dropdown-list").append "<li><a href='#'>#{bucket}</a></li>"
+    populate_bucket_items selected_bucket
 
 #TODO why can't I do .click?
 $(document).on 'click', '#bucket-dropdown-list li a', (e) ->
     e.preventDefault()
-    populate_bucket_dropdown $(this).parent().text()
+    populate_bucket_dropdown_and_items $(this).parent().text()
 
 #TODO initial dropdown population shouldn't be an ajax call
 #TODO nor should it be tied to a hard-coded bucket name
-populate_bucket_dropdown('New Stuff')
+populate_bucket_dropdown_and_items 'New Stuff' 
 
 #TODO why can't I do $('.bucket-dropdown').on 'show.bs.dropdown' ?
 $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
