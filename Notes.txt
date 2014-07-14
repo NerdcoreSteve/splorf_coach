@@ -5,15 +5,32 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 mock ui
     *i*
     different fields and junk for habits/people/things, and buckets
+        *i*
+        add "Move To" button more carefully, try not to break things
+            *i*
+            populate by class rather than id, if you can't do that, make id a parameter
+        *i*
+        "Move To" button needs to be a drop up button if it's below a certain range
+        *i*
+        remove description from people hashes, do checks to make sure it doesn't break
+        *i*
+        panel shows as normal if the heading != "People" otherwise we see fname and lname
     *i*
     plus buttons need to stay on top when you scroll
     *i*
     make plus buttons work
         *i*
         add new panel when you hit plus
+        it should be the right one based on type
+        *i*
+        you move to the appropriate bucket on a plus button click
+        people if you clicked +person
+        new stuff otherwise
     *i*
     key shortcuts and highlighting/animation that indicates what's going on
     do similar highlighing for mouse input to make things consistent
+        *i*
+        find out if jquery and/or coffeescript simplifies this
     *i*
     is the mock done? if so mess around with non-mock css to make the site usable and then 
     merge branch to trunk and push to heroku
