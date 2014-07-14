@@ -67,32 +67,6 @@
         </div>
 
         <ul id="sortable-bucket-item-list" class="list-unstyled">
-            <% 3.times do |i|%>
-                <li class="panel panel-info">
-                    <div class="panel-heading"
-                         data-toggle="collapse"
-                         data-parent="#accordion"
-                         data-target="#collapse<%=i%>">
-                        <h4 class="panel-title">
-                            Thing: description of thing
-                        </h4>
-                    </div>
-                    <div id="collapse<%=i%>" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <input type="text"
-                                   name="usrname"
-                                   placeholder="Description of thing"><br>
-                            <textarea placeholder="Notes for thing"></textarea>
-                            <button type="button" class="btn btn-default">
-                                Save
-                            </button>
-                            <button type="button" class="btn btn-default">
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                </li>
-            <% end %>
         </ul>
     </body>
 </html>

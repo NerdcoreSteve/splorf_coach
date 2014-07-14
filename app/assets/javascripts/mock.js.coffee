@@ -6,7 +6,33 @@ navbar_collapse_shown = false
 
 $.ajax(url: "/mock/bucket_items").done (json) ->
     $.each json, (index, bucket_item) ->
-        console.log bucket_item
+        bucket_item_panel = """
+            <li class='panel panel-info'>
+                <div class='panel-heading'
+                     data-toggle='collapse'
+                     data-parent='#accordion'
+                     data-target='#collapse#{index}'>
+                    <h4 class='panel-title'>
+                        #{bucket_item['type']}: #{bucket_item['description']}
+                    </h4>
+                </div>
+                <div id='collapse#{index}' class='panel-collapse collapse'>
+                    <div class='panel-body'>
+                        <input type='text' value='#{bucket_item['description']}'><br>
+                        <textarea>#{bucket_item['notes']}</textarea>
+                        <button type='button' class='btn btn-default'>
+                            Save
+                        </button>
+                        <button type='button' class='btn btn-default'>
+                            Cancel
+                        </button>
+                        <button type='button' class='btn btn-default'>
+                            Done
+                    </div>
+                </div>
+            </li>
+        """
+        $('#sortable-bucket-item-list').append bucket_item_panel
 
 #TODO what about ajax failure?
 populate_bucket_dropdown = (selected_bucket) ->
