@@ -14,6 +14,8 @@ mock ui
     *i*
     fix bug, append only works when you view the page while it loads
         *i*
+        It didn't happen when it was People?
+        *i*
         do partials instead of json for your two ajax calls
         *i*
         use the same partials to initially render the page (i.e. no ajax calls on page load
