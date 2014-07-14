@@ -18,6 +18,9 @@ mock ui
         *i*
         use the same partials to initially render the page (i.e. no ajax calls on page load
         only on clicking the dropdown)
+        *i*
+        Can I still make this happen if I'm super quick about moving to another tab?
+        if so make a note to fix it later, it's not that big a bug
         *reference*
         search rails ajax partial
         https://coderwall.com/p/kqb3xq

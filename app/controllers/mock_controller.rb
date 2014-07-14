@@ -25,7 +25,10 @@ class MockController < ApplicationController
                                       notes: 'waiting on getting the house clean'},
                                      {type: :Thing,
                                       description: 'Make android version of this app',
-                                      notes: 'Waiting on learning lisp, then scala'}]}
+                                      notes: 'Waiting on learning lisp, then scala'}],
+                     'People'  => [{type: :Person,
+                                      description: 'These aren\'t appropriate fields',
+                                      notes: ''}]}
     respond_to do |format|
       format.json { render json: @bucket_items[params[:bucket]] }
     end

@@ -5,7 +5,7 @@
 navbar_collapse_shown = false
 
 #TODO Should I be rendering a partial instead?
-$.ajax(type:"Post", url: "/mock/bucket_items", data:{'bucket':'Waiting'}).done (json) ->
+$.ajax(type:"Post", url: "/mock/bucket_items", data:{'bucket':'People'}).done (json) ->
     $.each json, (index, bucket_item) ->
         bucket_item_panel = """
             <li class='panel panel-info'>
