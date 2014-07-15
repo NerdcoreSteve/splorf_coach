@@ -8,6 +8,37 @@ populate_bucket_items = (bucket) ->
     $('#sortable-bucket-item-list').empty()
     $.ajax(type:"Post", url: "/mock/bucket_items", data:{'bucket':bucket}).done (json) ->
         $.each json, (index, bucket_item) ->
+            panel_description = "#{bucket_item['type']}: "
+            variable_fields = ""
+            move_to_button_or_empty = ""
+            if bucket_item['type'] != 'Person'
+                panel_description += "#{bucket_item['description']}"
+                variable_fields = """
+                    <input type='text' value='#{bucket_item['description']}'><br>
+                """
+                move_to_button_or_empty = """
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default">
+                            Move To
+                        </button>
+                        <button type="button"
+                                class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul id="panel-dropdown"
+                            class="dropdown-menu bucket-dropdown-list"
+                            role="menu">
+                        </ul>
+                    </div>
+                """
+            else
+                panel_description += "#{bucket_item['first_name']} #{bucket_item['last_name']}"
+                variable_fields = """
+                    <input type='text' value='#{bucket_item['first_name']}'><br>
+                    <input type='text' value='#{bucket_item['last_name']}'><br>
+                """
             bucket_item_panel = """
                 <li class='panel panel-info'>
                     <div class='panel-heading'
@@ -15,12 +46,14 @@ populate_bucket_items = (bucket) ->
                          data-parent='#accordion'
                          data-target='#collapse#{index}'>
                         <h4 class='panel-title'>
-                            #{bucket_item['type']}: #{bucket_item['description']}
+                            #{panel_description}
                         </h4>
                     </div>
                     <div id='collapse#{index}' class='panel-collapse collapse'>
                         <div class='panel-body'>
-                            <input type='text' value='#{bucket_item['description']}'><br>
+            """
+            bucket_item_panel += variable_fields
+            bucket_item_panel += """
                             <textarea>#{bucket_item['notes']}</textarea>
                             <button type='button' class='btn btn-default'>
                                 Save
@@ -28,21 +61,7 @@ populate_bucket_items = (bucket) ->
                             <button type='button' class='btn btn-default'>
                                 Cancel
                             </button>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">
-                                    Move To
-                                </button>
-                                <button type="button"
-                                        class="btn btn-default dropdown-toggle"
-                                        data-toggle="dropdown">
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul id="panel-dropdown"
-                                    class="dropdown-menu bucket-dropdown-list"
-                                    role="menu">
-                                </ul>
-                            </div>
+                            #{move_to_button_or_empty}
                         </div>
                     </div>
                 </li>
@@ -67,7 +86,6 @@ $(document).on 'click', '#panel-dropdown > li > a', (e) ->
 $(document).on 'click', '#nav-bucket-dropdown > li > a', (e) ->
     e.preventDefault()
     populate_bucket_dropdown_and_items $(this).parent().text()
-    console.log "potato"
 
 #TODO why can't I do $('.bucket-dropdown').on 'show.bs.dropdown' ?
 $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->

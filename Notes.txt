@@ -4,14 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    different fields and junk for habits/people/things, and buckets
-        *i*
-        "Move To" button needs to be a drop up button if it's below a certain range
-        *i*
-        remove description from people hashes, do checks to make sure it doesn't break
-        *i*
-        panel shows as normal if the heading != "People" otherwise we see fname and lname
-    *i*
     plus buttons need to stay on top when you scroll
     *i*
     make plus buttons work
