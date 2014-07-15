@@ -4,8 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    plus buttons need to stay on top when you scroll
-    *i*
     make plus buttons work
         *i*
         add new panel when you hit plus

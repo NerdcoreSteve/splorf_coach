@@ -53,17 +53,17 @@
                     </li>
                 </ul>
             </div>
-        </div>
-
-        <%#TODO This should also be locked to the top just as the nav bar is%>
-        <div id="plus-button-group" class="btn-group btn-group-justified btn-group-lg">
-            <% ['Thing', 'Habit', 'Person'].each do |button_label| %>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default plus-button">
-                        +<%= button_label %>
-                    </button>
+            <div class="container">
+                <div id="plus-button-group" class="btn-group btn-group-justified btn-group-lg">
+                    <% ['Thing', 'Habit', 'Person'].each do |button_label| %>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default plus-button">
+                                +<%= button_label %>
+                            </button>
+                        </div>
+                    <% end %>
                 </div>
-            <% end %>
+            </div>
         </div>
 
         <ul id="sortable-bucket-item-list" class="list-unstyled">
