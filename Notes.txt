@@ -6,9 +6,6 @@ mock ui
     *i*
     different fields and junk for habits/people/things, and buckets
         *i*
-        "Move to" button should only do an alert saying that moving things isn't yet
-        implemented
-        *i*
         "Move To" button needs to be a drop up button if it's below a certain range
         *i*
         remove description from people hashes, do checks to make sure it doesn't break

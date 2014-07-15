@@ -44,7 +44,7 @@ class MockController < ApplicationController
                                        description: 'Very important information',
                                        notes: 'Maybe put links here'}],
                      'People'     => [{type: :Person,
-                                       description: 'These aren\'t appropriate fields',
+                                       description: 'These are not appropriate fields',
                                        notes: ''}]}
     respond_to do |format|
       format.json { render json: @bucket_items[params[:bucket]] }

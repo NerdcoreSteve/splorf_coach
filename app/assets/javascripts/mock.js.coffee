@@ -38,7 +38,9 @@ populate_bucket_items = (bucket) ->
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                                 </button>
-                                <ul class="dropdown-menu bucket-dropdown-list" role="menu">
+                                <ul id="panel-dropdown"
+                                    class="dropdown-menu bucket-dropdown-list"
+                                    role="menu">
                                 </ul>
                             </div>
                         </div>
@@ -58,9 +60,14 @@ populate_bucket_dropdown_and_items = (bucket) ->
     populate_bucket_items bucket
 
 #TODO why can't I do .click?
-$(document).on 'click', '.bucket-dropdown-list li a', (e) ->
+$(document).on 'click', '#panel-dropdown > li > a', (e) ->
+    e.preventDefault()
+    alert "TODO moving items to different buckets not yet implemented"
+
+$(document).on 'click', '#nav-bucket-dropdown > li > a', (e) ->
     e.preventDefault()
     populate_bucket_dropdown_and_items $(this).parent().text()
+    console.log "potato"
 
 #TODO why can't I do $('.bucket-dropdown').on 'show.bs.dropdown' ?
 $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
