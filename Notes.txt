@@ -31,18 +31,18 @@ more tests
 what about authentication and ajax calls?
 
 *i*
+start using this thing and make notes about it with it.
+
+*i*
+adding a habit is a specialized thing
+the app helps you monitor how well you are adopting a habit and helps you measure when you have finished adopting it so you can put it in done. But it also monitors the habit to see if you slack off and puts, get back into the habit in your waiting or ready or some other bucket.
+
+*i*
 allow stuff in the waiting bucket to connect to other bucket items
 
 *i*
 What bootstrap, gnu and other license information needs to be displayed on the site and where?
 Also, where do I link to source code?
-
-*i*
-What else needs to be done to make it usable?
-
-*i*
-bootstrapify all ui, I think a lot of the forms and things don't use bootstrap forms
-There's probably lots of stuff like that
 
 *i*
 categories of stuff and people
@@ -54,6 +54,28 @@ users can create their own buckets
 users can share people, tasks, etc.
 
 *i*
+What else needs to be done to make it usable?
+
+*i*
+see what you can do to make the ui look nicer, the nav bar needs work
+make the colors nicer
+draw an actual splorf
+
+*i*
+bootstrapify all ui, I think a lot of the forms and things don't use bootstrap forms
+There's probably lots of stuff like that
+
+*i*
+move these notes and others to the github wiki
+There are nested task lists
+https://github.com/blog/1841-nested-task-lists
+This might be a better thing to do than your Notes.txt
+
+*i*
+change heroku name to splorf_coach
+try to get a few people to use the app
+
+*i*
 stopwatch
 
 *i*
@@ -61,10 +83,6 @@ Timer and stopwatch, hard-coded pomodoro schedule
 
 *i*
 user created work schedules
-
-*i*
-adding a habit is a specialized thing
-the app helps you monitor how well you are adopting a habit and helps you measure when you have finished adopting it so you can put it in done. But it also monitors the habit to see if you slack off and puts, get back into the habit in your waiting or ready or some other bucket.
 
 *i*
 calendar and sync with calendar
@@ -75,27 +93,8 @@ users connect to their people listings if they want
 So my listing of my wife will actually be connected to their user account in some way.
 
 *i*
-what else do I need to do to make this thing usable/secure/fully-tested?
-
-*i*
-start using this thing and make notes about it with it.
-
-*i*
-move these notes and others to the github wiki
-There are nested task lists
-https://github.com/blog/1841-nested-task-lists
-This might be a better thing to do than your Notes.txt
-
-*i*
-change heroku name to splorf_coach
-
-*i*
 scaloid android app connects to this app via rest api
-
-*i*
-sync web timer with app timer
-if I'm using a timer in the android app, that same timer should be running in the web app.
-Is this too operationally expensive?
+after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
 *next?*
 fix spacing between items
