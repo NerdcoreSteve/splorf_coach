@@ -7,6 +7,8 @@ mock ui
     make plus buttons work
         *i*
         add new panel when you hit plus
+            *i*
+            make adding a panel a function call that takes an index and a bucket item
         it should be the right one based on type
         *i*
         you move to the appropriate bucket on a plus button click
