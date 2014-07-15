@@ -7,7 +7,6 @@ navbar_collapse_shown = false
 populate_bucket_items = (bucket) ->
     $('#sortable-bucket-item-list').empty()
     $.ajax(type:"Post", url: "/mock/bucket_items", data:{'bucket':bucket}).done (json) ->
-        console.log json
         $.each json, (index, bucket_item) ->
             panel_description = "#{bucket_item['type']}: "
             variable_fields = ""

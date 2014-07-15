@@ -4,9 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    fix bug
-    the first item of every bucket list is being removed
-    *i*
     make plus buttons work
         *i*
         add new panel when you hit plus
