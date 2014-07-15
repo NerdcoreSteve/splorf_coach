@@ -6,9 +6,8 @@ mock ui
     *i*
     different fields and junk for habits/people/things, and buckets
         *i*
-        add "Move To" button more carefully, try not to break things
-            *i*
-            populate by class rather than id, if you can't do that, make id a parameter
+        "Move to" button should only do an alert saying that moving things isn't yet
+        implemented
         *i*
         "Move To" button needs to be a drop up button if it's below a certain range
         *i*

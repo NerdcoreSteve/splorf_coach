@@ -28,8 +28,19 @@ populate_bucket_items = (bucket) ->
                             <button type='button' class='btn btn-default'>
                                 Cancel
                             </button>
-                            <button type='button' class='btn btn-default'>
-                                Done
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default">
+                                    Move To
+                                </button>
+                                <button type="button"
+                                        class="btn btn-default dropdown-toggle"
+                                        data-toggle="dropdown">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu bucket-dropdown-list" role="menu">
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -37,17 +48,17 @@ populate_bucket_items = (bucket) ->
             $('#sortable-bucket-item-list').append bucket_item_panel
 
 #TODO what about ajax failure?
-populate_bucket_dropdown_and_items = (selected_bucket) ->
+populate_bucket_dropdown_and_items = (bucket) ->
     $.ajax(url: "/mock/buckets").done (json) ->
-        $("#bucket-dropdown-head-text").empty().append selected_bucket
-        json.splice json.indexOf(selected_bucket), 1
-        $("#bucket-dropdown-list").empty()
+        $("#bucket-dropdown-head-text").empty().append bucket
+        json.splice json.indexOf(bucket), 1
+        $(".bucket-dropdown-list").empty()
         $.each json, (index, bucket) ->
-            $("#bucket-dropdown-list").append "<li><a href='#'>#{bucket}</a></li>"
-    populate_bucket_items selected_bucket
+            $(".bucket-dropdown-list").append "<li><a href='#'>#{bucket}</a></li>"
+    populate_bucket_items bucket
 
 #TODO why can't I do .click?
-$(document).on 'click', '#bucket-dropdown-list li a', (e) ->
+$(document).on 'click', '.bucket-dropdown-list li a', (e) ->
     e.preventDefault()
     populate_bucket_dropdown_and_items $(this).parent().text()
 
