@@ -8,6 +8,7 @@ mock ui
         *i*
         should scroll to new bucket item when created
             or make link within doc?
+        look at mock coffeescript comments on lines 106 to 107
         *i*
         + thing or habit should take you to New Stuff
         +person should take you to people

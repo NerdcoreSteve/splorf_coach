@@ -103,6 +103,8 @@ $(document).on 'click', '#plus-button-group > div > button', (e) ->
     else
         bucket_item = {'type':bucket_item_type, 'first_name':'', 'last_name':'', 'notes':''}
     append_bucket_item_panel(num_bucket_items, bucket_item, false)
+    #TODO put scroll to stuff here
+    #http://stackoverflow.com/questions/6677035/jquery-scroll-to-element
 
 navbar_collapse_shown = false
 
