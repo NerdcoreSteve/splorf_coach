@@ -92,7 +92,9 @@ $(document).on 'click', '#nav-bucket-dropdown > li > a', (e) ->
     populate_bucket_dropdown_and_items $(this).parent().text()
 
 $(document).on 'click', '#plus-button-group > div > button', (e) ->
-    alert "#{$(this).attr('id')} #{num_bucket_items}"
+    num_bucket_items += 1
+    append_bucket_item_panel(num_bucket_items, 
+                             {'type':$(this).attr('id'), 'description':'', 'notes':''})
 
 navbar_collapse_shown = false
 

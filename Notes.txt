@@ -6,14 +6,14 @@ mock ui
     *i*
     make plus buttons work
         *i*
-        add new panel when you hit plus
-            *i*
-            make adding a panel a function call that takes an index and a bucket item
-        it should be the right one based on type
+        Type of bucket item created should have a proper hash
         *i*
-        you move to the appropriate bucket on a plus button click
-        people if you clicked +person
-        new stuff otherwise
+        it should have that prompt text or whatever
+        *i*
+        + thing or habit should take you to New Stuff
+        +person should take you to people
+    *i*
+    any other mock functionality you want to add before hot keys?
     *i*
     key shortcuts and highlighting/animation that indicates what's going on
     do similar highlighing for mouse input to make things consistent
