@@ -12,7 +12,7 @@ append_bucket_item_panel = (index, bucket_item) ->
             <input type='text' value='#{bucket_item['description']}' placeholder='description'><br>
         """
         move_to_button_or_empty = """
-            <div class="btn-group dropup">
+            <div class="btn-group panel-btn-group dropup">
                 <button type="button" class="btn btn-default">
                     Move To
                 </button>
@@ -23,7 +23,7 @@ append_bucket_item_panel = (index, bucket_item) ->
                 <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul id="panel-dropdown"
-                    class="dropdown-menu bucket-dropup-list"
+                    class="dropdown-menu bucket-list"
                     role="menu">
                 </ul>
             </div>
@@ -51,13 +51,13 @@ append_bucket_item_panel = (index, bucket_item) ->
     bucket_item_panel += variable_fields
     bucket_item_panel += """
                     <textarea placeholder='notes'>#{bucket_item['notes']}</textarea>
+                    #{move_to_button_or_empty}
                     <button type='button' class='btn btn-default'>
                         Save
                     </button>
                     <button type='button' class='btn btn-default'>
                         Cancel
                     </button>
-                    #{move_to_button_or_empty}
                 </div>
             </div>
         </li>
@@ -77,9 +77,9 @@ populate_bucket_dropdown_and_items = (bucket) ->
     $.ajax(url: "/mock/buckets").done (json) ->
         $("#bucket-dropdown-head-text").empty().append bucket
         json.splice json.indexOf(bucket), 1
-        $(".bucket-dropup-list").empty()
+        $(".bucket-list").empty()
         $.each json, (index, bucket) ->
-            $(".bucket-dropup-list").append "<li><a href='#'>#{bucket}</a></li>"
+            $(".bucket-list").append "<li><a href='#'>#{bucket}</a></li>"
     populate_bucket_items bucket
 
 #TODO why can't I do .click?

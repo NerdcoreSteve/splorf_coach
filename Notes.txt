@@ -4,9 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    fix bug, navbar bucket dropdown also has scrolling
-    That's fine but I want to have a different height for it
-    *i*
     make plus buttons work
         *i*
         new bucket item should be open when created
