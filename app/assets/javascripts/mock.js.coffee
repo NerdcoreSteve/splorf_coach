@@ -10,7 +10,7 @@ append_bucket_item_panel = (index, bucket_item) ->
     if bucket_item['type'] != 'Person'
         panel_description += "#{bucket_item['description']}"
         variable_fields = """
-            <input type='text' value='#{bucket_item['description']}'><br>
+            <input type='text' value='#{bucket_item['description']}' placeholder='description'><br>
         """
         move_to_button_or_empty = """
             <div class="btn-group">
@@ -30,10 +30,11 @@ append_bucket_item_panel = (index, bucket_item) ->
             </div>
         """
     else
-        panel_description += "#{bucket_item['first_name']} #{bucket_item['last_name']}"
+        if 'first_name' in bucket_item and 'last_name' in bucket_item
+            panel_description += "#{bucket_item['first_name']} #{bucket_item['last_name']}"
         variable_fields = """
-            <input type='text' value='#{bucket_item['first_name']}'><br>
-            <input type='text' value='#{bucket_item['last_name']}'><br>
+            <input type='text' value='#{bucket_item['first_name']}' placeholder='first name'><br>
+            <input type='text' value='#{bucket_item['last_name']}' placeholder='last name'><br>
         """
     bucket_item_panel = """
         <li class='panel panel-info'>
@@ -50,7 +51,7 @@ append_bucket_item_panel = (index, bucket_item) ->
     """
     bucket_item_panel += variable_fields
     bucket_item_panel += """
-                    <textarea>#{bucket_item['notes']}</textarea>
+                    <textarea placeholder='notes'>#{bucket_item['notes']}</textarea>
                     <button type='button' class='btn btn-default'>
                         Save
                     </button>

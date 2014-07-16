@@ -4,14 +4,18 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
+    make move to menu a drop up
+    *i*
     make plus buttons work
         *i*
-        Type of bucket item created should have a proper hash
+        new bucket item should be open when created
         *i*
-        it should have that prompt text or whatever
+        should scroll to new bucket item when created
+            or make link within doc?
         *i*
         + thing or habit should take you to New Stuff
         +person should take you to people
+        and then add the new bucket item
     *i*
     any other mock functionality you want to add before hot keys?
     *i*
@@ -99,6 +103,10 @@ scaloid android app connects to this app via rest api
 after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
 *next?*
+I don't like how plus button stays active after a bucket item is created
+
+should panel heading description update as you type?
+
 fix spacing between items
 http://jqueryui.com/sortable/
 
