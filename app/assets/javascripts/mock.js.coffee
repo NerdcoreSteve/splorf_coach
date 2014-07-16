@@ -13,7 +13,7 @@ append_bucket_item_panel = (index, bucket_item) ->
             <input type='text' value='#{bucket_item['description']}' placeholder='description'><br>
         """
         move_to_button_or_empty = """
-            <div class="btn-group">
+            <div class="btn-group dropup">
                 <button type="button" class="btn btn-default">
                     Move To
                 </button>
@@ -24,7 +24,7 @@ append_bucket_item_panel = (index, bucket_item) ->
                 <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul id="panel-dropdown"
-                    class="dropdown-menu bucket-dropdown-list"
+                    class="dropdown-menu bucket-dropup-list"
                     role="menu">
                 </ul>
             </div>
@@ -78,9 +78,9 @@ populate_bucket_dropdown_and_items = (bucket) ->
     $.ajax(url: "/mock/buckets").done (json) ->
         $("#bucket-dropdown-head-text").empty().append bucket
         json.splice json.indexOf(bucket), 1
-        $(".bucket-dropdown-list").empty()
+        $(".bucket-dropup-list").empty()
         $.each json, (index, bucket) ->
-            $(".bucket-dropdown-list").append "<li><a href='#'>#{bucket}</a></li>"
+            $(".bucket-dropup-list").append "<li><a href='#'>#{bucket}</a></li>"
     populate_bucket_items bucket
 
 #TODO why can't I do .click?

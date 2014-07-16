@@ -4,7 +4,9 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    make move to menu a drop up
+    fix bug
+    when you try to drag the "move to" bucket item panel scrollbar you end up dragging the whole
+    panel
     *i*
     make plus buttons work
         *i*
