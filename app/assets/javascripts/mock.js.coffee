@@ -2,7 +2,11 @@
 #This is what's required, but no javascript or html actually tells it to do this.
 #It seems to be some happy-accident side effect
 
-append_bucket_item_panel = (index, bucket_item) ->
+append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
+    class_in_or_empty = ''
+    if !collapsed
+        class_in_or_empty = 'in'
+
     panel_description = "#{bucket_item['type']}: "
     variable_fields = ""
     move_to_button_or_empty = ""
@@ -45,7 +49,7 @@ append_bucket_item_panel = (index, bucket_item) ->
                     #{panel_description}
                 </h4>
             </div>
-            <div id='collapse#{index}' class='panel-collapse collapse'>
+            <div id='collapse#{index}' class='panel-collapse collapse #{class_in_or_empty}'>
                 <div class='panel-body'>
     """
     bucket_item_panel += variable_fields
@@ -98,7 +102,7 @@ $(document).on 'click', '#plus-button-group > div > button', (e) ->
         bucket_item = {'type':bucket_item_type, 'description':'', 'notes':''}
     else
         bucket_item = {'type':bucket_item_type, 'first_name':'', 'last_name':'', 'notes':''}
-    append_bucket_item_panel(num_bucket_items, bucket_item)
+    append_bucket_item_panel(num_bucket_items, bucket_item, false)
 
 navbar_collapse_shown = false
 

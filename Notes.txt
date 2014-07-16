@@ -6,8 +6,6 @@ mock ui
     *i*
     make plus buttons work
         *i*
-        new bucket item should be open when created
-        *i*
         should scroll to new bucket item when created
             or make link within doc?
         *i*
@@ -101,6 +99,11 @@ scaloid android app connects to this app via rest api
 after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
 *next?*
+Is the database designed in an optimal way?
+review database optimization
+
+what about graceful degradation?
+
 Can I write rspec tests for different window sizes to test responsive views?
 
 I don't like how plus button stays active after a bucket item is created
