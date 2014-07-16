@@ -93,8 +93,12 @@ $(document).on 'click', '#nav-bucket-dropdown > li > a', (e) ->
 
 $(document).on 'click', '#plus-button-group > div > button', (e) ->
     num_bucket_items += 1
-    append_bucket_item_panel(num_bucket_items, 
-                             {'type':$(this).attr('id'), 'description':'', 'notes':''})
+    bucket_item_type = $(this).attr('id')
+    if bucket_item_type != 'Person'
+        bucket_item = {'type':bucket_item_type, 'description':'', 'notes':''}
+    else
+        bucket_item = {'type':bucket_item_type, 'first_name':'', 'last_name':'', 'notes':''}
+    append_bucket_item_panel(num_bucket_items, bucket_item)
 
 navbar_collapse_shown = false
 
