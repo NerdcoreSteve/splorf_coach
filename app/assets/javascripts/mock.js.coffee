@@ -2,7 +2,6 @@
 #This is what's required, but no javascript or html actually tells it to do this.
 #It seems to be some happy-accident side effect
 
-
 append_bucket_item_panel = (index, bucket_item) ->
     panel_description = "#{bucket_item['type']}: "
     variable_fields = ""
@@ -113,9 +112,13 @@ $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
 $(document).on 'show.bs.collapse', '.navbar-collapse', -> navbar_collapse_shown = true
 
 #TODO Why does this have to be inside a function?
-$ ->
-    $("#sortable-bucket-item-list").sortable
-    $("#sortable-bucket-item-list").sortable { cursor: "move" }
+$ -> $("#sortable-bucket-item-list").sortable { cursor: "move", cancel:'.sorting_disabled' }
+
+$(document).on 'mouseover', '#panel-dropdown', ->
+    $("#sortable-bucket-item-list").addClass('sorting_disabled')
+
+$(document).on 'mouseout', '#panel-dropdown', ->
+    $("#sortable-bucket-item-list").removeClass('sorting_disabled')
 
 #TODO initial dropdown population shouldn't be an ajax call
 #TODO nor should it be tied to a hard-coded bucket name

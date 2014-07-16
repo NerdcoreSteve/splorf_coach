@@ -4,9 +4,8 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    fix bug
-    when you try to drag the "move to" bucket item panel scrollbar you end up dragging the whole
-    panel
+    fix bug, navbar bucket dropdown also has scrolling
+    That's fine but I want to have a different height for it
     *i*
     make plus buttons work
         *i*
@@ -105,6 +104,8 @@ scaloid android app connects to this app via rest api
 after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
 *next?*
+Can I write rspec tests for different window sizes to test responsive views?
+
 I don't like how plus button stays active after a bucket item is created
 
 should panel heading description update as you type?
