@@ -96,15 +96,18 @@ $(document).on 'click', '#nav-bucket-dropdown > li > a', (e) ->
     populate_bucket_dropdown_and_items $(this).parent().text()
 
 $(document).on 'click', '#plus-button-group > div > button', (e) ->
+    bucket = 'New Stuff'
     num_bucket_items += 1
     bucket_item_type = $(this).attr('id')
     if bucket_item_type != 'Person'
         bucket_item = {'type':bucket_item_type, 'description':'', 'notes':''}
     else
+        bucket = 'People'
         bucket_item = {'type':bucket_item_type, 'first_name':'', 'last_name':'', 'notes':''}
-    append_bucket_item_panel(num_bucket_items, bucket_item, false)
-    $('html, body').animate({scrollTop: $("#collapse#{num_bucket_items}").offset().top},
-                            2000)
+    $.when(populate_bucket_dropdown_and_items bucket).then ->
+        append_bucket_item_panel(num_bucket_items, bucket_item, false)
+        $('html, body').animate({scrollTop: $("#collapse#{num_bucket_items}").offset().top},
+                                2000)
 
 navbar_collapse_shown = false
 

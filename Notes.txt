@@ -4,14 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    make plus buttons work
-        *i*
-        + thing or habit should take you to New Stuff
-        +person should take you to people
-        and then add the new bucket item
-    *i*
-    any other mock functionality you want to add before hot keys?
-    *i*
     key shortcuts and highlighting/animation that indicates what's going on
     do similar highlighing for mouse input to make things consistent
         *i*
