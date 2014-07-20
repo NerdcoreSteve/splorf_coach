@@ -7,8 +7,6 @@ mock ui
     key shortcuts
         'i' for putting focus on items
             *i*
-            clicking anywhere on a panel makes it primary
-            *i*
             enter key toggles primary bucket item
             *i*
             n and p keys make next and previous items primary

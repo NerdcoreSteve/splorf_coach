@@ -86,6 +86,18 @@ populate_bucket_dropdown_and_items = (bucket) ->
             $(".bucket-list").append "<li><a class='dropdown-item' href='#'>#{bucket}</a></li>"
     populate_bucket_items bucket
 
+primary_panel = null
+make_primary_panel = (panel) ->
+    if panel != primary_panel
+        if primary_panel != null
+            primary_panel.toggleClass 'panel-info'
+            primary_panel.toggleClass 'panel-primary'
+        primary_panel = panel
+        primary_panel.toggleClass 'panel-info'
+        primary_panel.toggleClass 'panel-primary'
+
+$(document).on 'click', '.panel', () -> make_primary_panel $(this)
+
 #TODO why can't I do .click?
 $(document).on 'click', '#panel-dropdown > li > a', (e) ->
     e.preventDefault()
@@ -159,7 +171,4 @@ $(window).load ->
                         current_dropdown_item.focus()
             when 'i'
                 if $('#sortable-bucket-item-list > .panel').length > 0
-                    highlighted_panel = $('#sortable-bucket-item-list').find '.panel:first'
-                    highlighted_panel.toggleClass 'panel-info'
-                    highlighted_panel.toggleClass 'panel-primary'
-                    
+                    make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
