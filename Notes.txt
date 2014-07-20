@@ -7,7 +7,7 @@ mock ui
     key shortcuts and highlighting/animation that indicates what's going on
     do similar highlighing for mouse input to make things consistent
         *i*
-        find out if jquery and/or coffeescript simplifies this
+        'b' for bucket dropdown
     *i*
     is the mock done? if so mess around with non-mock css to make the site usable and then 
     merge branch to trunk and push to heroku

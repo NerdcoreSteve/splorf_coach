@@ -137,3 +137,8 @@ $(document).on 'mouseout', '#panel-dropdown', ->
 #TODO loading completes the ajax content isn't populated in the dropdown and item list
 $(window).load ->
     populate_bucket_dropdown_and_items 'New Stuff' 
+    $(document).keypress (e) ->
+        key_code = e.which || e.keyCode
+        key_char = String.fromCharCode key_code
+        switch key_char
+            when 'b' then $('.bucket-dropdown').toggleClass 'open'
