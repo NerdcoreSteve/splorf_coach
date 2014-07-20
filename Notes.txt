@@ -7,14 +7,21 @@ mock ui
     key shortcuts
         'i' for putting focus on items
             *i*
-            'i' simply puts focus on first text field of first item
+            the first item in any bucket should automacitally be primary
             *i*
-            focus is same as above, but first item has different header color
-            clicking does the same thing
+            clicking anywhere on a panel makes it primary
             *i*
-            'i' now cycles through each item
+            primary bucket is always expanded, all others are collapsed
             *i*
-            similar controls for item dropdown select, use same code
+            n and p keys make next and previous items primary
+            you also scroll there
+            *i*
+            if a primary panel expands, then focus is on first input field
+            tab cycles through all fields, omit move-to for now
+            *i*
+            include move-to in tab cycle, tab expands and contracts move-to
+            *i*
+            similar controls to bucket select for item dropdown select, try to use same code
         *i*
         't', 'h', and 'p' for new thing, habit or person
         whether button is clicked or key is pressed, new item is now the 'higlighted' item

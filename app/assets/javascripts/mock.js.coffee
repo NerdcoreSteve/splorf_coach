@@ -144,8 +144,7 @@ $(window).load ->
         switch key_char
             when 'b'
                 $('.bucket-dropdown').toggleClass 'open'
-                current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
-                current_dropdown_item.focus()
+                $('.bucket-dropdown').find('.dropdown-item:first').focus()
             when 'p'
                 if current_dropdown_item
                     prev_dropdown_item = current_dropdown_item.parent().prev().find('a')
@@ -158,3 +157,9 @@ $(window).load ->
                     if next_dropdown_item.length != 0
                         current_dropdown_item = next_dropdown_item
                         current_dropdown_item.focus()
+            when 'i'
+                if $('#sortable-bucket-item-list > .panel').length > 0
+                    highlighted_panel = $('#sortable-bucket-item-list').find '.panel:first'
+                    highlighted_panel.toggleClass 'panel-info'
+                    highlighted_panel.toggleClass 'panel-primary'
+                    
