@@ -135,7 +135,7 @@ $(document).on 'mouseout', '#panel-dropdown', ->
 #TODO but on a click the html partials are requested for again.
 #TODO the $(window).load is done to avoid a bug where if the page loses focus before
 #TODO loading completes the ajax content isn't populated in the dropdown and item list
-active_dropdown = null
+current_dropdown_item = null
 $(window).load ->
     populate_bucket_dropdown_and_items 'New Stuff' 
     $(document).keypress (e) ->
@@ -143,10 +143,18 @@ $(window).load ->
         key_char = String.fromCharCode key_code
         switch key_char
             when 'b'
-                active_dropdown = '.bucket-dropdown'
-                $(active_dropdown).toggleClass 'open'
-                $(active_dropdown).find('.dropdown-item:first').focus()
+                $('.bucket-dropdown').toggleClass 'open'
+                current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
+                current_dropdown_item.focus()
             when 'p'
-                $(active_dropdown).find('.dropdown-item').prev().focus()
+                if current_dropdown_item
+                    prev_dropdown_item = current_dropdown_item.parent().prev().find('a')
+                    if prev_dropdown_item.length != 0
+                        current_dropdown_item = prev_dropdown_item
+                        current_dropdown_item.focus()
             when 'n'
-                $(active_dropdown).find('.dropdown-item').next().focus()
+                if current_dropdown_item
+                    next_dropdown_item = current_dropdown_item.parent().next().find('a')
+                    if next_dropdown_item.length != 0
+                        current_dropdown_item = next_dropdown_item
+                        current_dropdown_item.focus()

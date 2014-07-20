@@ -5,15 +5,19 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 mock ui
     *i*
     key shortcuts
-        *i*
-        up/down for menu selection
-        press enter to select selection
         'i' for putting focus on items
-            focus is really on the first field, tabing cycles through each field/button/dropdown
-                similar controls for item dropdown select, use same code
-            a selected item has a different panel header color
-                should be the same for when you click on it
+            *i*
+            'i' simply puts focus on first text field of first item
+            *i*
+            focus is same as above, but first item has different header color
+            clicking does the same thing
+            *i*
+            'i' now cycles through each item
+            *i*
+            similar controls for item dropdown select, use same code
+        *i*
         't', 'h', and 'p' for new thing, habit or person
+        whether button is clicked or key is pressed, new item is now the 'higlighted' item
     *i*
     is the mock done? if so mess around with non-mock css to make the site usable and then 
     merge branch to trunk and push to heroku
