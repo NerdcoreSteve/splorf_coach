@@ -83,7 +83,7 @@ populate_bucket_dropdown_and_items = (bucket) ->
         json.splice json.indexOf(bucket), 1
         $(".bucket-list").empty()
         $.each json, (index, bucket) ->
-            $(".bucket-list").append "<li><a href='#'>#{bucket}</a></li>"
+            $(".bucket-list").append "<li><a class='dropdown-item' href='#'>#{bucket}</a></li>"
     populate_bucket_items bucket
 
 #TODO why can't I do .click?
@@ -135,10 +135,18 @@ $(document).on 'mouseout', '#panel-dropdown', ->
 #TODO but on a click the html partials are requested for again.
 #TODO the $(window).load is done to avoid a bug where if the page loses focus before
 #TODO loading completes the ajax content isn't populated in the dropdown and item list
+active_dropdown = null
 $(window).load ->
     populate_bucket_dropdown_and_items 'New Stuff' 
     $(document).keypress (e) ->
         key_code = e.which || e.keyCode
         key_char = String.fromCharCode key_code
         switch key_char
-            when 'b' then $('.bucket-dropdown').toggleClass 'open'
+            when 'b'
+                active_dropdown = '.bucket-dropdown'
+                $(active_dropdown).toggleClass 'open'
+                $(active_dropdown).find('.dropdown-item:first').focus()
+            when 'p'
+                $(active_dropdown).find('.dropdown-item').prev().focus()
+            when 'n'
+                $(active_dropdown).find('.dropdown-item').next().focus()

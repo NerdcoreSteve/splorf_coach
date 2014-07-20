@@ -4,10 +4,16 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    key shortcuts and highlighting/animation that indicates what's going on
-    do similar highlighing for mouse input to make things consistent
+    key shortcuts
         *i*
-        'b' for bucket dropdown
+        up/down for menu selection
+        press enter to select selection
+        'i' for putting focus on items
+            focus is really on the first field, tabing cycles through each field/button/dropdown
+                similar controls for item dropdown select, use same code
+            a selected item has a different panel header color
+                should be the same for when you click on it
+        't', 'h', and 'p' for new thing, habit or person
     *i*
     is the mock done? if so mess around with non-mock css to make the site usable and then 
     merge branch to trunk and push to heroku
