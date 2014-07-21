@@ -5,20 +5,23 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 mock ui
     *i*
     key shortcuts
-        'i' for putting focus on items
-            *i*
-            n and p keys make next and previous items primary
-            you also scroll there
-            *i*
-            enter key toggles primary bucket item
-            *i*
-            if a primary panel expands, then focus is on first input field
-            tab cycles through all fields, omit move-to for now
-            *i*
-            include move-to in tab cycle, tab expands and contracts move-to
-            *i*
-            similar controls to bucket select for item dropdown select, try to use same code
-            while dropdown has focus n and p select buckets in move-to
+        *i*
+        When a panel becomes primary, you scroll to it
+        take the code from append and put it in make_primary
+        *i*
+        When dropdown is not down, N and P keys move primary item up or down the list
+        *i*
+        enter key toggles primary bucket item
+        *i*
+        if a primary panel expands, then focus is on first input field
+        tab cycles through all fields, omit move-to for now
+        *i*
+        include move-to in tab cycle, tab expands and contracts move-to
+        *i*
+        similar controls to bucket select for item dropdown select, try to use same code
+        while dropdown has focus n and p select buckets in move-to
+        *i*
+        What about behavior when the screen is small and there is another dropdown?
         *i*
         't', 'h', and 'p' for new thing, habit or person
         whether button is clicked or key is pressed, new item is now the 'higlighted' item

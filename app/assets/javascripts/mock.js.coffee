@@ -67,6 +67,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
         </li>
     """
     $('#sortable-bucket-item-list').append bucket_item_panel
+    make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
 
 num_bucket_items = 0
 populate_bucket_items = (bucket) ->
@@ -173,13 +174,19 @@ $(window).load ->
                     if prev_dropdown_item.length != 0
                         current_dropdown_item = prev_dropdown_item
                         current_dropdown_item.focus()
-                else
+                else if $('.bucket-dropdown').hasClass('open')
                     focus_first_bucket_in_dropdown()
+                else
+                    if primary_panel.prev().length != 0
+                        make_primary_panel(primary_panel.prev())
             when 'n'
                 if current_dropdown_item
                     next_dropdown_item = current_dropdown_item.parent().next().find('a')
                     if next_dropdown_item.length != 0
                         current_dropdown_item = next_dropdown_item
                         current_dropdown_item.focus()
-                else
+                else if $('.bucket-dropdown').hasClass('open')
                     focus_first_bucket_in_dropdown()
+                else
+                    if primary_panel.next().length != 0
+                        make_primary_panel(primary_panel.next())
