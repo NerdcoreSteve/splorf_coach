@@ -6,8 +6,15 @@ mock ui
     *i*
     key shortcuts
         *i*
-        When a panel becomes primary, you scroll to it
-        take the code from append and put it in make_primary
+        fix thing
+        when you click on a panel, I don't think it waits until it expands before scrolling to it
+        in any event clicking doesn't make things scroll as expected.
+        *i*
+        fix bug
+        Person items don't show first and last names
+        *i*
+        fix bug
+        Can't edit fields anymore
         *i*
         When dropdown is not down, N and P keys move primary item up or down the list
         *i*
@@ -105,6 +112,8 @@ scaloid android app connects to this app via rest api
 after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
 *next?*
+if you're in New Stuff and you hit a plus for habit or thing, the list should not refresh
+
 Is the database designed in an optimal way?
 review database optimization
 

@@ -67,7 +67,6 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
         </li>
     """
     $('#sortable-bucket-item-list').append bucket_item_panel
-    make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
 
 num_bucket_items = 0
 populate_bucket_items = (bucket) ->
@@ -78,7 +77,9 @@ populate_bucket_items = (bucket) ->
             num_bucket_items = index + 1
 
 #TODO what about ajax failure?
+current_bucket = null
 populate_bucket_dropdown_and_items = (bucket) ->
+    current_bucket = bucket
     $.ajax(url: "/mock/buckets").done (json) ->
         $("#bucket-dropdown-head-text").empty().append bucket
         json.splice json.indexOf(bucket), 1
@@ -87,22 +88,24 @@ populate_bucket_dropdown_and_items = (bucket) ->
             $(".bucket-list").append "<li><a class='dropdown-item' href='#'>#{bucket}</a></li>"
     populate_bucket_items bucket
 
+count = 0
 primary_panel = null
 make_primary_panel = (panel) ->
     if panel != primary_panel
         if primary_panel != null
-            primary_panel.toggleClass 'panel-info'
-            primary_panel.toggleClass 'panel-primary'
+            primary_panel.addClass 'panel-info'
+            primary_panel.removeClass 'panel-primary'
         primary_panel = panel
-        primary_panel.toggleClass 'panel-info'
-        primary_panel.toggleClass 'panel-primary'
+        primary_panel.removeClass 'panel-info'
+        primary_panel.addClass 'panel-primary'
+        $(window).scrollTop(primary_panel.position().top - parseInt($('body').css('padding-top')))
 
 current_dropdown_item = null
 focus_first_bucket_in_dropdown = ->
     current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
     current_dropdown_item.focus()
 
-$(document).on 'click', '.panel', () -> make_primary_panel $(this)
+$(document).on 'click', '.panel-heading', () -> make_primary_panel $(this).parent()
 
 #TODO why can't I do .click?
 $(document).on 'click', '#panel-dropdown > li > a', (e) ->
@@ -122,10 +125,12 @@ $(document).on 'click', '#plus-button-group > div > button', (e) ->
     else
         bucket = 'People'
         bucket_item = {'type':bucket_item_type, 'first_name':'', 'last_name':'', 'notes':''}
-    $.when(populate_bucket_dropdown_and_items bucket).then ->
+    if current_bucket != bucket
+        $.when(populate_bucket_dropdown_and_items bucket).then ->
+            append_bucket_item_panel(num_bucket_items, bucket_item, false)
+    else
         append_bucket_item_panel(num_bucket_items, bucket_item, false)
-        $('html, body').animate({scrollTop: $("#collapse#{num_bucket_items}").offset().top},
-                                2000)
+    make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
 
 navbar_collapse_shown = false
 
