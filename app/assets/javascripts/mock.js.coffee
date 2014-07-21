@@ -149,14 +149,18 @@ $(document).on 'mouseout', '#panel-dropdown', ->
 #TODO loading completes the ajax content isn't populated in the dropdown and item list
 current_dropdown_item = null
 $(window).load ->
-    populate_bucket_dropdown_and_items 'New Stuff' 
+    $.when(populate_bucket_dropdown_and_items 'New Stuff').then ->
+        make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
     $(document).keypress (e) ->
-        key_code = e.which || e.keyCode
-        key_char = String.fromCharCode key_code
-        switch key_char
+        switch String.fromCharCode(e.which || e.keyCode)
             when 'b'
-                $('.bucket-dropdown').toggleClass 'open'
-                $('.bucket-dropdown').find('.dropdown-item:first').focus()
+                if not $('.bucket-dropdown').hasClass 'open'
+                    $('.bucket-dropdown').addClass 'open'
+                    current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
+                    current_dropdown_item.focus()
+                else
+                    $('.bucket-dropdown').removeClass 'open'
+                    current_dropdown_item = null
             when 'p'
                 if current_dropdown_item
                     prev_dropdown_item = current_dropdown_item.parent().prev().find('a')
@@ -169,6 +173,3 @@ $(window).load ->
                     if next_dropdown_item.length != 0
                         current_dropdown_item = next_dropdown_item
                         current_dropdown_item.focus()
-            when 'i'
-                if $('#sortable-bucket-item-list > .panel').length > 0
-                    make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
