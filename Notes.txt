@@ -7,10 +7,10 @@ mock ui
     key shortcuts
         'i' for putting focus on items
             *i*
-            enter key toggles primary bucket item
-            *i*
             n and p keys make next and previous items primary
             you also scroll there
+            *i*
+            enter key toggles primary bucket item
             *i*
             if a primary panel expands, then focus is on first input field
             tab cycles through all fields, omit move-to for now

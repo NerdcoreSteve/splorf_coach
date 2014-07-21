@@ -96,6 +96,11 @@ make_primary_panel = (panel) ->
         primary_panel.toggleClass 'panel-info'
         primary_panel.toggleClass 'panel-primary'
 
+current_dropdown_item = null
+focus_first_bucket_in_dropdown = ->
+    current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
+    current_dropdown_item.focus()
+
 $(document).on 'click', '.panel', () -> make_primary_panel $(this)
 
 #TODO why can't I do .click?
@@ -141,13 +146,15 @@ $(document).on 'mouseover', '#panel-dropdown', ->
 $(document).on 'mouseout', '#panel-dropdown', ->
     $("#sortable-bucket-item-list").removeClass('sorting_disabled')
 
+$(document).on 'click', '.bucket-dropdown-head', ->
+    current_dropdown_item = null
+
 #TODO initial dropdown population shouldn't be an ajax call
 #TODO nor should it be tied to a hard-coded bucket name
 #TODO maybe this should be done with partials that are rendered serverside on load
 #TODO but on a click the html partials are requested for again.
 #TODO the $(window).load is done to avoid a bug where if the page loses focus before
 #TODO loading completes the ajax content isn't populated in the dropdown and item list
-current_dropdown_item = null
 $(window).load ->
     $.when(populate_bucket_dropdown_and_items 'New Stuff').then ->
         make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
@@ -156,8 +163,7 @@ $(window).load ->
             when 'b'
                 if not $('.bucket-dropdown').hasClass 'open'
                     $('.bucket-dropdown').addClass 'open'
-                    current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
-                    current_dropdown_item.focus()
+                    focus_first_bucket_in_dropdown()
                 else
                     $('.bucket-dropdown').removeClass 'open'
                     current_dropdown_item = null
@@ -167,9 +173,13 @@ $(window).load ->
                     if prev_dropdown_item.length != 0
                         current_dropdown_item = prev_dropdown_item
                         current_dropdown_item.focus()
+                else
+                    focus_first_bucket_in_dropdown()
             when 'n'
                 if current_dropdown_item
                     next_dropdown_item = current_dropdown_item.parent().next().find('a')
                     if next_dropdown_item.length != 0
                         current_dropdown_item = next_dropdown_item
                         current_dropdown_item.focus()
+                else
+                    focus_first_bucket_in_dropdown()
