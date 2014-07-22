@@ -8,6 +8,8 @@ mock ui
         *i*
         fix bug
         Can't edit fields anymore
+        I deleted all the "document on click"'s and the problem went away. I wasn't able to 
+        isolate which one it was because I ran out of time.
         *i*
         When dropdown is not down, N and P keys move primary item up or down the list
         *i*
