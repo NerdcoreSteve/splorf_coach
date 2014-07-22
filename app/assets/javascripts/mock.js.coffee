@@ -2,6 +2,7 @@
 #This is what's required, but no javascript or html actually tells it to do this.
 #It seems to be some happy-accident side effect
 
+#TODO this code smells, make it better later
 append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     class_in_or_empty = ''
     if !collapsed
@@ -128,8 +129,8 @@ $(document).on 'click', '#plus-button-group > div > button', (e) ->
         bucket_item = {'type':bucket_item_type, 'first_name':'', 'last_name':'', 'notes':''}
     if current_bucket != bucket
         $.when(populate_bucket_dropdown_and_items bucket).then ->
-            append_bucket_item_panel(num_bucket_items, bucket_item, false)
-        make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
+            $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
+                make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
     else
         $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
             make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
