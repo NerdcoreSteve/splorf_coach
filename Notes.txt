@@ -6,10 +6,6 @@ mock ui
     *i*
     key shortcuts
         *i*
-        fix thing
-        when you click on a panel, I don't think it waits until it expands before scrolling to it
-        in any event clicking doesn't make things scroll as expected.
-        *i*
         fix bug
         Person items don't show first and last names
         *i*
