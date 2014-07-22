@@ -7,9 +7,6 @@ mock ui
     key shortcuts
         *i*
         fix bug
-        Person items don't show first and last names
-        *i*
-        fix bug
         Can't edit fields anymore
         *i*
         When dropdown is not down, N and P keys move primary item up or down the list

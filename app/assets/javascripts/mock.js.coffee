@@ -34,8 +34,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             </div>
         """
     else
-        if 'first_name' in bucket_item and 'last_name' in bucket_item
-            panel_description += "#{bucket_item['first_name']} #{bucket_item['last_name']}"
+        panel_description += "#{bucket_item['first_name']} #{bucket_item['last_name']}"
         variable_fields = """
             <input type='text' value='#{bucket_item['first_name']}' placeholder='first name'><br>
             <input type='text' value='#{bucket_item['last_name']}' placeholder='last name'><br>
