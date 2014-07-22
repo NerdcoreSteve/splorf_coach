@@ -114,7 +114,8 @@ $(document).on 'click', '#panel-dropdown > li > a', (e) ->
 
 $(document).on 'click', '#nav-bucket-dropdown > li > a', (e) ->
     e.preventDefault()
-    populate_bucket_dropdown_and_items $(this).parent().text()
+    $.when(populate_bucket_dropdown_and_items $(this).parent().text()).then ->
+        make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
 
 $(document).on 'click', '#plus-button-group > div > button', (e) ->
     bucket = 'New Stuff'
@@ -128,9 +129,10 @@ $(document).on 'click', '#plus-button-group > div > button', (e) ->
     if current_bucket != bucket
         $.when(populate_bucket_dropdown_and_items bucket).then ->
             append_bucket_item_panel(num_bucket_items, bucket_item, false)
+        make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
     else
-        append_bucket_item_panel(num_bucket_items, bucket_item, false)
-    make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
+        $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
+            make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
 
 navbar_collapse_shown = false
 

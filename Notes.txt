@@ -9,6 +9,7 @@ mock ui
         fix bug
         When you hit a plus button the new item doesn't become primary and clicking on
         it doesn't become primary. Also it doesn't scroll correctly to the item.
+        This only seems to happen when the plus button moves you from one bucket to another
         *i*
         fix bug
         Person items don't show first and last names
