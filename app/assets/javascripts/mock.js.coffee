@@ -64,8 +64,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     bucket_item_panel += variable_fields
     bucket_item_panel += """
                     <textarea class='panel-input'
-                              placeholder='notes'>#{bucket_item['notes']}
-                    </textarea>
+                              placeholder='notes'>#{bucket_item['notes']}</textarea>
                     #{move_to_button_or_empty}
                     <button type='button' class='btn btn-default panel-input'>
                         Save
@@ -99,6 +98,9 @@ populate_bucket_dropdown_and_items = (bucket) ->
             $(".bucket-list").append "<li><a class='dropdown-item' href='#'>#{bucket}</a></li>"
     populate_bucket_items bucket
 
+scroll_to = (element) ->
+    $(window).scrollTop(element.position().top - parseInt($('body').css('padding-top')))
+
 count = 0
 primary_panel = null
 make_primary_panel = (panel) ->
@@ -109,7 +111,7 @@ make_primary_panel = (panel) ->
         primary_panel = panel
         primary_panel.removeClass 'panel-info'
         primary_panel.addClass 'panel-primary'
-        $(window).scrollTop(primary_panel.position().top - parseInt($('body').css('padding-top')))
+        scroll_to(primary_panel)
 
 current_dropdown_item = null
 focus_first_bucket_in_dropdown = ->
@@ -211,8 +213,11 @@ $(window).load ->
             when 'P'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
                     primary_panel.insertBefore(primary_panel.prev())
+                    scroll_to(primary_panel)
             when 'N'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
                     primary_panel.insertAfter(primary_panel.next())
+                    scroll_to(primary_panel)
             when '\r'
                 primary_panel.find('.panel-collapse').collapse('toggle')
+                scroll_to(primary_panel)
