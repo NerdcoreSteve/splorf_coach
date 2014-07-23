@@ -6,7 +6,7 @@ mock ui
     *i*
     key shortcuts
         *i*
-        enter key toggles primary bucket item
+        When you move things via N or P, the page scrolls with you
         *i*
         if a primary panel expands, then focus is on first input field
         tab cycles through all fields, omit move-to for now

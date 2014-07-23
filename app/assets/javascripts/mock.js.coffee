@@ -214,3 +214,5 @@ $(window).load ->
             when 'N'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
                     primary_panel.insertAfter(primary_panel.next())
+            when '\r'
+                primary_panel.find('.panel-collapse').collapse('toggle')
