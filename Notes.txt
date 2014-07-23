@@ -6,8 +6,6 @@ mock ui
     *i*
     key shortcuts
         *i*
-        When dropdown is not down, N and P keys move primary item up or down the list
-        *i*
         enter key toggles primary bucket item
         *i*
         if a primary panel expands, then focus is on first input field
@@ -22,8 +20,6 @@ mock ui
         *i*
         't', 'h', and 'p' for new thing, habit or person
         whether button is clicked or key is pressed, new item is now the 'higlighted' item
-        *i*
-        undo-redo data structure for N and P, dragging items
         *i*
         delete button and hotkey
         modal for deleting, this will permenantly delete
@@ -107,9 +103,7 @@ scaloid android app connects to this app via rest api
 after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
 *next?*
-undo/redo for deleting items?
-
-undo/redo for editing fields?
+undo/redo for deleting items, N and P, dragging items, editing fields
 
 if you're in New Stuff and you hit a plus for habit or thing, the list should not refresh
 

@@ -208,3 +208,9 @@ $(window).load ->
                 else
                     if primary_panel.next().length != 0
                         make_primary_panel(primary_panel.next())
+            when 'P'
+                if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
+                    primary_panel.insertBefore(primary_panel.prev())
+            when 'N'
+                if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
+                    primary_panel.insertAfter(primary_panel.next())
