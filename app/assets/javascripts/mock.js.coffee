@@ -14,8 +14,10 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     if bucket_item['type'] != 'Person'
         panel_description += "#{bucket_item['description']}"
         variable_fields = """
-            <input class='panel-input'
+            <input id='first-input#{index}'
+                   class='panel-input'
                    type='text'
+                   tabindex=1
                    value='#{bucket_item['description']}'
                    placeholder='description'><br>
         """
@@ -25,6 +27,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                     Move To
                 </button>
                 <button type="button"
+                        tabindex=4
                         class="btn btn-default dropdown-toggle panel-input"
                         data-toggle="dropdown">
                 <span class="caret"></span>
@@ -39,12 +42,15 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     else
         panel_description += "#{bucket_item['first_name']} #{bucket_item['last_name']}"
         variable_fields = """
-            <input class='panel-input'
+            <input id='first-input#{index}'
+                   class='panel-input'
                    type='text'
+                   tabindex=1
                    value='#{bucket_item['first_name']}'
                    placeholder='first name'><br>
             <input class='panel-input'
                    type='text'
+                   tabindex=2
                    value='#{bucket_item['last_name']}'
                    placeholder='last name'><br>
         """
@@ -64,12 +70,16 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     bucket_item_panel += variable_fields
     bucket_item_panel += """
                     <textarea class='panel-input'
+                              tabindex=3
                               placeholder='notes'>#{bucket_item['notes']}</textarea>
                     #{move_to_button_or_empty}
-                    <button type='button' class='btn btn-default panel-input'>
+                    <button type='button' class='btn btn-default panel-input' tabindex=5>
                         Save
                     </button>
-                    <button type='button' class='btn btn-default panel-input'>
+                    <button id='last-input#{index}'
+                            type='button' 
+                            class='btn btn-default panel-input'
+                            tabindex=6>
                         Cancel
                     </button>
                 </div>
@@ -77,6 +87,9 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
         </li>
     """
     $('#sortable-bucket-item-list').append bucket_item_panel
+    first_input_index = "#first-input#{index}"
+    last_input_index = "#last-input#{index}"
+    $(last_input_index).focusout -> $(first_input_index).focus()
 
 num_bucket_items = 0
 populate_bucket_items = (bucket) ->

@@ -8,6 +8,10 @@ mock ui
         *i*
         if a primary panel expands, then focus is on first input field
         tab cycles through all fields, omit move-to for now
+        So when you focusout of the last field, you move to focus the first field of the first
+        bucket item. so what you want to do is to make the tabindex= whatever + index
+        you also might want to make the make_primary function put focus on the field
+        even if it's collapsed it might work
         *i*
         include move-to in tab cycle, tab expands and contracts move-to
         *i*
