@@ -6,11 +6,6 @@ mock ui
     *i*
     key shortcuts
         *i*
-        fix bug
-        Can't edit fields anymore
-        I deleted all the "document on click"'s and the problem went away. I wasn't able to 
-        isolate which one it was because I ran out of time.
-        *i*
         When dropdown is not down, N and P keys move primary item up or down the list
         *i*
         enter key toggles primary bucket item
@@ -27,6 +22,11 @@ mock ui
         *i*
         't', 'h', and 'p' for new thing, habit or person
         whether button is clicked or key is pressed, new item is now the 'higlighted' item
+        *i*
+        undo-redo data structure for N and P, dragging items
+        *i*
+        delete button and hotkey
+        modal for deleting, this will permenantly delete
     *i*
     is the mock done? if so mess around with non-mock css to make the site usable and then 
     merge branch to trunk and push to heroku
@@ -107,6 +107,10 @@ scaloid android app connects to this app via rest api
 after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
 *next?*
+undo/redo for deleting items?
+
+undo/redo for editing fields?
+
 if you're in New Stuff and you hit a plus for habit or thing, the list should not refresh
 
 Is the database designed in an optimal way?

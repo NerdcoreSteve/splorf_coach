@@ -14,21 +14,24 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     if bucket_item['type'] != 'Person'
         panel_description += "#{bucket_item['description']}"
         variable_fields = """
-            <input type='text' value='#{bucket_item['description']}' placeholder='description'><br>
+            <input class='panel-input'
+                   type='text'
+                   value='#{bucket_item['description']}'
+                   placeholder='description'><br>
         """
         move_to_button_or_empty = """
             <div class="btn-group panel-btn-group dropup">
-                <button type="button" class="btn btn-default">
+                <button type="button" class="btn btn-default panel-input">
                     Move To
                 </button>
                 <button type="button"
-                        class="btn btn-default dropdown-toggle"
+                        class="btn btn-default dropdown-toggle panel-input"
                         data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul id="panel-dropdown"
-                    class="dropdown-menu bucket-list"
+                    class="dropdown-menu bucket-list panel-input"
                     role="menu">
                 </ul>
             </div>
@@ -36,8 +39,14 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     else
         panel_description += "#{bucket_item['first_name']} #{bucket_item['last_name']}"
         variable_fields = """
-            <input type='text' value='#{bucket_item['first_name']}' placeholder='first name'><br>
-            <input type='text' value='#{bucket_item['last_name']}' placeholder='last name'><br>
+            <input class='panel-input'
+                   type='text'
+                   value='#{bucket_item['first_name']}'
+                   placeholder='first name'><br>
+            <input class='panel-input'
+                   type='text'
+                   value='#{bucket_item['last_name']}'
+                   placeholder='last name'><br>
         """
     bucket_item_panel = """
         <li class='panel panel-info'>
@@ -54,12 +63,14 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     """
     bucket_item_panel += variable_fields
     bucket_item_panel += """
-                    <textarea placeholder='notes'>#{bucket_item['notes']}</textarea>
+                    <textarea class='panel-input'
+                              placeholder='notes'>#{bucket_item['notes']}
+                    </textarea>
                     #{move_to_button_or_empty}
-                    <button type='button' class='btn btn-default'>
+                    <button type='button' class='btn btn-default panel-input'>
                         Save
                     </button>
-                    <button type='button' class='btn btn-default'>
+                    <button type='button' class='btn btn-default panel-input'>
                         Cancel
                     </button>
                 </div>
@@ -148,10 +159,10 @@ $(document).on 'show.bs.collapse', '.navbar-collapse', -> navbar_collapse_shown 
 #TODO Why does this have to be inside a function?
 $ -> $("#sortable-bucket-item-list").sortable { cursor: "move", cancel:'.sorting_disabled' }
 
-$(document).on 'mouseover', '#panel-dropdown', ->
+$(document).on 'mouseover', '.panel-input', ->
     $("#sortable-bucket-item-list").addClass('sorting_disabled')
 
-$(document).on 'mouseout', '#panel-dropdown', ->
+$(document).on 'mouseout', '.panel-input', ->
     $("#sortable-bucket-item-list").removeClass('sorting_disabled')
 
 $(document).on 'click', '.bucket-dropdown-head', ->
