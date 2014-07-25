@@ -2,7 +2,9 @@
 #This is what's required, but no javascript or html actually tells it to do this.
 #It seems to be some happy-accident side effect
 
-#TODO this code smells, make it better later
+#TODO this code smells and isn't very DRY, make it better later
+#TODO learn rails js conventions
+tab_index = 0
 append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     class_in_or_empty = ''
     if !collapsed
@@ -17,7 +19,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             <input id='first-input#{index}'
                    class='panel-input'
                    type='text'
-                   tabindex=1
+                   tabindex=#{1 + tab_index}
                    value='#{bucket_item['description']}'
                    placeholder='description'><br>
         """
@@ -27,7 +29,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                     Move To
                 </button>
                 <button type="button"
-                        tabindex=4
+                        tabindex=#{4 + tab_index}
                         class="btn btn-default dropdown-toggle panel-input"
                         data-toggle="dropdown">
                 <span class="caret"></span>
@@ -45,12 +47,12 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             <input id='first-input#{index}'
                    class='panel-input'
                    type='text'
-                   tabindex=1
+                   tabindex=#{1 + tab_index}
                    value='#{bucket_item['first_name']}'
                    placeholder='first name'><br>
             <input class='panel-input'
                    type='text'
-                   tabindex=2
+                   tabindex=#{2 + tab_index}
                    value='#{bucket_item['last_name']}'
                    placeholder='last name'><br>
         """
@@ -70,22 +72,25 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     bucket_item_panel += variable_fields
     bucket_item_panel += """
                     <textarea class='panel-input'
-                              tabindex=3
+                              tabindex=#{3 + tab_index}
                               placeholder='notes'>#{bucket_item['notes']}</textarea>
                     #{move_to_button_or_empty}
-                    <button type='button' class='btn btn-default panel-input' tabindex=5>
+                    <button type='button'
+                            class='btn btn-default panel-input'
+                            tabindex=#{5 + tab_index}>
                         Save
                     </button>
                     <button id='last-input#{index}'
                             type='button' 
                             class='btn btn-default panel-input'
-                            tabindex=6>
+                            tabindex=#{6 + tab_index}>
                         Cancel
                     </button>
                 </div>
             </div>
         </li>
     """
+    tab_index = tab_index + 6
     $('#sortable-bucket-item-list').append bucket_item_panel
     first_input_index = "#first-input#{index}"
     last_input_index = "#last-input#{index}"
@@ -163,6 +168,7 @@ $(document).on 'click', '#plus-button-group > div > button', (e) ->
 navbar_collapse_shown = false
 
 #TODO why can't I do $('.bucket-dropdown').on 'show.bs.dropdown' ?
+#TODO can't I attach these functions directly to the elements in question?
 $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
     if navbar_collapse_shown
         $('.navbar-collapse').collapse 'hide'
@@ -170,6 +176,9 @@ $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
     $('.bucket-dropdown').dropdown
 
 $(document).on 'show.bs.collapse', '.navbar-collapse', -> navbar_collapse_shown = true
+
+$(document).on 'show.bs.collapse', '.panel-collapse', ->
+    $(this).find('input').focus()
 
 #TODO Why does this have to be inside a function?
 $ -> $("#sortable-bucket-item-list").sortable { cursor: "move", cancel:'.sorting_disabled' }
