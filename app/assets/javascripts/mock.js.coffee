@@ -222,7 +222,7 @@ $(window).load ->
                 else
                     $('.bucket-dropdown').removeClass 'open'
                     current_dropdown_item = null
-            when 'p'
+            when 'k'
                 if current_dropdown_item
                     prev_dropdown_item = current_dropdown_item.parent().prev().find('a')
                     if prev_dropdown_item.length != 0
@@ -233,7 +233,7 @@ $(window).load ->
                 else
                     if primary_panel.prev().length != 0
                         make_primary_panel(primary_panel.prev())
-            when 'n'
+            when 'j'
                 if current_dropdown_item
                     next_dropdown_item = current_dropdown_item.parent().next().find('a')
                     if next_dropdown_item.length != 0
@@ -244,11 +244,11 @@ $(window).load ->
                 else
                     if primary_panel.next().length != 0
                         make_primary_panel(primary_panel.next())
-            when 'P'
+            when 'K'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
                     primary_panel.insertBefore(primary_panel.prev())
                     scroll_to(primary_panel)
-            when 'N'
+            when 'J'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
                     primary_panel.insertAfter(primary_panel.next())
                     scroll_to(primary_panel)

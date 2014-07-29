@@ -9,8 +9,6 @@ mock ui
     *i*
     key shortcuts
         *i*
-        change n N p P to j J k K
-        *i*
         When you hit alt-j/J or alt-k/K the focus (|still) needs to be in the (new|) primary panel
         *i*
         when you focusin to the move-to drop-up, it expands and puts the bottom item as focused
@@ -104,6 +102,8 @@ scaloid android app connects to this app via rest api
 after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
 *next?*
+What about shift-tab for controls?
+
 undo/redo for deleting items, N and P, dragging items, editing fields
 
 if you're in New Stuff and you hit a plus for habit or thing, the list should not refresh
