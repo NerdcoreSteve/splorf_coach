@@ -177,8 +177,19 @@ $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
 
 $(document).on 'show.bs.collapse', '.navbar-collapse', -> navbar_collapse_shown = true
 
+#TODO using setInterval like this really feels like a hack
+#TODO but first_input is not initially visible
 $(document).on 'show.bs.collapse', '.panel-collapse', ->
-    $(this).find('input').focus()
+    first_input = $(this).find('input')
+    checking_count = 0
+    #indentation for setInterval's second parameter is
+    #at the same indent level as variable
+    checking = setInterval ->
+        if first_input.is(':visible') or checking_count > 1000
+            clearInterval(checking)
+            first_input.focus()
+        checking_count++
+    , 1
 
 #TODO Why does this have to be inside a function?
 $ -> $("#sortable-bucket-item-list").sortable { cursor: "move", cancel:'.sorting_disabled' }

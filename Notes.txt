@@ -1,3 +1,6 @@
+NOTES
+Be sure to mention that the controls are preceded by alt. They'll work without alt but you'll end up typing stuff in fields that you don't want to.
+
 ITERATIONS
 All iterations start with design notes/drawings and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
@@ -6,21 +9,13 @@ mock ui
     *i*
     key shortcuts
         *i*
-        if a primary panel expands, then focus is on first input field
-        tab cycles through all fields
-        So when you focusout of the last field, you move to focus the first field of the first
-        bucket item. so what you want to do is to make the tabindex= whatever + index
-        you also might want to make the make_primary function put focus on the field
-        even if it's collapsed it might work
+        change n N p P to j J k K
         *i*
-        fix feature
-        if you're in a text area, pressing n or p is a problem
-        what about ctrl-p/n or alt?
+        When you hit alt-j/J or alt-k/K the focus (|still) needs to be in the (new|) primary panel
         *i*
-        include move-to in tab cycle, tab expands and contracts move-to
-        *i*
+        when you focusin to the move-to drop-up, it expands and puts the bottom item as focused
         similar controls to bucket select for item dropdown select, try to use same code
-        while dropdown has focus n and p select buckets in move-to
+        while dropdown has focus j and k select buckets in move-to
         *i*
         What about behavior when the screen is small and there is another dropdown?
         *i*
