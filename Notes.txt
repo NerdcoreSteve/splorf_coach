@@ -9,7 +9,9 @@ mock ui
     *i*
     key shortcuts
         *i*
-        When you hit alt-j/J or alt-k/K the focus (|still) needs to be in the (new|) primary panel
+        fix bug
+        alt-J/K doesn't move the panel when the panel is open
+        remember the focus needs to stay on the first input after moving
         *i*
         when you focusin to the move-to drop-up, it expands and puts the bottom item as focused
         similar controls to bucket select for item dropdown select, try to use same code

@@ -137,6 +137,20 @@ focus_first_bucket_in_dropdown = ->
     current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
     current_dropdown_item.focus()
 
+#TODO using setInterval like this really feels like a hack
+#TODO but first_input is not initially visible
+set_panel_initial_focus = (panel) ->
+    first_input = panel.find('.panel-collapse').find('input')
+    checking_count = 0
+    #indentation for setInterval's second parameter is
+    #at the same indent level as variable
+    checking = setInterval ->
+        if first_input.is(':visible') or checking_count > 1000
+            clearInterval(checking)
+            first_input.focus()
+        checking_count++
+    , 1
+
 $(document).on 'click', '.panel-heading', () -> make_primary_panel $(this).parent()
 
 #TODO why can't I do .click?
@@ -180,17 +194,7 @@ $(document).on 'show.bs.collapse', '.navbar-collapse', -> navbar_collapse_shown 
 
 #TODO using setInterval like this really feels like a hack
 #TODO but first_input is not initially visible
-$(document).on 'show.bs.collapse', '.panel-collapse', ->
-    first_input = $(this).find('input')
-    checking_count = 0
-    #indentation for setInterval's second parameter is
-    #at the same indent level as variable
-    checking = setInterval ->
-        if first_input.is(':visible') or checking_count > 1000
-            clearInterval(checking)
-            first_input.focus()
-        checking_count++
-    , 1
+$(document).on 'show.bs.collapse', '.panel-collapse', -> set_panel_initial_focus $(this).parent()
 
 #TODO Why does this have to be inside a function?
 $ -> $("#sortable-bucket-item-list").sortable { cursor: "move", cancel:'.sorting_disabled' }
@@ -233,6 +237,7 @@ $(window).load ->
                 else
                     if primary_panel.prev().length != 0
                         make_primary_panel(primary_panel.prev())
+                    set_panel_initial_focus primary_panel
             when 'j'
                 if current_dropdown_item
                     next_dropdown_item = current_dropdown_item.parent().next().find('a')
@@ -244,14 +249,17 @@ $(window).load ->
                 else
                     if primary_panel.next().length != 0
                         make_primary_panel(primary_panel.next())
+                    set_panel_initial_focus primary_panel
             when 'K'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
                     primary_panel.insertBefore(primary_panel.prev())
                     scroll_to(primary_panel)
+                    set_panel_initial_focus primary_panel
             when 'J'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
                     primary_panel.insertAfter(primary_panel.next())
                     scroll_to(primary_panel)
+                    set_panel_initial_focus primary_panel
             when '\r'
                 primary_panel.find('.panel-collapse').collapse('toggle')
                 scroll_to(primary_panel)
