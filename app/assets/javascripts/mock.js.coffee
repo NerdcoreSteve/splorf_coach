@@ -106,7 +106,9 @@ populate_bucket_items = (bucket) ->
 
 #TODO what about ajax failure?
 current_bucket = null
+current_dropdown_item = null
 populate_bucket_dropdown_and_items = (bucket) ->
+    current_dropdown_item = null
     current_bucket = bucket
     $.ajax(url: "/mock/buckets").done (json) ->
         $("#bucket-dropdown-head-text").empty().append bucket
@@ -131,7 +133,6 @@ make_primary_panel = (panel) ->
         primary_panel.addClass 'panel-primary'
         scroll_to(primary_panel)
 
-current_dropdown_item = null
 focus_first_bucket_in_dropdown = ->
     current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
     current_dropdown_item.focus()
