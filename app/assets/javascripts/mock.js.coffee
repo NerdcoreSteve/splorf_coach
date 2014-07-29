@@ -218,8 +218,14 @@ $(window).load ->
     $.when(populate_bucket_dropdown_and_items 'New Stuff').then ->
         make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
     $(document).keypress (e) ->
-        switch String.fromCharCode(e.which || e.keyCode)
-            when 'b'
+        get_hotkey_command = (e) ->
+            e = e or window.event
+            if e.altKey
+                return String.fromCharCode(e.which or e.charCode or e.keyCode)
+            ''
+
+        switch get_hotkey_command(e)
+            when 'l'
                 if not $('.bucket-dropdown').hasClass 'open'
                     $('.bucket-dropdown').addClass 'open'
                     focus_first_bucket_in_dropdown()
