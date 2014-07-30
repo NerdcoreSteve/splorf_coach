@@ -37,7 +37,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                 <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul id="panel-dropdown"
-                    class="dropdown-menu bucket-list panel-input"
+                    class="panel-dropup dropdown-menu bucket-list panel-input"
                     role="menu">
                 </ul>
             </div>
@@ -77,7 +77,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                               placeholder='notes'>#{bucket_item['notes']}</textarea>
                     #{move_to_button_or_empty}
                     <button type='button'
-                            class='btn btn-default panel-input'
+                            class='btn btn-default panel-input after-move-to'
                             tabindex=#{5 + tab_index}>
                         Save
                     </button>
@@ -224,6 +224,10 @@ $(document).on 'focus', '.panel-dropup-button', ->
         current_dropdown_item = panel_dropup.children().last().find('a')
         current_dropdown_item.focus()
         
+#TODO there is probably a better way to do this...
+$(document).on 'focusout', '.panel-dropup > li > a', ->
+    primary_panel.find('.after-move-to').focus()
+    $(this).parent().parent().toggle()
 
 #TODO initial dropdown population shouldn't be an ajax call
 #TODO nor should it be tied to a hard-coded bucket name

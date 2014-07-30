@@ -12,6 +12,8 @@ mock ui
         when you focusin to the move-to drop-up, it expands and puts the bottom item as focused
         similar controls to bucket select for item dropdown select, try to use same code
         while dropdown has focus j and k select buckets in move-to
+        tab-out behavior needs work
+        make sure click behavior for button and hotkey behavior play nice together
         *i*
         alt-t/h/p for new thing, habit or person
         whether button is clicked or key is pressed, new item is now the 'higlighted' item
