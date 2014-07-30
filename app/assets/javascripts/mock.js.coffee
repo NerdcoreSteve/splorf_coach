@@ -4,6 +4,7 @@
 
 #TODO this code smells and isn't very DRY, make it better later
 #TODO learn rails js conventions
+#TODO panel-dropdown should be a class!!!
 tab_index = 0
 append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     class_in_or_empty = ''
@@ -30,7 +31,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                 </button>
                 <button type="button"
                         tabindex=#{4 + tab_index}
-                        class="btn btn-default dropdown-toggle panel-input"
+                        class="btn btn-default dropdown-toggle panel-input panel-dropup-button"
                         data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
@@ -208,6 +209,22 @@ $(document).on 'mouseout', '.panel-input', ->
 $(document).on 'click', '.bucket-dropdown-head', ->
     current_dropdown_item = null
 
+$(document).on 'focusout', '.panel-dropup-button', ->
+    panel_dropup_parent = $(this).parent()
+    if panel_dropup_parent.hasClass('open')
+        console.log 'close!'
+        panel_dropup_parent.find('#panel-dropdown').toggle()
+
+$(document).on 'focus', '.panel-dropup-button', ->
+    panel_dropup_parent = $(this).parent()
+    if not panel_dropup_parent.hasClass('open')
+        console.log 'open!'
+        panel_dropup = panel_dropup_parent.find('#panel-dropdown')
+        panel_dropup.toggle()
+        current_dropdown_item = panel_dropup.children().last().find('a')
+        current_dropdown_item.focus()
+        
+
 #TODO initial dropdown population shouldn't be an ajax call
 #TODO nor should it be tied to a hard-coded bucket name
 #TODO maybe this should be done with partials that are rendered serverside on load
@@ -223,7 +240,6 @@ $(window).load ->
             if e.altKey
                 return String.fromCharCode(e.which or e.charCode or e.keyCode)
             ''
-
         switch get_hotkey_command(e)
             when 'l'
                 if not $('.bucket-dropdown').hasClass 'open'
