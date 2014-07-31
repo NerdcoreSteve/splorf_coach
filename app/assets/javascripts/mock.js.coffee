@@ -95,15 +95,38 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
         if i_prev < 0 then i_prev = panel_inputs.length - 1
         panel_input.prev_input = panel_inputs[i_prev]
 
+        if not $(panel_input).hasClass('dropdown-toggle')
+            panel_input.deactivate = -> true
+            panel_input.activate = ->
+                this.prev_input.deactivate()
+                $(this).focus()
+        else
+            panel = $(panel_input).parent()
+            panel_dropup = $(panel).find(".panel-dropup")
+
+            #TODO must be calling the wrong method but
+            #TODO for now I am adding and removing the
+            #TODO open class manually
+            panel_input.deactivate = ->
+                console.log $(panel).attr('class')
+                if $(panel).hasClass('open')
+                    $(panel_dropup).toggle()
+                    $(panel).removeClass('open')
+
+            panel_input.activate = ->
+                this.prev_input.deactivate()
+                if not $(panel).hasClass('open')
+                    $(panel_dropup).toggle()
+                    $(panel).addClass('open')
+                $(this).focus()
+
         $(panel_input).keypress (e) ->
             if get_hotkey_command(e) == '\t'
                 e.preventDefault()
                 if e.shiftKey
-                    console.log this.prev_input
-                    $(this.prev_input).focus()
+                    this.prev_input.activate()
                 else
-                    console.log this.next_input
-                    $(this.next_input).focus()
+                    this.next_input.activate()
 
         i++
 

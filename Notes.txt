@@ -9,11 +9,9 @@ mock ui
     *i*
     key shortcuts
         *i*
-        when you focusin to the move-to drop-up, it expands and puts the bottom item as focused
-        similar controls to bucket select for item dropdown select, try to use same code
-        while dropdown has focus j and k select buckets in move-to
-        tab-out behavior needs work
-        make sure click behavior for button and hotkey behavior play nice together
+        when you shift-tab into the move-to button, the move-to menu expands and you
+        can navigate it with jk. This should not interfere with regular click behavior.
+        If you have clicked it open, j or k will make the bottom-most selection focused.
         *i*
         alt-t/h/p for new thing, habit or person
         whether button is clicked or key is pressed, new item is now the 'higlighted' item
@@ -100,6 +98,9 @@ scaloid android app connects to this app via rest api
 after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
 *next?*
+the way panel tab-index should really work is that each thing should have tab and shift-tab
+attributes that then plugs in the apprpriate behavior
+
 re-read javascript the good parts and implement it's advice
 do the same for rails-javascript in railsguides
 
