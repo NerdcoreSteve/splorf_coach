@@ -4,7 +4,6 @@
 
 #TODO this code smells and isn't very DRY, make it better later
 #TODO learn rails js conventions
-#TODO panel-dropdown should be a class!!!
 tab_index = 0
 append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     class_in_or_empty = ''
@@ -20,24 +19,21 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             <input id='first-input#{index}'
                    class='panel-input'
                    type='text'
-                   tabindex=#{1 + tab_index}
                    value='#{bucket_item['description']}'
                    placeholder='description'><br>
         """
         move_to_button_or_empty = """
             <div class="btn-group panel-btn-group dropup">
-                <button type="button" class="btn btn-default panel-input">
+                <button type="button" class="btn btn-default">
                     Move To
                 </button>
                 <button type="button"
-                        tabindex=#{4 + tab_index}
-                        class="btn btn-default dropdown-toggle panel-input panel-dropup-button"
+                        class="btn btn-default dropdown-toggle panel-input"
                         data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
                 </button>
-                <ul id="panel-dropdown"
-                    class="panel-dropup dropdown-menu bucket-list panel-input"
+                <ul class="panel-dropup dropdown-menu bucket-list"
                     role="menu">
                 </ul>
             </div>
@@ -48,17 +44,16 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             <input id='first-input#{index}'
                    class='panel-input'
                    type='text'
-                   tabindex=#{1 + tab_index}
                    value='#{bucket_item['first_name']}'
                    placeholder='first name'><br>
             <input class='panel-input'
                    type='text'
-                   tabindex=#{2 + tab_index}
                    value='#{bucket_item['last_name']}'
                    placeholder='last name'><br>
         """
     bucket_item_panel = """
-        <li class='panel panel-info'>
+        <li  id='panel#{index}'
+             class='panel panel-info'>
             <div class='panel-heading'
                  data-toggle='collapse'
                  data-parent='#accordion'
@@ -73,29 +68,44 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     bucket_item_panel += variable_fields
     bucket_item_panel += """
                     <textarea class='panel-input'
-                              tabindex=#{3 + tab_index}
                               placeholder='notes'>#{bucket_item['notes']}</textarea>
                     #{move_to_button_or_empty}
                     <button type='button'
-                            class='btn btn-default panel-input after-move-to'
-                            tabindex=#{5 + tab_index}>
+                            class='btn btn-default panel-input'>
                         Save
                     </button>
                     <button id='last-input#{index}'
                             type='button' 
-                            class='btn btn-default panel-input'
-                            tabindex=#{6 + tab_index}>
+                            class='btn btn-default panel-input'>
                         Cancel
                     </button>
                 </div>
             </div>
         </li>
     """
-    tab_index = tab_index + 6
-    $('#sortable-bucket-item-list').append bucket_item_panel
-    first_input_index = "#first-input#{index}"
-    last_input_index = "#last-input#{index}"
-    $(last_input_index).focusout -> $(first_input_index).focus()
+    $('#sortable-bucket-item-list').append(bucket_item_panel)
+    panel_inputs = $('#panel' + index).find('.panel-input')
+    i = 0
+    for panel_input in panel_inputs
+        i_next = i + 1
+        if i_next >= panel_inputs.length then i_next = 0
+        panel_input.next_input = panel_inputs[i_next]
+
+        i_prev = i - 1
+        if i_prev < 0 then i_prev = panel_inputs.length - 1
+        panel_input.prev_input = panel_inputs[i_prev]
+
+        $(panel_input).keypress (e) ->
+            if get_hotkey_command(e) == '\t'
+                e.preventDefault()
+                if e.shiftKey
+                    console.log this.prev_input
+                    $(this.prev_input).focus()
+                else
+                    console.log this.next_input
+                    $(this.next_input).focus()
+
+        i++
 
 num_bucket_items = 0
 populate_bucket_items = (bucket) ->
@@ -138,6 +148,11 @@ focus_first_bucket_in_dropdown = ->
     current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
     current_dropdown_item.focus()
 
+get_hotkey_command = (e) ->
+    e = e or window.event
+    return String.fromCharCode(e.which or e.charCode or e.keyCode)
+    ''
+
 #TODO using setInterval like this really feels like a hack
 #TODO but first_input is not initially visible
 set_panel_initial_focus = (panel) ->
@@ -155,7 +170,7 @@ set_panel_initial_focus = (panel) ->
 $(document).on 'click', '.panel-heading', () -> make_primary_panel $(this).parent()
 
 #TODO why can't I do .click?
-$(document).on 'click', '#panel-dropdown > li > a', (e) ->
+$(document).on 'click', '.panel-dropup > li > a', (e) ->
     e.preventDefault()
     alert "TODO moving items to different buckets not yet implemented"
 
@@ -209,26 +224,6 @@ $(document).on 'mouseout', '.panel-input', ->
 $(document).on 'click', '.bucket-dropdown-head', ->
     current_dropdown_item = null
 
-$(document).on 'focusout', '.panel-dropup-button', ->
-    panel_dropup_parent = $(this).parent()
-    if panel_dropup_parent.hasClass('open')
-        console.log 'close!'
-        panel_dropup_parent.find('#panel-dropdown').toggle()
-
-$(document).on 'focus', '.panel-dropup-button', ->
-    panel_dropup_parent = $(this).parent()
-    if not panel_dropup_parent.hasClass('open')
-        console.log 'open!'
-        panel_dropup = panel_dropup_parent.find('#panel-dropdown')
-        panel_dropup.toggle()
-        current_dropdown_item = panel_dropup.children().last().find('a')
-        current_dropdown_item.focus()
-        
-#TODO there is probably a better way to do this...
-$(document).on 'focusout', '.panel-dropup > li > a', ->
-    primary_panel.find('.after-move-to').focus()
-    $(this).parent().parent().toggle()
-
 #TODO initial dropdown population shouldn't be an ajax call
 #TODO nor should it be tied to a hard-coded bucket name
 #TODO maybe this should be done with partials that are rendered serverside on load
@@ -239,11 +234,8 @@ $(window).load ->
     $.when(populate_bucket_dropdown_and_items 'New Stuff').then ->
         make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
     $(document).keypress (e) ->
-        get_hotkey_command = (e) ->
-            e = e or window.event
-            if e.altKey
-                return String.fromCharCode(e.which or e.charCode or e.keyCode)
-            ''
+        if not e.altKey
+            return
         switch get_hotkey_command(e)
             when 'l'
                 if not $('.bucket-dropdown').hasClass 'open'
