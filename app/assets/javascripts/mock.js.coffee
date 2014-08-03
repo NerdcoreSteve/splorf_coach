@@ -10,11 +10,17 @@ add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
     checking = setInterval () ->
         if $(panel_dropup).children().length > 0 or checking_count > 1000
             clearInterval(checking)
-            console.log $(panel_input.prev_input).text()
-            console.log $(panel_input.next_input).text()
             panel_dropup_items = $(panel_dropup).children()
             for panel_dropup_item in panel_dropup_items
-                console.log panel_dropup_item
+                $(panel_dropup_item).keypress (e) ->
+                    console.log panel_input
+                    #TODO duplicate hotkey code
+                    if get_hotkey_command(e) == '\t'
+                        e.preventDefault()
+                        if e.shiftKey
+                            panel_input.prev_input.activate()
+                        else
+                            panel_input.next_input.activate()
     , 1
 
 current_dropdown_item = null
@@ -122,7 +128,6 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             #TODO for now I am adding and removing the
             #TODO open class manually
             panel_input.deactivate = ->
-                console.log 'deactivate!!'
                 if $(panel).hasClass('open')
                     $(panel_dropup).toggle()
                     $(panel).removeClass('open')
