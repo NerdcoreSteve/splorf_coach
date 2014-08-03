@@ -4,6 +4,7 @@
 
 #TODO this code smells and isn't very DRY, make it better later
 #TODO learn rails js conventions
+current_dropdown_item = null
 tab_index = 0
 append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     class_in_or_empty = ''
@@ -117,7 +118,10 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                 if not $(panel).hasClass('open')
                     $(panel_dropup).toggle()
                     $(panel).addClass('open')
-                $(this).parent().find('.panel-dropup').find('li:last').find('a').focus()
+                current_dropdown_item =
+                    $(this).parent().find('.panel-dropup').find('li:last').find('a')
+                current_dropdown_item.focus()
+                
 
         $(panel_input).keypress (e) ->
             if get_hotkey_command(e) == '\t'
@@ -139,7 +143,6 @@ populate_bucket_items = (bucket) ->
 
 #TODO what about ajax failure?
 current_bucket = null
-current_dropdown_item = null
 populate_bucket_dropdown_and_items = (bucket) ->
     current_dropdown_item = null
     current_bucket = bucket
