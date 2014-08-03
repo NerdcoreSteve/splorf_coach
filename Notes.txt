@@ -18,6 +18,11 @@ mock ui
             and once focus goes away, the thing can collapse
             This would solve the problem that when I click on another bucket item, the
             move-to menu doesn't collapse
+                *i*
+                focus-out move-to item collapses said menu
+                *i*
+                clicking on the move-to menu button expands it (duh) and puts focus
+                on the last item
         *i*
         fix bug
         I can't scroll on the move-to dropup again
