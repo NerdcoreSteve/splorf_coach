@@ -144,6 +144,13 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                 
             add_panel_dropup_tab_behavior(panel_input, panel_dropup)
 
+            #TODO I do this boolean check more than once
+            $(panel_input).click ->
+                if $(panel).hasClass 'open'
+                    panel_input.deactivate()
+                else
+                    panel_input.activate()
+           
         $(panel_input).keypress (e) ->
             if get_hotkey_command(e) == '\t'
                 e.preventDefault()
