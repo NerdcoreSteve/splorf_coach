@@ -4,6 +4,19 @@
 
 #TODO this code smells and isn't very DRY, make it better later
 #TODO learn rails js conventions
+add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
+    checking_count = 0
+    #TODO duplicate setInterval code, just waiting for something to be built
+    checking = setInterval () ->
+        if $(panel_dropup).children().length > 0 or checking_count > 1000
+            clearInterval(checking)
+            console.log $(panel_input.prev_input).text()
+            console.log $(panel_input.next_input).text()
+            panel_dropup_items = $(panel_dropup).children()
+            for panel_dropup_item in panel_dropup_items
+                console.log panel_dropup_item
+    , 1
+
 current_dropdown_item = null
 tab_index = 0
 append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
@@ -109,6 +122,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             #TODO for now I am adding and removing the
             #TODO open class manually
             panel_input.deactivate = ->
+                console.log 'deactivate!!'
                 if $(panel).hasClass('open')
                     $(panel_dropup).toggle()
                     $(panel).removeClass('open')
@@ -118,10 +132,10 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                 if not $(panel).hasClass('open')
                     $(panel_dropup).toggle()
                     $(panel).addClass('open')
-                current_dropdown_item =
-                    $(this).parent().find('.panel-dropup').find('li:last').find('a')
+                current_dropdown_item = $(panel_dropup).find('li:last').find('a')
                 current_dropdown_item.focus()
                 
+            add_panel_dropup_tab_behavior(panel_input, panel_dropup)
 
         $(panel_input).keypress (e) ->
             if get_hotkey_command(e) == '\t'

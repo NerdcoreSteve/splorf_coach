@@ -19,6 +19,11 @@ mock ui
             me the way I want to. That way focus instantly goes to the bottom item.
             and once focus goes away, the thing can collapse
         *i*
+        fix bug
+        I can't scroll on the move-to dropup again
+        it drags the whole dropup...
+        I thought I'd fixed this....
+        *i*
         alt-t/h/p for new thing, habit or person
         whether button is clicked or key is pressed, new item is now the 'higlighted' item
         *i*
