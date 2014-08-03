@@ -15,6 +15,7 @@ mock ui
             *i*
             fix bug
             move-to jk behavior stopped working...
+            The focusout behavior is being triggered when you jk in a move-to!!
         *i*
         fix bug
         I can't scroll on the move-to dropup again

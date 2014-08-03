@@ -15,7 +15,10 @@ add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
             clearInterval(checking)
             panel_dropup_items = $(panel_dropup).children()
             for panel_dropup_item in panel_dropup_items
-                $(panel_dropup_item).focusout(-> panel_input.deactivate())
+                $(panel_dropup_item).focusout -> 
+                    console.log current_dropdown_item.parent()
+                    #if current_dropdown_item == null
+                    #    panel_input.deactivate()
                 $(panel_dropup_item).keypress (e) ->
                     #TODO duplicate hotkey code
                     if get_hotkey_command(e) == '\t'
