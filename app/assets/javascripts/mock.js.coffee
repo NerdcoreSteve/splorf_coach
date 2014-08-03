@@ -190,6 +190,14 @@ make_primary_panel = (panel) ->
         primary_panel.addClass 'panel-primary'
         scroll_to(primary_panel)
 
+#TODO more duplicate code
+close_move_to = () ->
+    panel_dropup = $(primary_panel).find('.panel-dropup')
+    panel = $(panel_dropup).parent()
+    if panel.hasClass('open')
+        $(panel_dropup).toggle()
+        $(panel).removeClass('open')
+
 focus_first_bucket_in_dropdown = ->
     current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
     current_dropdown_item.focus()
@@ -247,6 +255,8 @@ navbar_collapse_shown = false
 #TODO why can't I do $('.bucket-dropdown').on 'show.bs.dropdown' ?
 #TODO can't I attach these functions directly to the elements in question?
 $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
+    #TODO this separates click and hotkey behavior, bad
+    close_move_to()
     if navbar_collapse_shown
         $('.navbar-collapse').collapse 'hide'
         navbar_collapse_shown = false
@@ -285,6 +295,7 @@ $(window).load ->
         switch get_hotkey_command(e)
             when 'l'
                 if not $('.bucket-dropdown').hasClass 'open'
+                    close_move_to()
                     $('.bucket-dropdown').addClass 'open'
                     focus_first_bucket_in_dropdown()
                 else
