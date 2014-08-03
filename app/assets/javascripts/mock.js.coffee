@@ -338,3 +338,6 @@ $(window).load ->
             when '\r'
                 primary_panel.find('.panel-collapse').collapse('toggle')
                 scroll_to(primary_panel)
+            when 'i'
+                if primary_panel.find('.panel-collapse').hasClass('in')
+                    primary_panel.find('.panel-input:first').focus()

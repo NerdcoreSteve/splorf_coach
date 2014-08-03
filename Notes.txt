@@ -13,8 +13,6 @@ mock ui
         can navigate it with jk. This should not interfere with regular click behavior.
         If you have clicked it open, j or k will make the bottom-most selection focused.
             *i*
-            hotkey to put focus back on highlighted bucket item first input
-            *i*
             when bucket menu is activated, move-to menu should be deactivated and vice versa
             works for hotkeys, but not for clicks
             *i*
