@@ -4,6 +4,9 @@
 
 #TODO this code smells and isn't very DRY, make it better later
 #TODO learn rails js conventions
+#TODO there's a lot of code that waits for the client to build html
+#     this code could probably be avoided if that html were built
+#     server-side
 add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
     checking_count = 0
     #TODO duplicate setInterval code, just waiting for something to be built
@@ -13,10 +16,10 @@ add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
             panel_dropup_items = $(panel_dropup).children()
             for panel_dropup_item in panel_dropup_items
                 $(panel_dropup_item).keypress (e) ->
-                    console.log panel_input
                     #TODO duplicate hotkey code
                     if get_hotkey_command(e) == '\t'
                         e.preventDefault()
+                        panel_input.deactivate()
                         if e.shiftKey
                             panel_input.prev_input.activate()
                         else
@@ -118,7 +121,6 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
         if not $(panel_input).hasClass('dropdown-toggle')
             panel_input.deactivate = -> true
             panel_input.activate = ->
-                this.prev_input.deactivate()
                 $(this).focus()
         else
             panel = $(panel_input).parent()
@@ -133,7 +135,6 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                     $(panel).removeClass('open')
 
             panel_input.activate = ->
-                this.prev_input.deactivate()
                 if not $(panel).hasClass('open')
                     $(panel_dropup).toggle()
                     $(panel).addClass('open')
@@ -145,6 +146,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
         $(panel_input).keypress (e) ->
             if get_hotkey_command(e) == '\t'
                 e.preventDefault()
+                this.deactivate()
                 if e.shiftKey
                     this.prev_input.activate()
                 else

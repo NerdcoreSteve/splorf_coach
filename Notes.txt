@@ -13,12 +13,13 @@ mock ui
         can navigate it with jk. This should not interfere with regular click behavior.
         If you have clicked it open, j or k will make the bottom-most selection focused.
             *i*
-            fix bug
-            move-to shift-tab behavior
+            when bucket menu is activated, move-to menu should be deactivated and vice versa
             *i*
             make click behavior correct. Might just override it to make it work for
             me the way I want to. That way focus instantly goes to the bottom item.
             and once focus goes away, the thing can collapse
+            This would solve the problem that when I click on another bucket item, the
+            move-to menu doesn't collapse
         *i*
         fix bug
         I can't scroll on the move-to dropup again
