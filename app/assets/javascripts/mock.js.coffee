@@ -117,7 +117,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                 if not $(panel).hasClass('open')
                     $(panel_dropup).toggle()
                     $(panel).addClass('open')
-                $(this).focus()
+                $(this).parent().find('.panel-dropup').find('li:last').find('a').focus()
 
         $(panel_input).keypress (e) ->
             if get_hotkey_command(e) == '\t'
