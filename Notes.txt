@@ -13,9 +13,6 @@ mock ui
         can navigate it with jk. This should not interfere with regular click behavior.
         If you have clicked it open, j or k will make the bottom-most selection focused.
             *i*
-            when bucket menu is activated, move-to menu should be deactivated and vice versa
-            works for hotkeys, but not for clicks
-            *i*
             make click behavior correct. Might just override it to make it work for
             me the way I want to. That way focus instantly goes to the bottom item.
             and once focus goes away, the thing can collapse
