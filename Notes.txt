@@ -12,6 +12,10 @@ mock ui
         when you shift-tab into the move-to button, the move-to menu expands and you
         can navigate it with jk. This should not interfere with regular click behavior.
         If you have clicked it open, j or k will make the bottom-most selection focused.
+            *i*
+            when you tab into the move-to menu, focus is given to the bottom item
+            *i*
+            when you tab or shift tab from a move-to item, it should go to prev-next
         *i*
         alt-t/h/p for new thing, habit or person
         whether button is clicked or key is pressed, new item is now the 'higlighted' item

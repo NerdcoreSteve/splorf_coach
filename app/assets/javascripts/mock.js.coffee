@@ -108,7 +108,6 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             #TODO for now I am adding and removing the
             #TODO open class manually
             panel_input.deactivate = ->
-                console.log $(panel).attr('class')
                 if $(panel).hasClass('open')
                     $(panel_dropup).toggle()
                     $(panel).removeClass('open')
