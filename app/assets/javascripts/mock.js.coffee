@@ -16,14 +16,13 @@ add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
             panel_dropup_items = $(panel_dropup).children()
             for panel_dropup_item in panel_dropup_items
                 $(panel_dropup_item).focusout -> 
-                    console.log current_dropdown_item.parent()
-                    #if current_dropdown_item == null
-                    #    panel_input.deactivate()
+                    if current_dropdown_item != null or
+                       not current_dropdown_item.parent().parent().hasClass('panel-dropup')
+                        panel_input.deactivate()
                 $(panel_dropup_item).keypress (e) ->
                     #TODO duplicate hotkey code
                     if get_hotkey_command(e) == '\t'
                         e.preventDefault()
-                        panel_input.deactivate() #TODO because of focusout, do I need this line?
                         if e.shiftKey
                             panel_input.prev_input.activate()
                         else
