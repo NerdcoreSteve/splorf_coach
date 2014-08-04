@@ -382,4 +382,4 @@ $(window).load ->
             when 'p'
                 add_bucket_item 'Person'
             when 'r'
-                console.log 'TODO remove bucket item'
+                $('#remove-bucket-modal').modal('show')
