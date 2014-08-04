@@ -15,9 +15,8 @@ add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
             clearInterval(checking)
             panel_dropup_items = $(panel_dropup).children()
             for panel_dropup_item in panel_dropup_items
-                $(panel_dropup_item).focusout -> 
-                    if current_dropdown_item == null or
-                       not current_dropdown_item.parent().parent().hasClass('panel-dropup')
+                $(panel_dropup_item).focusout ->
+                    if $(panel_dropup_item).get(0) == $(current_dropdown_item).parent().get(0)
                         panel_input.deactivate()
                 $(panel_dropup_item).keypress (e) ->
                     #TODO duplicate hotkey code
@@ -154,6 +153,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             #TODO I do this boolean check more than once
             $(panel_input).click ->
                 if $(panel).hasClass 'open'
+                    console.log 'Hello?'
                     panel_input.deactivate()
                 else
                     panel_input.activate()

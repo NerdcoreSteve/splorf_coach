@@ -8,6 +8,7 @@ mock ui
         *i*
         fix bug
         make move-to jk, click and focus out behavior correct!!!!
+        I think it all works, except when you tab into it and then click
         *i*
         delete button and hotkey
             *i*
