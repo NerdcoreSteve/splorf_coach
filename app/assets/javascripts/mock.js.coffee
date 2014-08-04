@@ -281,10 +281,20 @@ $(document).on 'show.bs.collapse', '.panel-collapse', -> set_panel_initial_focus
 #TODO Why does this have to be inside a function?
 $ -> $("#sortable-bucket-item-list").sortable { cursor: "move", cancel:'.sorting_disabled' }
 
+#TODO I'd like to do this for each class. There really ought to be a native way
+#     to do this. Otherwise I suppose I could make a function for it.
+#     or finally learn how to do this the proper rails way (with an attribute)
+
 $(document).on 'mouseover', '.panel-input', ->
     $("#sortable-bucket-item-list").addClass('sorting_disabled')
 
 $(document).on 'mouseout', '.panel-input', ->
+    $("#sortable-bucket-item-list").removeClass('sorting_disabled')
+
+$(document).on 'mouseover', '.panel-dropup', ->
+    $("#sortable-bucket-item-list").addClass('sorting_disabled')
+
+$(document).on 'mouseout', '.panel-dropup', ->
     $("#sortable-bucket-item-list").removeClass('sorting_disabled')
 
 $(document).on 'click', '.bucket-dropdown-head', ->

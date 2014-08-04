@@ -9,19 +9,16 @@ mock ui
     *i*
     key shortcuts
         *i*
-        fix bug
-        I can't scroll on the move-to dropup again
-        it drags the whole dropup...
-        I thought I'd fixed this....
-        *i*
         alt-t/h/p for new thing, habit or person
         whether button is clicked or key is pressed, new item is now the 'higlighted' item
         *i*
         delete button and hotkey
         modal for deleting, this will permenantly delete
     *i*
-    is the mock done? if so mess around with non-mock css to make the site usable and then 
-    merge branch to trunk and push to heroku
+    manually test ui and hotkeys thoroughly to make sure it's done
+    *i*
+    Mess around with non-mock css to make the site usable and then merge branch to
+    trunk and push to heroku
 
 *i*
 make ui actually functional, plug view into appropriate controllers, etc.
