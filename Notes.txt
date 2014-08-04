@@ -9,9 +9,9 @@ mock ui
         delete button and hotkey
         modal for deleting, this will permenantly delete
             *i*
-            make alt-r open an 'are you sure?' modal
-            for now there will be no undo to this
-            I may never make an undo
+            remove modal button on page, and put a delete button that does the same
+            thing on every panel
+            *i*
             console.log for the answer to the 'are you sure' modal.
             *i*
             delete primary panel
