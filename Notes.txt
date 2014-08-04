@@ -7,11 +7,7 @@ mock ui
     key shortcuts
         *i*
         fix bug
-        when I move all the way up move-to using jk then all the way down, the menu disapears
-        *i*
-        fix bug
         make move-to jk, click and focus out behavior correct!!!!
-        I think it all works, except when you tab into it and then click
         *i*
         delete button and hotkey
             *i*
