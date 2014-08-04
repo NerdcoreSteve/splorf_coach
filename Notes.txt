@@ -7,6 +7,9 @@ mock ui
     key shortcuts
         *i*
         fix bug
+        when I move all the way up move-to using jk then all the way down, the menu disapears
+        *i*
+        fix bug
         make move-to jk, click and focus out behavior correct!!!!
         I think it all works, except when you tab into it and then click
         *i*
@@ -117,6 +120,8 @@ after it's done, make sure any new fix/feature/whatever is done on both the web 
 
 **next?**
 *look through this list and do the highest priority thing first*
+I'm not detecting bootstrap events properly. Instead I'm looking at added classes and whatnot.
+
 The ui js is not the best code. Improve it.
 
 learn security and make this thing as secure as you can.
