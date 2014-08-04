@@ -243,10 +243,9 @@ $(document).on 'click', '#nav-bucket-dropdown > li > a', (e) ->
     $.when(populate_bucket_dropdown_and_items $(this).parent().text()).then ->
         make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
 
-$(document).on 'click', '#plus-button-group > div > button', (e) ->
+add_bucket_item = (bucket_item_type) ->
     bucket = 'New Stuff'
     num_bucket_items += 1
-    bucket_item_type = $(this).attr('id')
     if bucket_item_type != 'Person'
         bucket_item = {'type':bucket_item_type, 'description':'', 'notes':''}
     else
@@ -259,6 +258,9 @@ $(document).on 'click', '#plus-button-group > div > button', (e) ->
     else
         $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
             make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
+
+$(document).on 'click', '#plus-button-group > div > button', ->
+    add_bucket_item $(this).attr('id')
 
 navbar_collapse_shown = false
 
@@ -312,6 +314,8 @@ $(window).load ->
     $(document).keypress (e) ->
         if not e.altKey
             return
+        #TODO do a regex check for command and then override default behavior
+        #     This should ensure no conflicts with browser hotkeys.
         switch get_hotkey_command(e)
             when 'l'
                 if not $('.bucket-dropdown').hasClass 'open'
@@ -361,3 +365,14 @@ $(window).load ->
             when 'i'
                 if primary_panel.find('.panel-collapse').hasClass('in')
                     primary_panel.find('.panel-input:first').focus()
+            when 't'
+                #alt-t is tools in firefox, I'm choosing to override it for now...
+                #TODO is this a jerk move?
+                e.preventDefault()
+                add_bucket_item 'Thing'
+            when 'h'
+                #alt-h appears to do the same thing as alt-b
+                e.preventDefault()
+                add_bucket_item 'Habit'
+            when 'p'
+                add_bucket_item 'Person'
