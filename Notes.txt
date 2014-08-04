@@ -12,6 +12,10 @@ mock ui
             remove modal button on page, and put a delete button that does the same
             thing on every panel
             *i*
+            modal displays type of bucket item and its description
+            *i*
+            make hotkey do the same as delete button
+            *i*
             console.log for the answer to the 'are you sure' modal.
             *i*
             delete primary panel
