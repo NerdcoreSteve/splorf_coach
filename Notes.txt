@@ -8,6 +8,19 @@ mock ui
         *i*
         delete button and hotkey
         modal for deleting, this will permenantly delete
+            *i*
+            make alt-r open an 'are you sure?' modal
+            for now there will be no undo to this
+            I may never make an undo
+            console.log for the answer to the 'are you sure' modal.
+            *i*
+            delete primary panel
+                *i*
+                figure out if I need to loop through every panel to remove one
+                I might want to remove numbered ids if they're not needed or
+                alternatives can be used
+                *i*
+                delete the primary panel and make the top primary
     *i*
     manually test click-ui and hotkeys thoroughly to make sure it works the way you want it to
     *i*
@@ -98,6 +111,8 @@ after it's done, make sure any new fix/feature/whatever is done on both the web 
 **next?**
 *look through this list and do the highest priority thing first*
 The ui js is not the best code. Improve it.
+
+learn security and make this thing as secure as you can.
 
 the way panel tab-index should really work is that each thing should have tab and shift-tab
 attributes that then plugs in the apprpriate behavior
