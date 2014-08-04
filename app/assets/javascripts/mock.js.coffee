@@ -100,10 +100,15 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                             class='btn btn-default panel-input'>
                         Save
                     </button>
-                    <button id='last-input#{index}'
-                            type='button' 
+                    <button type='button' 
                             class='btn btn-default panel-input'>
                         Cancel
+                    </button>
+                    <button type='button'
+                            class="btn btn-default panel-input"
+                            data-toggle="modal"
+                            data-target="#remove-bucket-modal">
+                        delete this item
                     </button>
                 </div>
             </div>

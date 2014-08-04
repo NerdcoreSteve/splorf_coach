@@ -9,14 +9,13 @@ mock ui
         delete button and hotkey
         modal for deleting, this will permenantly delete
             *i*
-            remove modal button on page, and put a delete button that does the same
-            thing on every panel
+            focus starts on "on second thought..." alt-i puts it back there
             *i*
             modal displays type of bucket item and its description
             *i*
             make hotkey do the same as delete button
             *i*
-            console.log for the answer to the 'are you sure' modal.
+            console.log if the user chooses to delete
             *i*
             delete primary panel
                 *i*
@@ -25,6 +24,9 @@ mock ui
                 alternatives can be used
                 *i*
                 delete the primary panel and make the top primary
+    *i*
+    alt-i gives focus back to bucket menu if that is open, "on second thought..."
+    button is modal is visible, or first input of primary bucket if it is open. In that order.
     *i*
     manually test click-ui and hotkeys thoroughly to make sure it works the way you want it to
     *i*
