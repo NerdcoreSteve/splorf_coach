@@ -16,7 +16,7 @@ add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
             panel_dropup_items = $(panel_dropup).children()
             for panel_dropup_item in panel_dropup_items
                 $(panel_dropup_item).focusout -> 
-                    if current_dropdown_item != null or
+                    if current_dropdown_item == null or
                        not current_dropdown_item.parent().parent().hasClass('panel-dropup')
                         panel_input.deactivate()
                 $(panel_dropup_item).keypress (e) ->

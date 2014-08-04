@@ -6,11 +6,7 @@ mock ui
     *i*
     key shortcuts
         *i*
-        fix bug
-        move-to jk behavior is broken again!!!
-        *i*
         delete button and hotkey
-        modal for deleting, this will permenantly delete
             *i*
             focus starts on "on second thought..." alt-i puts it back there
             *i*
