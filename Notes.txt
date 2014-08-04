@@ -9,6 +9,9 @@ mock ui
         fix bug
         make move-to jk, click and focus out behavior correct!!!!
         *i*
+        fix bug
+        Now regular jk behavior stops after doing move-to jk behavior!!!! >:(
+        *i*
         delete button and hotkey
             *i*
             appropriate tab/alt-tab behavior for modal
