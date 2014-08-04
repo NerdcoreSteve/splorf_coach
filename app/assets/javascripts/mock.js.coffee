@@ -238,6 +238,9 @@ set_panel_initial_focus = (panel) ->
 
 $(document).on 'click', '.panel-heading', () -> make_primary_panel $(this).parent()
 
+$(document).on 'shown.bs.modal', '#remove-bucket-modal', ->
+    $('#cancel-delete-modal-button').focus()
+
 #TODO why can't I do .click?
 $(document).on 'click', '.panel-dropup > li > a', (e) ->
     e.preventDefault()
@@ -368,7 +371,9 @@ $(window).load ->
                 primary_panel.find('.panel-collapse').collapse('toggle')
                 scroll_to(primary_panel)
             when 'i'
-                if primary_panel.find('.panel-collapse').hasClass('in')
+                if $('#remove-bucket-modal').attr('aria-hidden') == "false"
+                    $('#cancel-delete-modal-button').focus()
+                else if primary_panel.find('.panel-collapse').hasClass('in')
                     primary_panel.find('.panel-input:first').focus()
             when 't'
                 #alt-t is tools in firefox, I'm choosing to override it for now...

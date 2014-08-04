@@ -6,15 +6,18 @@ mock ui
     *i*
     key shortcuts
         *i*
+        fix bug
+        make move-to jk, click and focus out behavior correct!!!!
+        *i*
         delete button and hotkey
             *i*
-            focus starts on "on second thought..." alt-i puts it back there
+            appropriate tab/alt-tab behavior for modal
             *i*
             modal displays type of bucket item and its description
             *i*
-            console.log if the user chooses to delete
-            *i*
             delete primary panel
+                *i*
+                console.log if the user chooses to delete
                 *i*
                 figure out if I need to loop through every panel to remove one
                 I might want to remove numbered ids if they're not needed or
