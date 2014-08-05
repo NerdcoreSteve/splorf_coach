@@ -142,6 +142,16 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
         if i_prev < 0 then i_prev = panel_inputs.length - 1
         panel_input.prev_input = panel_inputs[i_prev]
 
+        focus_last_dropup_item = (panel_dropup, options={}) ->
+            current_dropdown_item = $(panel_dropup).find('li:last').find('a')
+            if options.wait
+                execute_after_true 1,
+                                   -> panel_dropup.parent().hasClass 'open',
+                                   -> current_dropdown_item.focus()
+            else
+                if panel_dropup.parent().hasClass('open')
+                    current_dropdown_item.focus()
+
         if not $(panel_input).hasClass('dropdown-toggle')
             panel_input.deactivate = -> true
             panel_input.activate = ->
@@ -149,10 +159,9 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
         else
             panel = $(panel_input).parent()
             panel_dropup = $(panel).find(".panel-dropup")
-
             #TODO must be calling the wrong method but
-            #TODO for now I am adding and removing the
-            #TODO open class manually
+            #     for now I am adding and removing the
+            #     open class manually
             panel_input.deactivate = ->
                 if $(panel).hasClass('open')
                     $(panel).removeClass('open')
@@ -160,10 +169,12 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             panel_input.activate = ->
                 if not $(panel).hasClass('open')
                     $(panel).addClass('open')
-                current_dropdown_item = $(panel_dropup).find('li:last').find('a')
-                current_dropdown_item.focus()
+                    focus_last_dropup_item(panel_dropup)
                 
             add_dropup_tab_mouse_behavior(panel_input, panel_dropup)
+
+        $(panel_input).click ->
+            focus_last_dropup_item $(panel).find(".panel-dropup"), {wait: true}
 
         $(panel_input).keypress (e) ->
             if get_hotkey_command(e) == '\t'

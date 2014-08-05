@@ -6,8 +6,6 @@ mock ui
     *i*
     key shortcuts
         *i*
-        When I click on the move-to button, the last selection should be focused
-        *i*
         fix bug
         When I create a new bucket item, the focus does not go on that thing's first input
         nor does alt-i
