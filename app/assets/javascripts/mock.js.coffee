@@ -173,8 +173,8 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                 
             add_dropup_tab_mouse_behavior(panel_input, panel_dropup)
 
-        $(panel_input).click ->
-            focus_last_dropup_item $(panel).find(".panel-dropup"), {wait: true}
+            $(panel_input).click ->
+                focus_last_dropup_item $(panel).find(".panel-dropup"), {wait: true}
 
         $(panel_input).keypress (e) ->
             if get_hotkey_command(e) == '\t'
