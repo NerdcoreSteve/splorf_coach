@@ -7,6 +7,9 @@ mock ui
     key shortcuts
         *i*
         fix bug
+        When you make a new bucket item, the dropup is empty
+        *i*
+        fix bug
         make move-to jk, click and focus out behavior correct!!!!
         *i*
         fix bug
