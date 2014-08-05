@@ -4,8 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    replace all setInterval stuff with execute_after_true
-    *i*
     key shortcuts
         *i*
         fix bug

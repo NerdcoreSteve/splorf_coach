@@ -29,7 +29,7 @@ execute_after_true = (max_seconds, condition, function_to_execute) ->
         checking_count++
     , 1
 
-add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
+add_dropup_tab_mouse_behavior = (panel_input, panel_dropup) ->
     execute_after_true 1, 
                        -> $(panel_dropup).children().length > 0,
                        ->
@@ -155,24 +155,15 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             #TODO open class manually
             panel_input.deactivate = ->
                 if $(panel).hasClass('open')
-                    $(panel_dropup).toggle()
                     $(panel).removeClass('open')
 
             panel_input.activate = ->
                 if not $(panel).hasClass('open')
-                    $(panel_dropup).toggle()
                     $(panel).addClass('open')
                 current_dropdown_item = $(panel_dropup).find('li:last').find('a')
                 current_dropdown_item.focus()
-
-            $(panel_input).click (e) ->
-                e.preventDefault()
-                if $(panel).hasClass('open')
-                    console.log 'open'
-                else
-                    console.log 'closed'
                 
-            add_panel_dropup_tab_behavior(panel_input, panel_dropup)
+            add_dropup_tab_mouse_behavior(panel_input, panel_dropup)
 
         $(panel_input).keypress (e) ->
             if get_hotkey_command(e) == '\t'
@@ -233,7 +224,6 @@ close_move_to = () ->
     panel_dropup = $(primary_panel).find('.panel-dropup')
     panel = $(panel_dropup).parent()
     if panel.hasClass('open')
-        $(panel_dropup).toggle()
         $(panel).removeClass('open')
 
 focus_first_bucket_in_dropdown = ->
@@ -302,8 +292,6 @@ $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
 
 $(document).on 'show.bs.collapse', '.navbar-collapse', -> navbar_collapse_shown = true
 
-#TODO using setInterval like this really feels like a hack
-#TODO but first_input is not initially visible
 $(document).on 'show.bs.collapse', '.panel-collapse', -> set_panel_initial_focus $(this).parent()
 
 #TODO Why does this have to be inside a function?
