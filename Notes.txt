@@ -7,9 +7,6 @@ mock ui
     key shortcuts
         *i*
         fix bug
-        There's some kind of error popping up on the console when I to alt-t/p/h
-        *i*
-        fix bug
         When I do alt-p two times in a row, the focus goes to the second field of
         of the first person I created. Not to the first field of the last.
         it only seems to be a problem with people
@@ -25,6 +22,10 @@ mock ui
         When I change which thing is highlighted via jk, the focus should go out of the
         previous primary panel input
         can I unfocus everything?
+        fixing this should take care of the bug where, if you're in people (perhaps
+        if you're in other buckets too but I've not tested) and if you're in a
+        primary panel that's open, and if you make an unopened panel primary
+        and wait a second. The you get a console error.
         *i*
         after I go out of the modal, the focus should go back to the first input of
         the primary bucket item
@@ -49,6 +50,7 @@ mock ui
     button is modal is visible, or first input of primary bucket if it is open. In that order.
     *i*
     manually test click-ui and hotkeys thoroughly to make sure it works the way you want it to
+    Be sure to also look for console errors as you are now throwing them
     *i*
     Mess around with non-mock css to make the site usable and then merge branch to
     trunk and push to heroku
