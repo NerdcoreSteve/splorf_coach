@@ -7,13 +7,27 @@ mock ui
     key shortcuts
         *i*
         fix bug
-        When I create a new bucket item, the focus does not go on that thing's first input
-        nor does alt-i
-        perhaps take this as an opportunity to write more functional code that takes
-        the primary panel as a parameter
+        There's some kind of error popping up on the console when I to alt-t/p/h
+        *i*
+        fix bug
+        When I do alt-p two times in a row, the focus goes to the second field of
+        of the first person I created. Not to the first field of the last.
+        it only seems to be a problem with people
+        *i*
+        fix bug
+        When you open up a person bucket item, the second input is what's focused
+        Sometimes...
+        Need to experiment more to find out just when this happens.
         *i*
         fix bug
         regular jk behavior stops after doing move-to jk behavior
+        *i*
+        When I change which thing is highlighted via jk, the focus should go out of the
+        previous primary panel input
+        can I unfocus everything?
+        *i*
+        after I go out of the modal, the focus should go back to the first input of
+        the primary bucket item
         *i*
         delete button and hotkey
             *i*

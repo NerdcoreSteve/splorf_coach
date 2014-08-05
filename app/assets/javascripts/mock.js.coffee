@@ -280,11 +280,13 @@ add_bucket_item = (bucket_item_type) ->
         $.when(populate_bucket_dropdown_and_items bucket).then ->
             $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
                 make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
+                primary_panel.find('.panel-input:first').focus()
     else
         $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
             make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
             if bucket_item_type != 'Person'
                 populate_new_panel_dropup(primary_panel.find('.panel-dropup'))
+                primary_panel.find('.panel-input:first').focus()
 
 $(document).on 'click', '#plus-button-group > div > button', ->
     add_bucket_item $(this).attr('id')
