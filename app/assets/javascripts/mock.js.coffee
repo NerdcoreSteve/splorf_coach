@@ -3,6 +3,7 @@
 #It seems to be some happy-accident side effect
 
 #TODO this code smells and isn't very DRY, make it better later
+#TODO try to make this more functional
 #TODO learn rails js conventions
 #TODO there's a lot of code that waits for the client to build html
 #     this code could probably be avoided if that html were built
@@ -172,6 +173,7 @@ populate_bucket_items = (bucket) ->
             num_bucket_items = index + 1
 
 #TODO what about ajax failure?
+#TODO duplicate code in next two functions
 current_bucket = null
 populate_bucket_dropdown_and_items = (bucket) ->
     current_dropdown_item = null
@@ -183,6 +185,12 @@ populate_bucket_dropdown_and_items = (bucket) ->
         $.each json, (index, bucket) ->
             $(".bucket-list").append "<li><a class='dropdown-item' href='#'>#{bucket}</a></li>"
     populate_bucket_items bucket
+
+populate_new_panel_dropup = (new_panel) ->
+    $.ajax(url: "/mock/buckets").done (json) ->
+        json.splice json.indexOf(current_bucket), 1
+        $.each json, (index, bucket) ->
+            $(new_panel).append "<li><a class='dropdown-item' href='#'>#{bucket}</a></li>"
 
 scroll_to = (element) ->
     $(window).scrollTop(element.position().top - parseInt($('body').css('padding-top')))
@@ -245,6 +253,7 @@ $(document).on 'click', '#nav-bucket-dropdown > li > a', (e) ->
     $.when(populate_bucket_dropdown_and_items $(this).parent().text()).then ->
         make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
 
+#TODO more duplicate code
 add_bucket_item = (bucket_item_type) ->
     bucket = 'New Stuff'
     num_bucket_items += 1
@@ -260,6 +269,8 @@ add_bucket_item = (bucket_item_type) ->
     else
         $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
             make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
+            if bucket_item_type != 'Person'
+                populate_new_panel_dropup(primary_panel.find('.panel-dropup'))
 
 $(document).on 'click', '#plus-button-group > div > button', ->
     add_bucket_item $(this).attr('id')
