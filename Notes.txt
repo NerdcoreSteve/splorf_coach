@@ -6,8 +6,13 @@ mock ui
     *i*
     key shortcuts
         *i*
+        When I click on the move-to button, the last selection should be focused
+        *i*
         fix bug
-        make move-to jk, click and focus out behavior correct
+        When I create a new bucket item, the focus does not go on that thing's first input
+        nor does alt-i
+        perhaps take this as an opportunity to write more functional code that takes
+        the primary panel as a parameter
         *i*
         fix bug
         regular jk behavior stops after doing move-to jk behavior
