@@ -4,13 +4,15 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
+    replace all setInterval stuff with execute_after_true
+    *i*
     key shortcuts
         *i*
         fix bug
-        make move-to jk, click and focus out behavior correct!!!!
+        make move-to jk, click and focus out behavior correct
         *i*
         fix bug
-        Now regular jk behavior stops after doing move-to jk behavior!!!! >:(
+        regular jk behavior stops after doing move-to jk behavior
         *i*
         delete button and hotkey
             *i*
@@ -119,6 +121,8 @@ after it's done, make sure any new fix/feature/whatever is done on both the web 
 
 **next?**
 *look through this list and do the highest priority thing first*
+inputs with tab shiftab behavior should be wrapped in a div, give the div the appropriate attribute and the javascript will do the rest
+
 I'm not detecting bootstrap events properly. Instead I'm looking at added classes and whatnot.
 
 The ui js is not the best code. Improve it.

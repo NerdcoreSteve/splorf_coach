@@ -2,30 +2,48 @@
 #This is what's required, but no javascript or html actually tells it to do this.
 #It seems to be some happy-accident side effect
 
-#TODO this code smells and isn't very DRY, make it better later
+#TODO this code smells and isn't very DRY, make it better
 #TODO try to make this more functional
 #TODO learn rails js conventions
 #TODO there's a lot of code that waits for the client to build html
 #     this code could probably be avoided if that html were built
 #     server-side
-add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
+
+#TODO using setInterval like this really feels like a hack
+#     but it's necessary to wait for some things
+#     perhaps when I've learned events a bit better this
+#     won't be necessary
+execute_after_true = (max_seconds, condition, function_to_execute) ->
     checking_count = 0
-    #TODO duplicate setInterval code, just waiting for something to be built
-    checking = setInterval () ->
-        if $(panel_dropup).children().length > 0 or checking_count > 1000
+    #indentation for setInterval's second parameter is
+    #at the same indent level as variable
+    checking = setInterval ->
+        if condition()
             clearInterval(checking)
-            panel_dropup_items = $(panel_dropup).children()
-            for panel_dropup_item in panel_dropup_items
-                $(panel_dropup_item).keypress (e) ->
-                    #TODO duplicate hotkey code
-                    if get_hotkey_command(e) == '\t'
-                        e.preventDefault()
-                        panel_input.deactivate()
-                        if e.shiftKey
-                            panel_input.prev_input.activate()
-                        else
-                            panel_input.next_input.activate()
+            function_to_execute()
+        else if checking_count > max_seconds * 1000
+            clearInterval(checking)
+            console.error 'max seconds passed'
+            console.error 'unable to execute function'
+            console.error function_to_execute.toString()
+        checking_count++
     , 1
+
+add_panel_dropup_tab_behavior = (panel_input, panel_dropup) ->
+    execute_after_true 1, 
+                       -> $(panel_dropup).children().length > 0,
+                       ->
+                        panel_dropup_items = $(panel_dropup).children()
+                        for panel_dropup_item in panel_dropup_items
+                            $(panel_dropup_item).keypress (e) ->
+                                #TODO duplicate hotkey code
+                                if get_hotkey_command(e) == '\t'
+                                    e.preventDefault()
+                                    panel_input.deactivate()
+                                    if e.shiftKey
+                                        panel_input.prev_input.activate()
+                                    else
+                                        panel_input.next_input.activate()
 
 current_dropdown_item = null
 tab_index = 0
@@ -147,9 +165,12 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                 current_dropdown_item = $(panel_dropup).find('li:last').find('a')
                 current_dropdown_item.focus()
 
-            $(panel_input).click ->
-                $(panel_dropup).toggle()
-                $(panel).toggleClass('open')
+            $(panel_input).click (e) ->
+                e.preventDefault()
+                if $(panel).hasClass('open')
+                    console.log 'open'
+                else
+                    console.log 'closed'
                 
             add_panel_dropup_tab_behavior(panel_input, panel_dropup)
 
@@ -224,19 +245,11 @@ get_hotkey_command = (e) ->
     return String.fromCharCode(e.which or e.charCode or e.keyCode)
     ''
 
-#TODO using setInterval like this really feels like a hack
-#TODO but first_input is not initially visible
 set_panel_initial_focus = (panel) ->
-    first_input = panel.find('.panel-collapse').find('input')
-    checking_count = 0
-    #indentation for setInterval's second parameter is
-    #at the same indent level as variable
-    checking = setInterval ->
-        if first_input.is(':visible') or checking_count > 1000
-            clearInterval(checking)
-            first_input.focus()
-        checking_count++
-    , 1
+    first_input = panel.find('.panel-collapse').find 'input'
+    execute_after_true 1,
+                       -> first_input.is ':visible',
+                       -> first_input.focus()
 
 $(document).on 'click', '.panel-heading', () -> make_primary_panel $(this).parent()
 
