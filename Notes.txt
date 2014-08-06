@@ -4,11 +4,6 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    have execute_after_true throw and error that can be caught instead of doing console.log
-    then catch it in the when'\r' block
-    This will avoid a particular issue in the people bucket
-    be sure to surround every call with a catch block
-    *i*
     key shortcuts
         *i*
         fix bug
@@ -57,6 +52,7 @@ what about authentication and ajax calls?
 
 *i*
 start using this thing and make notes about it with it.
+but make regular backups of database dumps
 
 *i*
 adding a habit is a specialized thing

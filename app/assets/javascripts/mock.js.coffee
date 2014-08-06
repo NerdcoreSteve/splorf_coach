@@ -10,6 +10,7 @@
 #TODO there's a lot of code that waits for the client to build html
 #     this code could probably be avoided if that html were built
 #     server-side
+#TODO make sure you're using all of coffeescript's bells and whistles
 
 #TODO using setInterval like this really feels like a hack
 #     but it's necessary to wait for some things
@@ -25,27 +26,29 @@ execute_after_true = (max_seconds, condition, function_to_execute) ->
             function_to_execute()
         else if checking_count > max_seconds * 1000
             clearInterval(checking)
-            console.error 'max seconds passed'
-            console.error 'unable to execute function'
-            console.error function_to_execute.toString()
+            throw
+                "max seconds passed unable to execute function\n #{function_to_execute.toString()}"
         checking_count++
     , 1
 
 add_dropup_tab_mouse_behavior = (panel_input, panel_dropup) ->
-    execute_after_true 1, 
-                       -> $(panel_dropup).children().length > 0,
-                       ->
-                        panel_dropup_items = $(panel_dropup).children()
-                        for panel_dropup_item in panel_dropup_items
-                            $(panel_dropup_item).keypress (e) ->
-                                #TODO duplicate hotkey code
-                                if get_hotkey_command(e) == '\t'
-                                    e.preventDefault()
-                                    panel_input.deactivate()
-                                    if e.shiftKey
-                                        panel_input.prev_input.activate()
-                                    else
-                                        panel_input.next_input.activate()
+    try
+        execute_after_true 1, 
+                           -> $(panel_dropup).children().length > 0,
+                           ->
+                            panel_dropup_items = $(panel_dropup).children()
+                            for panel_dropup_item in panel_dropup_items
+                                $(panel_dropup_item).keypress (e) ->
+                                    #TODO duplicate hotkey code
+                                    if get_hotkey_command(e) == '\t'
+                                        e.preventDefault()
+                                        panel_input.deactivate()
+                                        if e.shiftKey
+                                            panel_input.prev_input.activate()
+                                        else
+                                            panel_input.next_input.activate()
+    catch error
+        console.error error
 
 current_dropdown_item = null
 tab_index = 0
@@ -147,9 +150,12 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
         focus_last_dropup_item = (panel_dropup, options={}) ->
             current_dropdown_item = $(panel_dropup).find('li:last').find('a')
             if options.wait
-                execute_after_true 1,
-                                   -> panel_dropup.parent().hasClass 'open',
-                                   -> current_dropdown_item.focus()
+                try
+                    execute_after_true 1,
+                                       -> panel_dropup.parent().hasClass 'open',
+                                       -> current_dropdown_item.focus()
+                catch error
+                    console.error error
             else
                 if panel_dropup.parent().hasClass('open')
                     current_dropdown_item.focus()
@@ -250,9 +256,12 @@ get_hotkey_command = (e) ->
 
 set_panel_initial_focus = (panel) ->
     first_input = panel.find('.panel-collapse').find 'input'
-    execute_after_true 1,
-                       -> first_input.is ':visible',
-                       -> first_input.focus()
+    try
+        execute_after_true 1,
+                           -> first_input.is ':visible',
+                           -> first_input.focus()
+    catch error
+        console.error error
 
 $(document).on 'click', '.panel-heading', () -> make_primary_panel $(this).parent()
 
@@ -394,13 +403,15 @@ $(window).load ->
                     scroll_to(primary_panel)
                     set_panel_initial_focus primary_panel
             when '\r'
-                console.log 'hey there'
                 primary_panel.find('.panel-collapse').collapse('toggle')
                 scroll_to(primary_panel)
                 #TODO For some reason I think I might be doing the line below twice
-                execute_after_true .1,
-                                   -> primary_panel.find('.panel-collapse').hasClass('in'),
-                                   -> primary_panel.find('.panel-input:first').focus()
+                try
+                    execute_after_true .1,
+                                       -> primary_panel.find('.panel-collapse').hasClass('in'),
+                                       -> primary_panel.find('.panel-input:first').focus()
+                catch error
+                    console.log 'primary panel not open, not gonna focus its input'
             when 'i'
                 if $('#remove-bucket-modal').attr('aria-hidden') == "false"
                     $('#cancel-delete-modal-button').focus()
