@@ -4,12 +4,12 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
+    have execute_after_true throw and error that can be caught instead of doing console.log
+    then catch it in the when'\r' block
+    This will avoid a particular issue in the people bucket
+    be sure to surround every call with a catch block
+    *i*
     key shortcuts
-        *i*
-        fix bug
-        When you open up a person bucket item, the second input is what's focused
-        Sometimes...
-        Need to experiment more to find out just when this happens.
         *i*
         fix bug
         regular jk behavior stops after doing move-to jk behavior
@@ -129,6 +129,11 @@ after it's done, make sure any new fix/feature/whatever is done on both the web 
 
 **next?**
 *look through this list and do the highest priority thing first*
+When you're in People, you've hightlighed but not opened a bucket item, and you hit enter, the app
+waits for a few milliseconds and then moves your cursor from the second input to the first. This
+is a hack, fix it.
+I might just want to make the code better and more event driven. That might make this go away.
+
 inputs with tab shiftab behavior should be wrapped in a div, give the div the appropriate attribute and the javascript will do the rest
 
 I'm not detecting bootstrap events properly. Instead I'm looking at added classes and whatnot.

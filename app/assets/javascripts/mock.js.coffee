@@ -4,6 +4,8 @@
 
 #TODO this code smells and isn't very DRY, make it better
 #TODO try to make this more functional
+#     if you're going to save state don't do it in fuctions
+#     keep state info small and pass it through as parameters
 #TODO learn rails js conventions
 #TODO there's a lot of code that waits for the client to build html
 #     this code could probably be avoided if that html were built
@@ -392,8 +394,13 @@ $(window).load ->
                     scroll_to(primary_panel)
                     set_panel_initial_focus primary_panel
             when '\r'
+                console.log 'hey there'
                 primary_panel.find('.panel-collapse').collapse('toggle')
                 scroll_to(primary_panel)
+                #TODO For some reason I think I might be doing the line below twice
+                execute_after_true .1,
+                                   -> primary_panel.find('.panel-collapse').hasClass('in'),
+                                   -> primary_panel.find('.panel-input:first').focus()
             when 'i'
                 if $('#remove-bucket-modal').attr('aria-hidden') == "false"
                     $('#cancel-delete-modal-button').focus()
@@ -410,5 +417,8 @@ $(window).load ->
                 add_bucket_item 'Habit'
             when 'p'
                 add_bucket_item 'Person'
-            when 'r'
+            when 'd'
+                #TODO is it ok that I'm overriding a hotkey that takes you to the address bar?
+                #     Is it really better than alt-r, which is a bit to close to ctrl-r?
+                e.preventDefault()
                 $('#remove-bucket-modal').modal('show')
