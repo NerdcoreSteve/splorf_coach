@@ -6,21 +6,6 @@ mock ui
     *i*
     key shortcuts
         *i*
-        When I change which thing is highlighted via jk, the focus should go out of the
-        previous primary panel input
-            *i*
-            gui.primary_panel should be an object that handles all primary panel stuff
-                *i*
-                change close_move_to() to primary_panel.dropup.close()
-                you'll have to initialize dropup in primary_panel.change
-                dropup.close() does nothing if it's a person item
-            *i*
-            gui.focused_element should, at all times, be the element that is given focus
-            this means that all focusing code should be handled by the gui object
-            *i*
-            at this point, it should be rather easy for the gui object to assign focus
-            to the first input of the primary panel
-        *i*
         after I go out of the modal, the focus should go back to the first input of
         the primary bucket item
         *i*

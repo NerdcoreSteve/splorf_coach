@@ -2,8 +2,6 @@
 #This is what's required, but no javascript or html actually tells it to do this.
 #It seems to be some happy-accident side effect
 
-#TODO maybe I need to make the whole gui an object....
-
 #TODO this code smells and isn't very DRY, make it better
 #TODO try to make this more functional
 #     if you're going to save state don't do it in fuctions
@@ -14,24 +12,40 @@
 #     server-side
 #TODO make sure you're using all of coffeescript's bells and whistles
 
-#TODO using setInterval like this really feels like a hack
-#     but it's necessary to wait for some things
-#     perhaps when I've learned events a bit better this
-#     won't be necessary
-
+#TODO maybe behavior should be gradually refactored into this gui object
 gui =
     focused_element: null
+    focus: (element) ->
+        gui.focused_element = element
+        $(gui.focused_element).focus()
+    unfocus: ->
+        if gui.focused_element != null
+            $(gui.focused_element).blur()
+            gui.focused_element = null
     primary_panel:
         dom: null
         change: (panel) ->
             if panel != gui.primary_panel.dom
                 if gui.primary_panel.dom != null
+                    gui.unfocus()
                     gui.primary_panel.dom.addClass 'panel-info'
                     gui.primary_panel.dom.removeClass 'panel-primary'
                 gui.primary_panel.dom = panel
                 gui.primary_panel.dom.removeClass 'panel-info'
                 gui.primary_panel.dom.addClass 'panel-primary'
                 scroll_to(gui.primary_panel.dom)
+                #TODO if this works then I think I can delete
+                #     similar lines elsewhere
+                gui.primary_panel.focus_first_input()
+        is_open: ->
+            gui.primary_panel.dom.find('.panel-collapse').hasClass('in')
+        focus_first_input: ->
+            gui.focus(gui.primary_panel.dom.find('.panel-input:first'))
+
+#TODO using setInterval like this really feels like a hack
+#     but it's necessary to wait for some things
+#     perhaps when I've learned events a bit better this
+#     won't be necessary
 
 execute_after_true = (max_seconds, condition, function_to_execute) ->
     checking_count = 0
@@ -170,17 +184,17 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                 try
                     execute_after_true 1,
                                        -> panel_dropup.parent().hasClass 'open',
-                                       -> current_dropdown_item.focus()
+                                       -> gui.focus(current_dropdown_item)
                 catch error
                     console.error error
             else
                 if panel_dropup.parent().hasClass('open')
-                    current_dropdown_item.focus()
+                    gui.focus(current_dropdown_item)
 
         if not $(panel_input).hasClass('dropdown-toggle')
             panel_input.deactivate = -> true
             panel_input.activate = ->
-                $(this).focus()
+                gui.focus($(this))
         else
             panel = $(panel_input).parent()
             panel_dropup = $(panel).find(".panel-dropup")
@@ -253,7 +267,7 @@ close_move_to = () ->
 
 focus_first_bucket_in_dropdown = ->
     current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
-    current_dropdown_item.focus()
+    gui.focus(current_dropdown_item)
 
 get_hotkey_command = (e) ->
     e = e or window.event
@@ -265,14 +279,14 @@ set_panel_initial_focus = (panel) ->
     try
         execute_after_true 1,
                            -> first_input.is ':visible',
-                           -> first_input.focus()
+                           -> gui.focus(first_input)
     catch error
         console.error error
 
 $(document).on 'click', '.panel-heading', () -> gui.primary_panel.change $(this).parent()
 
 $(document).on 'shown.bs.modal', '#remove-bucket-modal', ->
-    $('#cancel-delete-modal-button').focus()
+    gui.focus($('#cancel-delete-modal-button'))
 
 #TODO why can't I do .click?
 $(document).on 'click', '.panel-dropup > li > a', (e) ->
@@ -299,13 +313,13 @@ add_bucket_item = (bucket_item_type) ->
                 gui.primary_panel.change $('#sortable-bucket-item-list').find('.panel:last')
                 #TODO this next line should probably be in one place
                 #     or maybe just a few. Atm, it's all over the place
-                gui.primary_panel.dom.find('.panel-input:first').focus()
+                gui.primary_panel.focus_first_input()
     else
         $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
             gui.primary_panel.change $('#sortable-bucket-item-list').find('.panel:last')
             if bucket_item_type != 'Person'
                 populate_new_panel_dropup(gui.primary_panel.dom.find('.panel-dropup'))
-            gui.primary_panel.dom.find('.panel-input:first').focus()
+            gui.primary_panel.focus_first_input()
 
 $(document).on 'click', '#plus-button-group > div > button', ->
     add_bucket_item $(this).attr('id')
@@ -376,7 +390,7 @@ $(window).load ->
                     prev_dropdown_item = current_dropdown_item.parent().prev().find('a')
                     if prev_dropdown_item.length != 0
                         current_dropdown_item = prev_dropdown_item
-                        current_dropdown_item.focus()
+                        gui.focus(current_dropdown_item)
                 else if $('.bucket-dropdown').hasClass('open')
                     focus_first_bucket_in_dropdown()
                 else
@@ -389,7 +403,7 @@ $(window).load ->
                     next_dropdown_item = current_dropdown_item.parent().next().find('a')
                     if next_dropdown_item.length != 0
                         current_dropdown_item = next_dropdown_item
-                        current_dropdown_item.focus()
+                        gui.focus(current_dropdown_item)
                 else if $('.bucket-dropdown').hasClass('open')
                     focus_first_bucket_in_dropdown()
                 else
@@ -413,15 +427,15 @@ $(window).load ->
                 #TODO For some reason I think I might be doing the line below twice
                 try
                     execute_after_true .1,
-                                       -> gui.primary_panel.dom.find('.panel-collapse').hasClass('in'),
-                                       -> gui.primary_panel.dom.find('.panel-input:first').focus()
+                                       -> gui.primary_panel.is_open(),
+                                       -> gui.primary_panel.focus_first_input()
                 catch error
                     console.log 'primary panel not open, not gonna focus its input'
             when 'i'
                 if $('#remove-bucket-modal').attr('aria-hidden') == "false"
-                    $('#cancel-delete-modal-button').focus()
+                    gui.focus($('#cancel-delete-modal-button'))
                 else if gui.primary_panel.dom.find('.panel-collapse').hasClass('in')
-                    gui.primary_panel.dom.find('.panel-input:first').focus()
+                    gui.focus($('#cancel-delete-modal-button'))
             when 't'
                 #alt-t is tools in firefox, I'm choosing to override it for now...
                 #TODO is this a jerk move?
