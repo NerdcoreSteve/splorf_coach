@@ -11,6 +11,9 @@
 #     this code could probably be avoided if that html were built
 #     server-side
 #TODO make sure you're using all of coffeescript's bells and whistles
+#TODO hotkeys and click behavior should invoke the same code, this way
+#     when you get one thing done you don't have to do the whole
+#     thing over again for another control
 
 window.open "http://www.w3schools.com"
 
