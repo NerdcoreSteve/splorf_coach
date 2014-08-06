@@ -280,6 +280,8 @@ add_bucket_item = (bucket_item_type) ->
         $.when(populate_bucket_dropdown_and_items bucket).then ->
             $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
                 make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
+                #TODO this next line should probably be in one place
+                #     or maybe just a few. Atm, it's all over the place
                 primary_panel.find('.panel-input:first').focus()
     else
         $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
