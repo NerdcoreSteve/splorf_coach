@@ -6,7 +6,12 @@ mock ui
     *i*
     key shortcuts
         *i*
-        if I click on a panel to open it, the focus should go to its first input
+        fix bug
+        when I click on a person bucket item, the second input is focused, not the first
+        *i*
+        clicking should not evoke scroll_to behavior. It's confusing.
+        *i*
+        if I click on a panel that is not primary, it should not toggle open/close
         *i*
         if I click anywhere on a panel, including an input, that panel should become primary
         *i*
@@ -98,6 +103,7 @@ try to get a few people to use the app
 
 *i*
 stopwatch
+https://developer.mozilla.org/en-US/docs/Web/API/notification
 
 *i*
 Timer and stopwatch, hard-coded pomodoro schedule

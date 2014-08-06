@@ -12,6 +12,8 @@
 #     server-side
 #TODO make sure you're using all of coffeescript's bells and whistles
 
+window.open "http://www.w3schools.com"
+
 #TODO maybe behavior should be gradually refactored into this gui object
 gui =
     focused_element: null
@@ -25,6 +27,7 @@ gui =
     primary_panel:
         dom: null
         change: (panel) ->
+            console.log 'hello?'
             if panel != gui.primary_panel.dom
                 if gui.primary_panel.dom != null
                     gui.unfocus()
