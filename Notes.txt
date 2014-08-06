@@ -6,8 +6,9 @@ mock ui
     *i*
     key shortcuts
         *i*
-        after I go out of the modal, the focus should go back to the first input of
-        the primary bucket item
+        if I click on a panel to open it, the focus should go to its first input
+        *i*
+        if I click anywhere on a panel, including an input, that panel should become primary
         *i*
         delete button and hotkey
             *i*

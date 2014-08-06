@@ -40,7 +40,8 @@ gui =
         is_open: ->
             gui.primary_panel.dom.find('.panel-collapse').hasClass('in')
         focus_first_input: ->
-            gui.focus(gui.primary_panel.dom.find('.panel-input:first'))
+            if gui.primary_panel.is_open()
+                gui.focus(gui.primary_panel.dom.find('.panel-input:first'))
 
 #TODO using setInterval like this really feels like a hack
 #     but it's necessary to wait for some things
@@ -284,6 +285,8 @@ set_panel_initial_focus = (panel) ->
         console.error error
 
 $(document).on 'click', '.panel-heading', () -> gui.primary_panel.change $(this).parent()
+
+$(document).on 'hidden.bs.modal', '#remove-bucket-modal', -> gui.primary_panel.focus_first_input()
 
 $(document).on 'shown.bs.modal', '#remove-bucket-modal', ->
     gui.focus($('#cancel-delete-modal-button'))
