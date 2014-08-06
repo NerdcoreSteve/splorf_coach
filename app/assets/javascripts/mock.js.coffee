@@ -365,7 +365,9 @@ $(window).load ->
                 else
                     if primary_panel.prev().length != 0
                         make_primary_panel(primary_panel.prev())
-                    set_panel_initial_focus primary_panel
+                        #TODO NOW unfocus_panel_input(primary_panel)
+                    if primary_panel.find('.panel_collapse').hasClass('in')
+                        set_panel_initial_focus primary_panel
             when 'j'
                 if current_dropdown_item
                     next_dropdown_item = current_dropdown_item.parent().next().find('a')
@@ -377,7 +379,8 @@ $(window).load ->
                 else
                     if primary_panel.next().length != 0
                         make_primary_panel(primary_panel.next())
-                    set_panel_initial_focus primary_panel
+                    if primary_panel.find('.panel_collapse').hasClass('in')
+                        set_panel_initial_focus primary_panel
             when 'K'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
                     primary_panel.insertBefore(primary_panel.prev())
