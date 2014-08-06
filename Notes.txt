@@ -4,10 +4,11 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
+    fix bug
+    when I click on a person bucket item, the second input is focused, not the first
+    do a search in your mock js for the single console.log
+    *i*
     key shortcuts
-        *i*
-        fix bug
-        when I click on a person bucket item, the second input is focused, not the first
         *i*
         clicking should not evoke scroll_to behavior. It's confusing.
         *i*
