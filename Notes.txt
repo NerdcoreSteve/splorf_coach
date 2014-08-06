@@ -8,7 +8,15 @@ mock ui
         *i*
         When I change which thing is highlighted via jk, the focus should go out of the
         previous primary panel input
-        can I unfocus everything?
+            *i*
+            keep a variable that keeps track of which element is focused
+                *i*
+                all code having to do with focusing, tabout, etc, should return or some
+                how keep the above variable up to date
+            *i*
+            make an unfocus method that takes the variable as an input
+            it returns null
+            focused_element = unfocus_element focused_element
         *i*
         after I go out of the modal, the focus should go back to the first input of
         the primary bucket item
