@@ -11,8 +11,6 @@ mock ui
             *i*
             gui.primary_panel should be an object that handles all primary panel stuff
                 *i*
-                change primary_panel to primary_panel.dom
-                *i*
                 make make_primary_panel primary_panel.change(new_panel)
             *i*
             gui.focused_element should, at all times, be the element that is given focus
