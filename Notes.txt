@@ -6,9 +6,6 @@ mock ui
     *i*
     key shortcuts
         *i*
-        fix bug
-        regular jk behavior stops after doing move-to jk behavior
-        *i*
         When I change which thing is highlighted via jk, the focus should go out of the
         previous primary panel input
         can I unfocus everything?

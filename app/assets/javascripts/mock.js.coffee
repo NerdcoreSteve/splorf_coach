@@ -173,6 +173,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             panel_input.deactivate = ->
                 if $(panel).hasClass('open')
                     $(panel).removeClass('open')
+                    current_dropdown_item = null
 
             panel_input.activate = ->
                 if not $(panel).hasClass('open')
