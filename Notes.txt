@@ -7,11 +7,6 @@ mock ui
     key shortcuts
         *i*
         fix bug
-        When I do alt-p two times in a row, the focus goes to the second field of
-        of the first person I created. Not to the first field of the last.
-        it only seems to be a problem with people
-        *i*
-        fix bug
         When you open up a person bucket item, the second input is what's focused
         Sometimes...
         Need to experiment more to find out just when this happens.
