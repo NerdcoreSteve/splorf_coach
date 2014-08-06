@@ -23,6 +23,15 @@ gui =
     focused_element: null
     primary_panel:
         dom: null
+        change: (panel) ->
+            if panel != gui.primary_panel.dom
+                if gui.primary_panel.dom != null
+                    gui.primary_panel.dom.addClass 'panel-info'
+                    gui.primary_panel.dom.removeClass 'panel-primary'
+                gui.primary_panel.dom = panel
+                gui.primary_panel.dom.removeClass 'panel-info'
+                gui.primary_panel.dom.addClass 'panel-primary'
+                scroll_to(gui.primary_panel.dom)
 
 execute_after_true = (max_seconds, condition, function_to_execute) ->
     checking_count = 0
@@ -235,17 +244,6 @@ populate_new_panel_dropup = (new_panel) ->
 scroll_to = (element) ->
     $(window).scrollTop(element.position().top - parseInt($('body').css('padding-top')))
 
-count = 0
-make_primary_panel = (panel) ->
-    if panel != gui.primary_panel.dom
-        if gui.primary_panel.dom != null
-            gui.primary_panel.dom.addClass 'panel-info'
-            gui.primary_panel.dom.removeClass 'panel-primary'
-        gui.primary_panel.dom = panel
-        gui.primary_panel.dom.removeClass 'panel-info'
-        gui.primary_panel.dom.addClass 'panel-primary'
-        scroll_to(gui.primary_panel.dom)
-
 #TODO more duplicate code
 close_move_to = () ->
     panel_dropup = $(gui.primary_panel.dom).find('.panel-dropup')
@@ -271,7 +269,7 @@ set_panel_initial_focus = (panel) ->
     catch error
         console.error error
 
-$(document).on 'click', '.panel-heading', () -> make_primary_panel $(this).parent()
+$(document).on 'click', '.panel-heading', () -> gui.primary_panel.change $(this).parent()
 
 $(document).on 'shown.bs.modal', '#remove-bucket-modal', ->
     $('#cancel-delete-modal-button').focus()
@@ -284,7 +282,7 @@ $(document).on 'click', '.panel-dropup > li > a', (e) ->
 $(document).on 'click', '#nav-bucket-dropdown > li > a', (e) ->
     e.preventDefault()
     $.when(populate_bucket_dropdown_and_items $(this).parent().text()).then ->
-        make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
+        gui.primary_panel.change $('#sortable-bucket-item-list').find('.panel:first')
 
 #TODO more duplicate code
 add_bucket_item = (bucket_item_type) ->
@@ -298,13 +296,13 @@ add_bucket_item = (bucket_item_type) ->
     if current_bucket != bucket
         $.when(populate_bucket_dropdown_and_items bucket).then ->
             $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
-                make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
+                gui.primary_panel.change $('#sortable-bucket-item-list').find('.panel:last')
                 #TODO this next line should probably be in one place
                 #     or maybe just a few. Atm, it's all over the place
                 gui.primary_panel.dom.find('.panel-input:first').focus()
     else
         $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
-            make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
+            gui.primary_panel.change $('#sortable-bucket-item-list').find('.panel:last')
             if bucket_item_type != 'Person'
                 populate_new_panel_dropup(gui.primary_panel.dom.find('.panel-dropup'))
             gui.primary_panel.dom.find('.panel-input:first').focus()
@@ -358,7 +356,7 @@ $(document).on 'click', '.bucket-dropdown-head', ->
 #TODO loading completes the ajax content isn't populated in the dropdown and item list
 $(window).load ->
     $.when(populate_bucket_dropdown_and_items 'New Stuff').then ->
-        make_primary_panel $('#sortable-bucket-item-list').find('.panel:first')
+        gui.primary_panel.change $('#sortable-bucket-item-list').find('.panel:first')
     $(document).keypress (e) ->
         if not e.altKey
             return
@@ -383,8 +381,7 @@ $(window).load ->
                     focus_first_bucket_in_dropdown()
                 else
                     if gui.primary_panel.dom.prev().length != 0
-                        make_primary_panel(gui.primary_panel.dom.prev())
-                        #TODO NOW unfocus_panel_input(primary_panel)
+                        gui.primary_panel.change(gui.primary_panel.dom.prev())
                     if gui.primary_panel.dom.find('.panel_collapse').hasClass('in')
                         set_panel_initial_focus gui.primary_panel.dom
             when 'j'
@@ -397,7 +394,7 @@ $(window).load ->
                     focus_first_bucket_in_dropdown()
                 else
                     if gui.primary_panel.dom.next().length != 0
-                        make_primary_panel(gui.primary_panel.dom.next())
+                        gui.primary_panel.change(gui.primary_panel.dom.next())
                     if gui.primary_panel.dom.find('.panel_collapse').hasClass('in')
                         set_panel_initial_focus gui.primary_panel.dom
             when 'K'

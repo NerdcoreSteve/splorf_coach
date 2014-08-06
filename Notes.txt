@@ -11,7 +11,9 @@ mock ui
             *i*
             gui.primary_panel should be an object that handles all primary panel stuff
                 *i*
-                make make_primary_panel primary_panel.change(new_panel)
+                change close_move_to() to primary_panel.dropup.close()
+                you'll have to initialize dropup in primary_panel.change
+                dropup.close() does nothing if it's a person item
             *i*
             gui.focused_element should, at all times, be the element that is given focus
             this means that all focusing code should be handled by the gui object
