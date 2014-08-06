@@ -9,14 +9,17 @@ mock ui
         When I change which thing is highlighted via jk, the focus should go out of the
         previous primary panel input
             *i*
-            keep a variable that keeps track of which element is focused
+            gui.primary_panel should be an object that handles all primary panel stuff
                 *i*
-                all code having to do with focusing, tabout, etc, should return or some
-                how keep the above variable up to date
+                change primary_panel to primary_panel.dom
+                *i*
+                make make_primary_panel primary_panel.change(new_panel)
             *i*
-            make an unfocus method that takes the variable as an input
-            it returns null
-            focused_element = unfocus_element focused_element
+            gui.focused_element should, at all times, be the element that is given focus
+            this means that all focusing code should be handled by the gui object
+            *i*
+            at this point, it should be rather easy for the gui object to assign focus
+            to the first input of the primary panel
         *i*
         after I go out of the modal, the focus should go back to the first input of
         the primary bucket item

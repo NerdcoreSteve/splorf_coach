@@ -2,6 +2,8 @@
 #This is what's required, but no javascript or html actually tells it to do this.
 #It seems to be some happy-accident side effect
 
+#TODO maybe I need to make the whole gui an object....
+
 #TODO this code smells and isn't very DRY, make it better
 #TODO try to make this more functional
 #     if you're going to save state don't do it in fuctions
@@ -16,6 +18,11 @@
 #     but it's necessary to wait for some things
 #     perhaps when I've learned events a bit better this
 #     won't be necessary
+
+gui =
+    focused_element: null
+    primary_panel: null
+
 execute_after_true = (max_seconds, condition, function_to_execute) ->
     checking_count = 0
     #indentation for setInterval's second parameter is
@@ -228,20 +235,19 @@ scroll_to = (element) ->
     $(window).scrollTop(element.position().top - parseInt($('body').css('padding-top')))
 
 count = 0
-primary_panel = null
 make_primary_panel = (panel) ->
-    if panel != primary_panel
-        if primary_panel != null
-            primary_panel.addClass 'panel-info'
-            primary_panel.removeClass 'panel-primary'
-        primary_panel = panel
-        primary_panel.removeClass 'panel-info'
-        primary_panel.addClass 'panel-primary'
-        scroll_to(primary_panel)
+    if panel != gui.primary_panel
+        if gui.primary_panel != null
+            gui.primary_panel.addClass 'panel-info'
+            gui.primary_panel.removeClass 'panel-primary'
+        gui.primary_panel = panel
+        gui.primary_panel.removeClass 'panel-info'
+        gui.primary_panel.addClass 'panel-primary'
+        scroll_to(gui.primary_panel)
 
 #TODO more duplicate code
 close_move_to = () ->
-    panel_dropup = $(primary_panel).find('.panel-dropup')
+    panel_dropup = $(gui.primary_panel).find('.panel-dropup')
     panel = $(panel_dropup).parent()
     if panel.hasClass('open')
         $(panel).removeClass('open')
@@ -294,13 +300,13 @@ add_bucket_item = (bucket_item_type) ->
                 make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
                 #TODO this next line should probably be in one place
                 #     or maybe just a few. Atm, it's all over the place
-                primary_panel.find('.panel-input:first').focus()
+                gui.primary_panel.find('.panel-input:first').focus()
     else
         $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
             make_primary_panel $('#sortable-bucket-item-list').find('.panel:last')
             if bucket_item_type != 'Person'
-                populate_new_panel_dropup(primary_panel.find('.panel-dropup'))
-            primary_panel.find('.panel-input:first').focus()
+                populate_new_panel_dropup(gui.primary_panel.find('.panel-dropup'))
+            gui.primary_panel.find('.panel-input:first').focus()
 
 $(document).on 'click', '#plus-button-group > div > button', ->
     add_bucket_item $(this).attr('id')
@@ -375,11 +381,11 @@ $(window).load ->
                 else if $('.bucket-dropdown').hasClass('open')
                     focus_first_bucket_in_dropdown()
                 else
-                    if primary_panel.prev().length != 0
-                        make_primary_panel(primary_panel.prev())
+                    if gui.primary_panel.prev().length != 0
+                        make_primary_panel(gui.primary_panel.prev())
                         #TODO NOW unfocus_panel_input(primary_panel)
-                    if primary_panel.find('.panel_collapse').hasClass('in')
-                        set_panel_initial_focus primary_panel
+                    if gui.primary_panel.find('.panel_collapse').hasClass('in')
+                        set_panel_initial_focus gui.primary_panel
             when 'j'
                 if current_dropdown_item
                     next_dropdown_item = current_dropdown_item.parent().next().find('a')
@@ -389,35 +395,35 @@ $(window).load ->
                 else if $('.bucket-dropdown').hasClass('open')
                     focus_first_bucket_in_dropdown()
                 else
-                    if primary_panel.next().length != 0
-                        make_primary_panel(primary_panel.next())
-                    if primary_panel.find('.panel_collapse').hasClass('in')
-                        set_panel_initial_focus primary_panel
+                    if gui.primary_panel.next().length != 0
+                        make_primary_panel(gui.primary_panel.next())
+                    if gui.primary_panel.find('.panel_collapse').hasClass('in')
+                        set_panel_initial_focus gui.primary_panel
             when 'K'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
-                    primary_panel.insertBefore(primary_panel.prev())
-                    scroll_to(primary_panel)
-                    set_panel_initial_focus primary_panel
+                    gui.primary_panel.insertBefore(gui.primary_panel.prev())
+                    scroll_to(gui.primary_panel)
+                    set_panel_initial_focus gui.primary_panel
             when 'J'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
-                    primary_panel.insertAfter(primary_panel.next())
-                    scroll_to(primary_panel)
-                    set_panel_initial_focus primary_panel
+                    gui.primary_panel.insertAfter(gui.primary_panel.next())
+                    scroll_to(gui.primary_panel)
+                    set_panel_initial_focus gui.primary_panel
             when '\r'
-                primary_panel.find('.panel-collapse').collapse('toggle')
-                scroll_to(primary_panel)
+                gui.primary_panel.find('.panel-collapse').collapse('toggle')
+                scroll_to(gui.primary_panel)
                 #TODO For some reason I think I might be doing the line below twice
                 try
                     execute_after_true .1,
-                                       -> primary_panel.find('.panel-collapse').hasClass('in'),
-                                       -> primary_panel.find('.panel-input:first').focus()
+                                       -> gui.primary_panel.find('.panel-collapse').hasClass('in'),
+                                       -> gui.primary_panel.find('.panel-input:first').focus()
                 catch error
                     console.log 'primary panel not open, not gonna focus its input'
             when 'i'
                 if $('#remove-bucket-modal').attr('aria-hidden') == "false"
                     $('#cancel-delete-modal-button').focus()
-                else if primary_panel.find('.panel-collapse').hasClass('in')
-                    primary_panel.find('.panel-input:first').focus()
+                else if gui.primary_panel.find('.panel-collapse').hasClass('in')
+                    gui.primary_panel.find('.panel-input:first').focus()
             when 't'
                 #alt-t is tools in firefox, I'm choosing to override it for now...
                 #TODO is this a jerk move?
