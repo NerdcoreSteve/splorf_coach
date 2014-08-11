@@ -6,9 +6,10 @@ mock ui
     *i*
     key shortcuts
         *i*
+        alt-i gives focus back to bucket menu if that is open, "on second thought..."
+        button is modal is visible, or first input of primary bucket if it is open. In that order.
+        *i*
         delete button and hotkey
-            *i*
-            appropriate tab/alt-tab behavior for modal
             *i*
             modal displays type of bucket item and its description
             *i*
@@ -21,9 +22,6 @@ mock ui
                 alternatives can be used
                 *i*
                 delete the primary panel and make the top primary
-    *i*
-    alt-i gives focus back to bucket menu if that is open, "on second thought..."
-    button is modal is visible, or first input of primary bucket if it is open. In that order.
     *i*
     manually test click-ui and hotkeys thoroughly to make sure it works the way you want it to
     Be sure to also look for console errors as you are now throwing them

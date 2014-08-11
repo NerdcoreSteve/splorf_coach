@@ -282,9 +282,24 @@ set_panel_initial_focus = (panel) ->
                  -> gui.focus(first_input),
                  -> console.error "coudn't give focus to panel's first input"
 
-$(document).on 'keypress', '#delete-modal-cancel-button', -> console.log 'potato flakes'
+#TODO I want a more generalized solution for tab/alt-tab cycle behavior
+#     maybe wrap a div around them and then give that div an attribute
+modal_button_tab_next = (e, button_id) ->
+    e.preventDefault()
+    command = get_hotkey_command(e)
+    next_id = ''
+    if button_id == '#delete-modal-delete-button'
+        next_id = '#delete-modal-cancel-button'
+    else if button_id == '#delete-modal-cancel-button'
+        next_id = '#delete-modal-delete-button'
+    if command == '\t'
+        gui.focus($(next_id))
 
-$(document).on 'keypress', '#delete-modal-delete-button', -> console.log 'potato'
+$(document).on 'keypress', '#delete-modal-cancel-button', (e) ->
+    modal_button_tab_next(e, '#delete-modal-cancel-button')
+
+$(document).on 'keypress', '#delete-modal-delete-button', (e) ->
+    modal_button_tab_next(e, '#delete-modal-delete-button')
 
 $(document).on 'click', '.panel', () ->
     gui.primary_panel.change this, false
