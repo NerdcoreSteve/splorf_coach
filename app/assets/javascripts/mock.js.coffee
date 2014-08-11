@@ -45,7 +45,7 @@ gui =
             gui.focused_element = null
     primary_panel:
         dom: null
-        change: (panel) ->
+        change: (panel, scroll_to = true) ->
             if panel != gui.primary_panel.dom
                 if gui.primary_panel.dom != null
                     gui.unfocus()
@@ -54,7 +54,8 @@ gui =
                 gui.primary_panel.dom = panel
                 gui.primary_panel.dom.removeClass 'panel-info'
                 gui.primary_panel.dom.addClass 'panel-primary'
-                scroll_to(gui.primary_panel.dom)
+                if scroll_to
+                    scroll_to(gui.primary_panel.dom)
                 #TODO if this works then I think I can delete
                 #     similar lines elsewhere
                 gui.primary_panel.focus_first_input()
@@ -281,7 +282,7 @@ set_panel_initial_focus = (panel) ->
                  -> gui.focus(first_input),
                  -> console.error "coudn't give focus to panel's first input"
 
-$(document).on 'click', '.panel-heading', () -> gui.primary_panel.change $(this).parent()
+$(document).on 'click', '.panel-heading', () -> gui.primary_panel.change $(this).parent(), false
 
 $(document).on 'hidden.bs.modal', '#remove-bucket-modal', -> gui.primary_panel.focus_first_input()
 
