@@ -339,7 +339,7 @@ add_bucket_item = (bucket_item_type) ->
         $.when(append_bucket_item_panel(num_bucket_items, bucket_item, false)).then ->
             gui.primary_panel.change $('#sortable-bucket-item-list').find('.panel:last')
             if bucket_item_type != 'Person'
-                populate_new_panel_dropup(gui.primary_panel.dom.find('.panel-dropup'))
+                populate_new_panel_dropup($(gui.primary_panel.dom).find('.panel-dropup'))
             gui.primary_panel.focus_first_input()
 
 $(document).on 'click', '#plus-button-group > div > button', ->
@@ -417,7 +417,7 @@ $(window).load ->
                 else
                     if gui.primary_panel.dom.prev().length != 0
                         gui.primary_panel.change(gui.primary_panel.dom.prev())
-                    if gui.primary_panel.dom.find('.panel_collapse').hasClass('in')
+                    if $(gui.primary_panel.dom).find('.panel_collapse').hasClass('in')
                         set_panel_initial_focus gui.primary_panel.dom
             when 'j'
                 if current_dropdown_item
@@ -430,7 +430,7 @@ $(window).load ->
                 else
                     if gui.primary_panel.dom.next().length != 0
                         gui.primary_panel.change(gui.primary_panel.dom.next())
-                    if gui.primary_panel.dom.find('.panel_collapse').hasClass('in')
+                    if $(gui.primary_panel.dom).find('.panel_collapse').hasClass('in')
                         set_panel_initial_focus gui.primary_panel.dom
             when 'K'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
@@ -443,7 +443,7 @@ $(window).load ->
                     scroll_to(gui.primary_panel.dom)
                     set_panel_initial_focus gui.primary_panel.dom
             when '\r'
-                gui.primary_panel.dom.find('.panel-collapse').collapse('toggle')
+                $(gui.primary_panel.dom).find('.panel-collapse').collapse('toggle')
                 scroll_to(gui.primary_panel.dom)
                 #TODO For some reason I think I might be doing the line below twice
                 wait_if_else .1,
@@ -452,8 +452,11 @@ $(window).load ->
             when 'i'
                 if $('#remove-bucket-modal').attr('aria-hidden') == "false"
                     gui.focus($('#delete-modal-delete-button'))
-                else if gui.primary_panel.dom.find('.panel-collapse').hasClass('in')
-                    gui.focus($('#delete-modal-delete-button'))
+                else if $(gui.primary_panel.dom).find('.panel-collapse').hasClass('in')
+                    panel_dropup = $(gui.primary_panel.dom).find('.panel-dropup')
+                    console.log panel_dropup
+                    console.log panel_dropup.parent()
+                    gui.primary_panel.focus_first_input()
             when 't'
                 #alt-t is tools in firefox, I'm choosing to override it for now...
                 #TODO is this a jerk move?
