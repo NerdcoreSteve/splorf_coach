@@ -6,8 +6,12 @@ mock ui
     *i*
     key shortcuts
         *i*
-        alt-i gives focus back to bucket menu if that is open, "on second thought..."
-        button is modal is visible, or first input of primary bucket if it is open. In that order.
+        fix bug
+        alt-i, if modal is invisible, causes a console error
+        *i*
+        When you click on the bucket menu, the first choice becomes focused
+        *i*
+        alt-i behavior looks for modal first, then bucket menu, then first element in primary bi
         *i*
         delete button and hotkey
             *i*
