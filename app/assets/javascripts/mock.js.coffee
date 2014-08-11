@@ -45,26 +45,26 @@ gui =
             gui.focused_element = null
     primary_panel:
         dom: null
-        change: (panel, scroll_to = true) ->
+        change: (panel, scroll = true) ->
             if panel != gui.primary_panel.dom
                 if gui.primary_panel.dom != null
                     gui.unfocus()
-                    gui.primary_panel.dom.addClass 'panel-info'
-                    gui.primary_panel.dom.removeClass 'panel-primary'
+                    $(gui.primary_panel.dom).addClass 'panel-info'
+                    $(gui.primary_panel.dom).removeClass 'panel-primary'
                 gui.primary_panel.dom = panel
-                gui.primary_panel.dom.removeClass 'panel-info'
-                gui.primary_panel.dom.addClass 'panel-primary'
-                if scroll_to
+                $(gui.primary_panel.dom).removeClass 'panel-info'
+                $(gui.primary_panel.dom).addClass 'panel-primary'
+                if scroll
                     scroll_to(gui.primary_panel.dom)
                 #TODO if this works then I think I can delete
                 #     similar lines elsewhere
                 gui.primary_panel.focus_first_input()
         is_open: ->
-            gui.primary_panel.dom.find('.panel-collapse').hasClass('in')
+            $(gui.primary_panel.dom).find('.panel-collapse').hasClass('in')
         focus_first_input: ->
             wait_if_else 1,
                          -> gui.primary_panel.is_open(),
-                         -> gui.focus(gui.primary_panel.dom.find('.panel-input:first'))
+                         -> gui.focus($(gui.primary_panel.dom).find('.panel-input:first'))
 
 add_dropup_tab_mouse_behavior = (panel_input, panel_dropup) ->
     wait_if_else 1,
@@ -282,7 +282,8 @@ set_panel_initial_focus = (panel) ->
                  -> gui.focus(first_input),
                  -> console.error "coudn't give focus to panel's first input"
 
-$(document).on 'click', '.panel-heading', () -> gui.primary_panel.change $(this).parent(), false
+$(document).on 'click', '.panel', () ->
+    gui.primary_panel.change this, false
 
 $(document).on 'hidden.bs.modal', '#remove-bucket-modal', -> gui.primary_panel.focus_first_input()
 

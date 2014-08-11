@@ -6,11 +6,6 @@ mock ui
     *i*
     key shortcuts
         *i*
-        clicking should not evoke scroll_to behavior. It's confusing.
-        *i*
-        if I click on an open panel that is not primary, it should not toggle open/close
-        but simply make that panel primary
-        *i*
         delete button and hotkey
             *i*
             appropriate tab/alt-tab behavior for modal
