@@ -65,40 +65,24 @@ gui =
                          -> gui.primary_panel.is_open(),
                          -> gui.focus(gui.primary_panel.dom.find('.panel-input:first'))
 
-execute_after_true = (max_seconds, condition, function_to_execute) ->
-    checking_count = 0
-    #indentation for setInterval's second parameter is
-    #at the same indent level as variable
-    checking = setInterval ->
-        if condition()
-            clearInterval(checking)
-            function_to_execute()
-        else if checking_count > max_seconds * 1000
-            clearInterval(checking)
-            throw
-                "max seconds passed unable to execute function\n #{function_to_execute.toString()}"
-        checking_count++
-    , 1
-
 add_dropup_tab_mouse_behavior = (panel_input, panel_dropup) ->
-    try
-        execute_after_true 1, 
-                           -> $(panel_dropup).children().length > 0,
-                           ->
-                            panel_dropup_items = $(panel_dropup).children()
-                            for panel_dropup_item in panel_dropup_items
-                                $(panel_dropup_item).keypress (e) ->
-                                    #TODO duplicate hotkey code
-                                    if get_hotkey_command(e) == '\t'
-                                        e.preventDefault()
-                                        panel_input.deactivate()
-                                        if e.shiftKey
-                                            panel_input.prev_input.activate()
-                                        else
-                                            panel_input.next_input.activate()
-    catch error
-        console.error error
-
+    wait_if_else 1,
+                 -> $(panel_dropup).children().length > 0,
+                 ->
+                     panel_dropup_items = $(panel_dropup).children()
+                     for panel_dropup_item in panel_dropup_items
+                         $(panel_dropup_item).keypress (e) ->
+                             #TODO duplicate hotkey code
+                             if get_hotkey_command(e) == '\t'
+                                 e.preventDefault()
+                                 panel_input.deactivate()
+                                 if e.shiftKey
+                                     panel_input.prev_input.activate()
+                                 else
+                                     panel_input.next_input.activate()
+                 , ->
+                    console.error "panel dropup is empty"
+                 
 current_dropdown_item = null
 tab_index = 0
 append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
@@ -199,12 +183,10 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
         focus_last_dropup_item = (panel_dropup, options={}) ->
             current_dropdown_item = $(panel_dropup).find('li:last').find('a')
             if options.wait
-                try
-                    execute_after_true 1,
-                                       -> panel_dropup.parent().hasClass 'open',
-                                       -> gui.focus(current_dropdown_item)
-                catch error
-                    console.error error
+                wait_if_else 1,
+                             -> panel_dropup.parent().hasClass('open'),
+                             -> gui.focus(current_dropdown_item),
+                             -> console.error "coudn't give focus to panel dropup item"
             else
                 if panel_dropup.parent().hasClass('open')
                     gui.focus(current_dropdown_item)
@@ -294,12 +276,10 @@ get_hotkey_command = (e) ->
 
 set_panel_initial_focus = (panel) ->
     first_input = panel.find('.panel-collapse').find 'input'
-    try
-        execute_after_true 1,
-                           -> first_input.is ':visible',
-                           -> gui.focus(first_input)
-    catch error
-        console.error error
+    wait_if_else 1,
+                 -> first_input.is ':visible',
+                 -> gui.focus(first_input),
+                 -> console.error "coudn't give focus to panel's first input"
 
 $(document).on 'click', '.panel-heading', () -> gui.primary_panel.change $(this).parent()
 
@@ -445,12 +425,9 @@ $(window).load ->
                 gui.primary_panel.dom.find('.panel-collapse').collapse('toggle')
                 scroll_to(gui.primary_panel.dom)
                 #TODO For some reason I think I might be doing the line below twice
-                try
-                    execute_after_true .1,
-                                       -> gui.primary_panel.is_open(),
-                                       -> gui.primary_panel.focus_first_input()
-                catch error
-                    console.log 'primary panel not open, not gonna focus its input'
+                wait_if_else .1,
+                             -> gui.primary_panel.is_open(),
+                             -> gui.primary_panel.focus_first_input()
             when 'i'
                 if $('#remove-bucket-modal').attr('aria-hidden') == "false"
                     gui.focus($('#cancel-delete-modal-button'))
