@@ -282,13 +282,17 @@ set_panel_initial_focus = (panel) ->
                  -> gui.focus(first_input),
                  -> console.error "coudn't give focus to panel's first input"
 
+$(document).on 'keypress', '#delete-modal-cancel-button', -> console.log 'potato flakes'
+
+$(document).on 'keypress', '#delete-modal-delete-button', -> console.log 'potato'
+
 $(document).on 'click', '.panel', () ->
     gui.primary_panel.change this, false
 
 $(document).on 'hidden.bs.modal', '#remove-bucket-modal', -> gui.primary_panel.focus_first_input()
 
 $(document).on 'shown.bs.modal', '#remove-bucket-modal', ->
-    gui.focus($('#cancel-delete-modal-button'))
+    gui.focus($('#delete-modal-delete-button'))
 
 #TODO why can't I do .click?
 $(document).on 'click', '.panel-dropup > li > a', (e) ->
@@ -432,9 +436,9 @@ $(window).load ->
                              -> gui.primary_panel.focus_first_input()
             when 'i'
                 if $('#remove-bucket-modal').attr('aria-hidden') == "false"
-                    gui.focus($('#cancel-delete-modal-button'))
+                    gui.focus($('#delete-modal-delete-button'))
                 else if gui.primary_panel.dom.find('.panel-collapse').hasClass('in')
-                    gui.focus($('#cancel-delete-modal-button'))
+                    gui.focus($('#delete-modal-delete-button'))
             when 't'
                 #alt-t is tools in firefox, I'm choosing to override it for now...
                 #TODO is this a jerk move?
