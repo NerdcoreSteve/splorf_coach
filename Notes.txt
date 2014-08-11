@@ -8,6 +8,8 @@ mock ui
     when moving around people bucket items using jk
     "uncaught exception: max seconds passed unable to execute function"
     I think it's because the bucket item is closed
+    Test this but I think the wait_if... function should replace the execute_after
+    which should fixt the problem
     *i*
     key shortcuts
         *i*

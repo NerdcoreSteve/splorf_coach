@@ -15,6 +15,24 @@
 #     when you get one thing done you don't have to do the whole
 #     thing over again for another control
 
+#TODO using setInterval like this really feels like a hack
+#     but it's necessary to wait for some things
+#     perhaps when I've learned events a bit better this
+#     won't be necessary
+wait_if_else = (seconds_to_wait, condition_function, true_function, false_function = null) ->
+    checking_count = 0
+    #indentation for setInterval's second parameter is
+    #at the same indent level as variable
+    checking = setInterval ->
+        if condition_function()
+            clearInterval(checking)
+            true_function()
+        else if checking_count > seconds_to_wait * 1000
+            clearInterval(checking)
+            if false_function != null then false_function()
+        checking_count++
+    , 1
+
 #TODO maybe behavior should be gradually refactored into this gui object
 gui =
     focused_element: null
@@ -43,18 +61,9 @@ gui =
         is_open: ->
             gui.primary_panel.dom.find('.panel-collapse').hasClass('in')
         focus_first_input: ->
-            try
-                execute_after_true 1,
-                                   -> gui.primary_panel.is_open(),
-                                   -> gui.focus(gui.primary_panel.dom.find('.panel-input:first'))
-            catch error
-                #TODO I'd rather not do anything here...
-                console.log "won't focus panel's first input as panel is closed"
-
-#TODO using setInterval like this really feels like a hack
-#     but it's necessary to wait for some things
-#     perhaps when I've learned events a bit better this
-#     won't be necessary
+            wait_if_else 1,
+                         -> gui.primary_panel.is_open(),
+                         -> gui.focus(gui.primary_panel.dom.find('.panel-input:first'))
 
 execute_after_true = (max_seconds, condition, function_to_execute) ->
     checking_count = 0
