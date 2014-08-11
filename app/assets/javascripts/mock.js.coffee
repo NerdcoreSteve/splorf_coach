@@ -15,8 +15,6 @@
 #     when you get one thing done you don't have to do the whole
 #     thing over again for another control
 
-window.open "http://www.w3schools.com"
-
 #TODO maybe behavior should be gradually refactored into this gui object
 gui =
     focused_element: null
@@ -30,7 +28,6 @@ gui =
     primary_panel:
         dom: null
         change: (panel) ->
-            console.log 'hello?'
             if panel != gui.primary_panel.dom
                 if gui.primary_panel.dom != null
                     gui.unfocus()
@@ -46,8 +43,13 @@ gui =
         is_open: ->
             gui.primary_panel.dom.find('.panel-collapse').hasClass('in')
         focus_first_input: ->
-            if gui.primary_panel.is_open()
-                gui.focus(gui.primary_panel.dom.find('.panel-input:first'))
+            try
+                execute_after_true 1,
+                                   -> gui.primary_panel.is_open(),
+                                   -> gui.focus(gui.primary_panel.dom.find('.panel-input:first'))
+            catch error
+                #TODO I'd rather not do anything here...
+                console.log "won't focus panel's first input as panel is closed"
 
 #TODO using setInterval like this really feels like a hack
 #     but it's necessary to wait for some things

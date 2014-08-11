@@ -5,8 +5,9 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 mock ui
     *i*
     fix bug
-    when I click on a person bucket item, the second input is focused, not the first
-    do a search in your mock js for the single console.log
+    when moving around people bucket items using jk
+    "uncaught exception: max seconds passed unable to execute function"
+    I think it's because the bucket item is closed
     *i*
     key shortcuts
         *i*
