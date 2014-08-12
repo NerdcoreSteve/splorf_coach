@@ -194,7 +194,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
                             class="btn btn-default panel-input"
                             data-toggle="modal"
                             data-target="#remove-bucket-modal">
-                        delete this item
+                        delete
                     </button>
                 </div>
             </div>
@@ -336,6 +336,7 @@ $(document).on 'shown.bs.modal', '#remove-bucket-modal', ->
     gui.focus($('#delete-modal-delete-button'))
 
 #TODO why can't I do .click?
+#     looks like I can do it under a $ ->
 $(document).on 'click', '.panel-dropup > li > a', (e) ->
     e.preventDefault()
     alert "TODO moving items to different buckets not yet implemented"
@@ -389,7 +390,11 @@ $(document).on 'show.bs.collapse', '.navbar-collapse', -> navbar_collapse_shown 
 $(document).on 'show.bs.collapse', '.panel-collapse', -> set_panel_initial_focus $(this).parent()
 
 #TODO Why does this have to be inside a function?
-$ -> $("#sortable-bucket-item-list").sortable { cursor: "move", cancel:'.sorting_disabled' }
+$ -> 
+    $("#sortable-bucket-item-list").sortable { cursor: "move", cancel:'.sorting_disabled' }
+    $("#delete-modal-cancel-button").click ->
+        $(gui.primary_panel.dom).remove()
+        gui.primary_panel.change $('#sortable-bucket-item-list').find('.panel:first')
 
 #TODO I'd like to do this for each class. There really ought to be a native way
 #     to do this. Otherwise I suppose I could make a function for it.

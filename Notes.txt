@@ -4,19 +4,7 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 *i*
 mock ui
     *i*
-    key shortcuts
-        *i*
-        delete button and hotkey
-            *i*
-            delete primary panel
-                *i*
-                console.log if the user chooses to delete
-                *i*
-                figure out if I need to loop through every panel to remove one
-                I might want to remove numbered ids if they're not needed or
-                alternatives can be used
-                *i*
-                delete the primary panel and make the top primary
+    There should be no errors when there are no bucket items in a bucket
     *i*
     manually test click-ui and hotkeys thoroughly to make sure it works the way you want it to
     Be sure to also look for console errors as you are now throwing them
