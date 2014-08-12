@@ -62,6 +62,7 @@ gui =
             $(gui.focused_element).blur()
             gui.focused_element = null
     primary_panel:
+        description: null
         dropup:
             dom: null
             close: ->
@@ -82,6 +83,7 @@ gui =
                 $(gui.primary_panel.dom).addClass 'panel-primary'
 
                 gui.primary_panel.dropup.dom = $(gui.primary_panel.dom).find('.panel-dropup')
+                gui.primary_panel.description = $(gui.primary_panel.dom).find('.panel-title').text()
                 
                 if scroll
                     scroll_to(gui.primary_panel.dom)
@@ -326,6 +328,9 @@ $(document).on 'click', '.panel', () ->
     gui.primary_panel.change this, false
 
 $(document).on 'hidden.bs.modal', '#remove-bucket-modal', -> gui.primary_panel.focus_first_input()
+
+$(document).on 'show.bs.modal', '#remove-bucket-modal', ->
+    $('#modal-bucket-item-description').text("\"#{gui.primary_panel.description}\"")
 
 $(document).on 'shown.bs.modal', '#remove-bucket-modal', ->
     gui.focus($('#delete-modal-delete-button'))

@@ -8,8 +8,6 @@ mock ui
         *i*
         delete button and hotkey
             *i*
-            modal displays type of bucket item and its description
-            *i*
             delete primary panel
                 *i*
                 console.log if the user chooses to delete
