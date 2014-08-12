@@ -62,6 +62,8 @@ gui =
             $(gui.focused_element).blur()
             gui.focused_element = null
     primary_panel:
+        empty: ->
+            $(gui.primary_panel.dom).length == 0
         description: null
         dropup:
             dom: null
@@ -285,7 +287,8 @@ populate_new_panel_dropup = (new_panel) ->
             $(new_panel).append "<li><a class='dropdown-item' href='#'>#{bucket}</a></li>"
 
 scroll_to = (element) ->
-    $(window).scrollTop(element.position().top - parseInt($('body').css('padding-top')))
+    if not gui.primary_panel.empty()
+        $(window).scrollTop(element.position().top - parseInt($('body').css('padding-top')))
 
 #TODO more duplicate code
 close_move_to = () ->
