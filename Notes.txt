@@ -2,10 +2,6 @@ ITERATIONS
 All iterations start with design notes/drawings and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
 *i*
-Mess around with non-mock css to make the site usable and then merge branch to
-trunk and push to heroku
-
-*i*
 make ui actually functional, plug view into appropriate controllers, etc.
 match buckets to what you currently have in your kanban
 changes models to match mock ui design
