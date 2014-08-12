@@ -291,10 +291,6 @@ close_move_to = () ->
     if panel.hasClass('open')
         $(panel).removeClass('open')
 
-focus_first_bucket_in_dropdown = ->
-    current_dropdown_item = $('.bucket-dropdown').find('.dropdown-item:first')
-    gui.focus(current_dropdown_item)
-
 get_hotkey_command = (e) ->
     e = e or window.event
     return String.fromCharCode(e.which or e.charCode or e.keyCode)
@@ -310,14 +306,13 @@ set_panel_initial_focus = (panel) ->
 #TODO I want a more generalized solution for tab/alt-tab cycle behavior
 #     maybe wrap a div around them and then give that div an attribute
 modal_button_tab_next = (e, button_id) ->
-    e.preventDefault()
-    command = get_hotkey_command(e)
-    next_id = ''
-    if button_id == '#delete-modal-delete-button'
-        next_id = '#delete-modal-cancel-button'
-    else if button_id == '#delete-modal-cancel-button'
-        next_id = '#delete-modal-delete-button'
-    if command == '\t'
+    if get_hotkey_command(e) == '\t'
+        e.preventDefault()
+        next_id = ''
+        if button_id == '#delete-modal-delete-button'
+            next_id = '#delete-modal-cancel-button'
+        else if button_id == '#delete-modal-cancel-button'
+            next_id = '#delete-modal-delete-button'
         gui.focus($(next_id))
 
 $(document).on 'keypress', '#delete-modal-cancel-button', (e) ->
@@ -381,6 +376,7 @@ $(document).on 'show.bs.dropdown', '.bucket-dropdown',  ->
         $('.navbar-collapse').collapse 'hide'
         navbar_collapse_shown = false
     $('.bucket-dropdown').dropdown
+    focus_menu_item($('.bucket-dropdown'), {wait: true})
 
 $(document).on 'show.bs.collapse', '.navbar-collapse', -> navbar_collapse_shown = true
 
@@ -427,7 +423,7 @@ $(window).load ->
                 if not $('.bucket-dropdown').hasClass 'open'
                     close_move_to()
                     $('.bucket-dropdown').addClass 'open'
-                    focus_first_bucket_in_dropdown()
+                    focus_menu_item($('.bucket-dropdown'))
                 else
                     $('.bucket-dropdown').removeClass 'open'
                     current_dropdown_item = null
@@ -438,7 +434,7 @@ $(window).load ->
                         current_dropdown_item = prev_dropdown_item
                         gui.focus(current_dropdown_item)
                 else if $('.bucket-dropdown').hasClass('open')
-                    focus_first_bucket_in_dropdown()
+                    focus_menu_item($('.bucket-dropdown'))
                 else
                     if gui.primary_panel.dom.prev().length != 0
                         gui.primary_panel.change(gui.primary_panel.dom.prev())
@@ -451,7 +447,7 @@ $(window).load ->
                         current_dropdown_item = next_dropdown_item
                         gui.focus(current_dropdown_item)
                 else if $('.bucket-dropdown').hasClass('open')
-                    focus_first_bucket_in_dropdown()
+                    focus_menu_item($('.bucket-dropdown'))
                 else
                     if gui.primary_panel.dom.next().length != 0
                         gui.primary_panel.change(gui.primary_panel.dom.next())
