@@ -7,6 +7,9 @@ mock ui
     key shortcuts
         *i*
         When you click on the bucket menu, the first choice becomes focused
+        replace focus_last_dropup_item with focus_menu_item(menu, first=true) and replace
+        all calls to the first function with the last
+        then use this thing for the bucket item menu
         *i*
         alt-i behavior looks for modal first, then bucket menu, then first element in primary bi
         *i*
