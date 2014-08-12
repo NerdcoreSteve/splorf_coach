@@ -15,6 +15,8 @@
 #     when you get one thing done you don't have to do the whole
 #     thing over again for another control
 
+current_dropdown_item = null
+
 #TODO using setInterval like this really feels like a hack
 #     but it's necessary to wait for some things
 #     perhaps when I've learned events a bit better this
@@ -112,7 +114,6 @@ add_dropup_tab_mouse_behavior = (panel_input, panel_dropup) ->
                  , ->
                     console.error "panel dropup is empty"
                  
-current_dropdown_item = null
 tab_index = 0
 append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
     class_in_or_empty = ''
@@ -436,8 +437,8 @@ $(window).load ->
                 else if $('.bucket-dropdown').hasClass('open')
                     focus_menu_item($('.bucket-dropdown'))
                 else
-                    if gui.primary_panel.dom.prev().length != 0
-                        gui.primary_panel.change(gui.primary_panel.dom.prev())
+                    if $(gui.primary_panel.dom).prev().length != 0
+                        gui.primary_panel.change($(gui.primary_panel.dom).prev())
                     if $(gui.primary_panel.dom).find('.panel_collapse').hasClass('in')
                         set_panel_initial_focus gui.primary_panel.dom
             when 'j'
@@ -449,18 +450,18 @@ $(window).load ->
                 else if $('.bucket-dropdown').hasClass('open')
                     focus_menu_item($('.bucket-dropdown'))
                 else
-                    if gui.primary_panel.dom.next().length != 0
-                        gui.primary_panel.change(gui.primary_panel.dom.next())
+                    if $(gui.primary_panel.dom).next().length != 0
+                        gui.primary_panel.change($(gui.primary_panel.dom).next())
                     if $(gui.primary_panel.dom).find('.panel_collapse').hasClass('in')
                         set_panel_initial_focus gui.primary_panel.dom
             when 'K'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
-                    gui.primary_panel.dom.insertBefore(gui.primary_panel.dom.prev())
+                    gui.primary_panel.dom.insertBefore($(gui.primary_panel.dom).prev())
                     scroll_to(gui.primary_panel.dom)
                     set_panel_initial_focus gui.primary_panel.dom
             when 'J'
                 if not current_dropdown_item and not $('.bucket-dropdown').hasClass('open')
-                    gui.primary_panel.dom.insertAfter(gui.primary_panel.dom.next())
+                    gui.primary_panel.dom.insertAfter($(gui.primary_panel.dom).next())
                     scroll_to(gui.primary_panel.dom)
                     set_panel_initial_focus gui.primary_panel.dom
             when '\r'

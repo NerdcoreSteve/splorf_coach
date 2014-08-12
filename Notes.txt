@@ -6,9 +6,6 @@ mock ui
     *i*
     key shortcuts
         *i*
-        got some kinda bug where it can't focus on the first or last item. I only saw it briefly
-        in the console.
-        *i*
         delete button and hotkey
             *i*
             modal displays type of bucket item and its description
@@ -114,6 +111,9 @@ after it's done, make sure any new fix/feature/whatever is done on both the web 
 
 **next?**
 *look through this list and do the highest priority thing first*
+Sometimes I use $() and other times I don't when accessing the dom. I really should make up my
+mind.
+
 When you're in People, you've hightlighed but not opened a bucket item, and you hit enter, the app
 waits for a few milliseconds and then moves your cursor from the second input to the first. This
 is a hack, fix it.
