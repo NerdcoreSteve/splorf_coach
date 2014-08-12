@@ -33,6 +33,22 @@ wait_if_else = (seconds_to_wait, condition_function, true_function, false_functi
         checking_count++
     , 1
 
+focus_menu_item = (menu, options={}) ->
+    which_li = 'first'
+    if options.last then which_li = 'last'
+    current_dropdown_item = $(menu).find('li:' + which_li).find('a')
+
+    condition = -> menu.hasClass('open') or menu.parent().hasClass('open')
+
+    if options.wait
+        wait_if_else 1,
+                     condition,
+                     -> gui.focus(current_dropdown_item),
+                     -> console.error "coudn't give focus to panel dropup item"
+    else
+        if condition()
+            gui.focus(current_dropdown_item)
+
 #TODO maybe behavior should be gradually refactored into this gui object
 gui =
     focused_element: null
@@ -219,12 +235,12 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             panel_input.activate = ->
                 if not $(panel).hasClass('open')
                     $(panel).addClass('open')
-                    focus_last_dropup_item(panel_dropup)
+                    focus_menu_item panel_dropup, {last: true}
                 
             add_dropup_tab_mouse_behavior(panel_input, panel_dropup)
 
             $(panel_input).click ->
-                focus_last_dropup_item $(panel).find(".panel-dropup"), {wait: true}
+                focus_menu_item panel_dropup, {wait: true, last: true}
 
         $(panel_input).keypress (e) ->
             if get_hotkey_command(e) == '\t'
