@@ -453,9 +453,11 @@ $(window).load ->
                 if $('#remove-bucket-modal').attr('aria-hidden') == "false"
                     gui.focus($('#delete-modal-delete-button'))
                 else if $(gui.primary_panel.dom).find('.panel-collapse').hasClass('in')
-                    panel_dropup = $(gui.primary_panel.dom).find('.panel-dropup')
-                    console.log panel_dropup
-                    console.log panel_dropup.parent()
+                    #TODO more duplicate code...
+                    panel = $(gui.primary_panel.dom).find('.panel-dropup').parent()
+                    if $(panel).hasClass('open')
+                        $(panel).removeClass('open')
+                        current_dropdown_item = null
                     gui.primary_panel.focus_first_input()
             when 't'
                 #alt-t is tools in firefox, I'm choosing to override it for now...
