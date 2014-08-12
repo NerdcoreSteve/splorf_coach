@@ -44,6 +44,13 @@ gui =
             $(gui.focused_element).blur()
             gui.focused_element = null
     primary_panel:
+        dropup:
+            dom: null
+            close: ->
+                dropup_parent = $(gui.primary_panel.dropup.dom).parent()
+                if $(dropup_parent).hasClass('open')
+                    $(dropup_parent).removeClass('open')
+                    current_dropdown_item = null
         dom: null
         change: (panel, scroll = true) ->
             if panel != gui.primary_panel.dom
@@ -51,11 +58,16 @@ gui =
                     gui.unfocus()
                     $(gui.primary_panel.dom).addClass 'panel-info'
                     $(gui.primary_panel.dom).removeClass 'panel-primary'
+                
                 gui.primary_panel.dom = panel
                 $(gui.primary_panel.dom).removeClass 'panel-info'
                 $(gui.primary_panel.dom).addClass 'panel-primary'
+
+                gui.primary_panel.dropup.dom = $(gui.primary_panel.dom).find('.panel-dropup')
+                
                 if scroll
                     scroll_to(gui.primary_panel.dom)
+
                 #TODO if this works then I think I can delete
                 #     similar lines elsewhere
                 gui.primary_panel.focus_first_input()
@@ -202,10 +214,7 @@ append_bucket_item_panel = (index, bucket_item, collapsed=true) ->
             #TODO must be calling the wrong method but
             #     for now I am adding and removing the
             #     open class manually
-            panel_input.deactivate = ->
-                if $(panel).hasClass('open')
-                    $(panel).removeClass('open')
-                    current_dropdown_item = null
+            panel_input.deactivate = -> gui.primary_panel.dropup.close()
 
             panel_input.activate = ->
                 if not $(panel).hasClass('open')
@@ -453,11 +462,7 @@ $(window).load ->
                 if $('#remove-bucket-modal').attr('aria-hidden') == "false"
                     gui.focus($('#delete-modal-delete-button'))
                 else if $(gui.primary_panel.dom).find('.panel-collapse').hasClass('in')
-                    #TODO more duplicate code...
-                    panel = $(gui.primary_panel.dom).find('.panel-dropup').parent()
-                    if $(panel).hasClass('open')
-                        $(panel).removeClass('open')
-                        current_dropdown_item = null
+                    gui.primary_panel.dropup.close()
                     gui.primary_panel.focus_first_input()
             when 't'
                 #alt-t is tools in firefox, I'm choosing to override it for now...

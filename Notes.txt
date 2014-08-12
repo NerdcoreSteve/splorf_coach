@@ -6,10 +6,6 @@ mock ui
     *i*
     key shortcuts
         *i*
-        fix bug
-        alt-i, if modal is invisible, causes a console error
-        test dup code, then put it into a function as part of the gui object
-        *i*
         When you click on the bucket menu, the first choice becomes focused
         *i*
         alt-i behavior looks for modal first, then bucket menu, then first element in primary bi
