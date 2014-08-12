@@ -1,19 +1,43 @@
+NEW DESIGN
+Buckets: New Stuff, Ready, WIP, Done, People, Reference, For Later
+
+people
+    first_name(string): (not null)
+    middle_name(string):
+    last_name(string): (not null)
+
+bucket_items
+    type(string or enum): thing or habit (not null)
+    bucket(string or enum): on of the buckets listed above (not null)
+    description(string): (not null)
+    notes(text):
+
 ITERATIONS
 All iterations start with design notes/drawings and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
 *i*
+make db migrations that change the schema as above
+do one change at a time, make it reversable, and figure out what the migration will
+do to existing data.
+
+*i*
 make ui actually functional, plug view into appropriate controllers, etc.
-match buckets to what you currently have in your kanban
-changes models to match mock ui design
-also might make changes to ui as I bring it in
+write tests for every step here BEFORE you make the change
+write the test, the test fails, make it pass, keep doing that
+    *i*
+    have a look at your current database and give some thought to how you need to change it
+    then change the database
+    match buckets to what you currently have in your kanban
+        *i*
+        you'll need to figure out how to migrate your existing data
+        and how do you even look at it?
+        it's been a while
+    *i*
+    just get things to a point where 
 be sure to write tests before you add something
 more tests
     probably all: view, controller, model
 what about authentication and ajax calls?
-
-*i*
-start using this thing and make notes about it with it.
-but make regular backups of database dumps
 
 *i*
 adding a habit is a specialized thing
@@ -42,7 +66,12 @@ make a page with hotkey instructions
 what about other static pages like contact and about?
 
 *i*
+userfriendly system for getting your own data to save somewhere else
+
+*i*
 What else needs to be done to make it usable?
+start using this thing and make notes about it with it.
+but make regular backups of database dumps
 
 *i*
 see what you can do to make the ui look nicer, the nav bar needs work
