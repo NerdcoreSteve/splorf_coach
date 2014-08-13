@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @bucket_item.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bucket_item.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @bucket_item.status %>
+</p>
+
+<%= link_to 'Edit', edit_bucket_item_path(@bucket_item) %> |
+<%= link_to 'Back', bucket_items_path %>

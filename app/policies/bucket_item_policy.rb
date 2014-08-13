@@ -1,0 +1,2 @@
+class BucketItemPolicy < ApplicationPolicy
+end

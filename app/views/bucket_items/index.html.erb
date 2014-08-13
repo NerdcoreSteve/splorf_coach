@@ -1,0 +1,31 @@
+<h1>Listing bucket items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bucket_items.each do |bucket_item| %>
+      <tr>
+        <td><%= bucket_item.name %></td>
+        <td><%= bucket_item.description %></td>
+        <td><%= bucket_item.status %></td>
+        <td><%= link_to 'Show', bucket_item %></td>
+        <td><%= link_to 'Edit', edit_bucket_item_path(bucket_item) %></td>
+        <td><%= link_to 'Destroy', bucket_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bucket Item', new_bucket_item_path %>

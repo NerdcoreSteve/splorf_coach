@@ -1,10 +1,10 @@
-<%= form_for(@thing) do |f| %>
-  <% if @thing.errors.any? %>
+<%= form_for(@bucket_item) do |f| %>
+  <% if @bucket_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@thing.errors.count, "error") %> prohibited this thing from being saved:</h2>
+      <h2><%= pluralize(@bucket_item.errors.count, "error") %> prohibited this bucket_item from being saved:</h2>
 
       <ul>
-      <% @thing.errors.full_messages.each do |msg| %>
+      <% @bucket_item.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
