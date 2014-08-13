@@ -26,6 +26,8 @@ and figure out what the migration will do to existing data.
     change bucket item's description to notes
     *i*
     add description string field
+    *i*
+    remove status field from bucket items
 
 *i*
 make ui actually functional
