@@ -5,6 +5,7 @@ people
     first_name(string): (not null)
     middle_name(string):
     last_name(string): (not null)
+    notes(text):
 
 bucket_items
     type(string or enum): thing or habit (not null)
