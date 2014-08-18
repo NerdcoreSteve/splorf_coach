@@ -21,11 +21,22 @@ and figure out what the migration will do to existing data.
     *i*
     add type and bucket fields
     *i*
+    run current rspec tests and make sure they pass
+        *i*
+        type and bucket fields are not null, how do I make sure I validate their presence?
+        *i*
+        Shouldn't my factories make bucket items of different types? For now I don't
+        see why I should have items of different buckets, but perhaps I ought to make
+        a note of it.
+    *i*
     change bucket item's description to notes
     *i*
     add description string field
     *i*
     remove status field from bucket items
+
+*i*
+have a regular tasks bucket? Habits bucket?
 
 *i*
 make ui actually functional
