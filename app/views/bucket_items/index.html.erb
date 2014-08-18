@@ -4,6 +4,8 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>bucket_item_type</th>
+      <th>bucket</th>
       <th>Description</th>
       <th>Status</th>
       <th></th>
@@ -16,11 +18,16 @@
     <% @bucket_items.each do |bucket_item| %>
       <tr>
         <td><%= bucket_item.name %></td>
+        <td><%= bucket_item.bucket_item_type %></td>
+        <td><%= bucket_item.bucket %></td>
         <td><%= bucket_item.description %></td>
         <td><%= bucket_item.status %></td>
         <td><%= link_to 'Show', bucket_item %></td>
         <td><%= link_to 'Edit', edit_bucket_item_path(bucket_item) %></td>
-        <td><%= link_to 'Destroy', bucket_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy',
+                        bucket_item,
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
