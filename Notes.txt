@@ -19,8 +19,6 @@ and figure out what the migration will do to existing data.
         description(string): (not null)
         notes(text):
     *i*
-    change bucket item's description to notes
-    *i*
     add description string field
     *i*
     remove status field from bucket items
