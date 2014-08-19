@@ -7,6 +7,7 @@ do this on the home page, since you'll probably delete all other pages
     *i*
     for the home page, don't use the application template, and put in the mock navbar
     put links for the people and bucket item pages at the bottom for now
+        
     *i*
     Load the first bucket, which should be New Stuff
     How does the app know what the first bucket is? Is there a list of buckets?

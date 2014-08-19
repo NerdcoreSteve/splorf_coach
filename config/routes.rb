@@ -1,4 +1,6 @@
 SplorfCoach::Application.routes.draw do
+  get 'home/index'
+
   get "mock/home"
   get "mock/buckets"
   post "mock/bucket_items"
@@ -8,7 +10,7 @@ SplorfCoach::Application.routes.draw do
   get "static_pages/contact"
   resources :people
   resources :bucket_items
-  root :to => redirect('static_pages/home')
+  root :to => redirect('home/index')
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
