@@ -19,16 +19,14 @@ and figure out what the migration will do to existing data.
         description(string): (not null)
         notes(text):
     *i*
-    add description string field
-    *i*
     remove status field from bucket items
 
 *i*
-have a regular tasks bucket? Habits bucket?
+have a regular tasks or Habits bucket?
 
 *i*
 make ui actually functional
-do this on the home page, since you'll probably delete all other home pages
+do this on the home page, since you'll probably delete all other pages
 
 *i*
 make sure current tests pass and add tests (probably all: view, controller, model)
