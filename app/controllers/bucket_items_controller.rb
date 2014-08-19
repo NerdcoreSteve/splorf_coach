@@ -76,6 +76,6 @@ class BucketItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bucket_item_params
-      params.require(:bucket_item).permit(:name, :bucket_item_type, :bucket, :notes, :status)
+      params.require(:bucket_item).permit(:name, :bucket_item_type, :bucket, :notes)
     end
 end

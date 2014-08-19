@@ -2,31 +2,23 @@ ITERATIONS
 All iterations start with design notes/drawings and rspec TDD test writing unless otherwise specified or context makes it unapplicable.
 
 *i*
-make db migrations that change the schema as above
-do one change at a time, make it reversable if you think it's necessayr,
-and figure out what the migration will do to existing data.
-    *new design*
-    Buckets
-        New Stuff, Ready, WIP, Done, People, Reference, For Later
-    people
-        first_name(string): (not null)
-        middle_name(string):
-        last_name(string): (not null)
-        notes(text):
-    bucket_items
-        type(string): thing or habit (not null)
-        bucket(string): on of the buckets listed above (not null)
-        description(string): (not null)
-        notes(text):
-    *i*
-    remove status field from bucket items
-
-*i*
-have a regular tasks or Habits bucket?
-
-*i*
 make ui actually functional
 do this on the home page, since you'll probably delete all other pages
+    *i*
+    for the home page, don't use the application template, and put in the mock navbar
+    put links for the people and bucket item pages at the bottom for now
+    *i*
+    Load the first bucket, which should be New Stuff
+    How does the app know what the first bucket is? Is there a list of buckets?
+    *i*
+    Add a few items in New Stuff
+    now load all the things in the first bucket
+    *i*
+    allow editing of bucket items
+    *i*
+    load all the buckets in the dropdown
+    *i*
+    load all the bucket items from whatever bucket is present
 
 *i*
 make sure current tests pass and add tests (probably all: view, controller, model)
@@ -116,6 +108,8 @@ after it's done, make sure any new fix/feature/whatever is done on both the web 
 
 **next?**
 *look through this list and do the highest priority thing first*
+have a regular tasks or Habits bucket?
+
 Sometimes I use $() and other times I don't when accessing the dom. I really should make up my
 mind.
 
