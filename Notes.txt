@@ -28,11 +28,13 @@ from now on write tests for every step here BEFORE you make the change
 write the test, the test fails, make it pass, keep doing that
 
 *i*
+A habit or routine bucket or both?
 adding a habit is a specialized thing
 the app helps you monitor how well you are adopting a habit and helps you measure when you have finished adopting it so you can put it in done. But it also monitors the habit to see if you slack off and puts, get back into the habit in your waiting or ready or some other bucket.
 
 *i*
 allow stuff in the waiting bucket to connect to other bucket items
+how exactly do I do this? Think a little bit at least.
 
 *i*
 What bootstrap, gnu and other license information needs to be displayed on the site and where?
