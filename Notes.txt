@@ -7,13 +7,14 @@ do this on the home page, since you'll probably delete all other pages
     *i*
     make a table of buckets, then change bucket to link it to that table
         *i*
-        delete bucket column in bucket item
-        *i*
         How do I establish the relationship for a bucket and it's bucket items?
         programatically and after the fact?
+        what about showing and editing the bucket in a bucket_item's field?
         *i*
         any new account creates the standard buckets
     ???
+    *i*
+    why am I getting duplicate fake bucket items in the interface?
     *i*
     for the home page, don't use the application template, and put in the mock navbar
     put links for the people and bucket item pages at the bottom for now
