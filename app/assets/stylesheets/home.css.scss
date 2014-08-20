@@ -1,3 +1,100 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//begin colors
+$white: #FFFFFF;
+$black: #000000;
+$dark-gray: #555555;
+
+//TODO make new triad with agave
+//TODO use sass color functions
+//http://robots.thoughtbot.com/controlling-color-with-sass-color-functions
+$color1: #FFFEBE;
+$color2: #EFEB00;
+$color3: #008AE1;
+$color4: #EF0000;
+$color5: #EA0000;
+//end colors
+
+//begin scaffolding
+$body-bg: $color1;
+$text-color: $black;
+//end scaffolding
+
+//begin navbar
+$navbar-default-bg: $color2;
+$navbar-default-color: $black;
+$navbar-default-link-color: $dark-gray;
+$navbar-default-link-hover-color: $color5;
+
+$navbar-height: 70px;
+//end navbar
+
+@import "bootstrap";
+
+#brand_logo {
+    margin-top: -15px;
+    margin-left: -5px;
+}
+
+.plus-button {
+    font-size: 150%;
+}
+
+#plus-button-group {
+    padding-bottom: 10px;
+}
+
+#bucket-dropdown-head-text {
+    font-size: 175%;
+}
+
+body {
+    padding-top: 155px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 150px;
+}
+
+.cursor {
+    cursor: pointer
+}
+
+.panel-btn-group > .bucket-list {
+    height: auto;
+    max-height: 140px;
+    overflow-x: hidden;
+}
+
+#sortable-bucket-item-list .panel-heading {
+    cursor: pointer
+} 
+.panel-body {
+    input, textarea {
+        width: 100%;
+    }
+    textarea {
+       resize: none;
+    }
+}
+
+@media (max-width:767px) {
+    body {
+        padding-top: 165px;
+        padding-right: 2px;
+        padding-left: 2px;
+    }
+
+    #plus-button-group {
+        padding-bottom: 6px;
+    }
+
+    .navbar-text {
+        padding-left: 15px;
+    }
+
+    .navbar .bucket-dropdown > .dropdown-menu > li {
+        padding-left: 5px;
+    }
+}

@@ -1,4 +1,6 @@
 SplorfCoach::Application.routes.draw do
+  resources :buckets
+
   get 'home/index'
 
   get "mock/home"

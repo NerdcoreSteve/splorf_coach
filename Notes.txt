@@ -5,9 +5,18 @@ All iterations start with design notes/drawings and rspec TDD test writing unles
 make ui actually functional
 do this on the home page, since you'll probably delete all other pages
     *i*
+    make a table of buckets, then change bucket to link it to that table
+        *i*
+        delete bucket column in bucket item
+        *i*
+        How do I establish the relationship for a bucket and it's bucket items?
+        programatically and after the fact?
+        *i*
+        any new account creates the standard buckets
+    ???
+    *i*
     for the home page, don't use the application template, and put in the mock navbar
     put links for the people and bucket item pages at the bottom for now
-        
     *i*
     Load the first bucket, which should be New Stuff
     How does the app know what the first bucket is? Is there a list of buckets?
@@ -20,13 +29,23 @@ do this on the home page, since you'll probably delete all other pages
     load all the buckets in the dropdown
     *i*
     load all the bucket items from whatever bucket is present
+    *i*
+    make fancy ui for adding and removing buckets
+    *i*
+    I think that at this point there are a lot of files that I no longer need.
+    get rid of them. Try to simplify this project.
 
 *i*
 make sure current tests pass and add tests (probably all: view, controller, model)
-what about authentication and ajax calls?
-what about stuff that should never be null?
-from now on write tests for every step here BEFORE you make the change
-write the test, the test fails, make it pass, keep doing that
+    *i*
+    what about authentication and ajax calls?
+    *i*
+    what about stuff that should never be null?
+    for example: user id columns
+    *i*
+    from now on write tests for every step here BEFORE you make the change
+    write the test, the test fails, make it pass, keep doing that
+    put this note at the top of this document
 
 *i*
 A habit or routine bucket or both?
@@ -109,7 +128,13 @@ So my listing of my wife will actually be connected to their user account in som
 scaloid android app connects to this app via rest api
 after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
-**next?**
+NOTES
+*ruby*
+you can do -> instead of lambda!
+add_2 = ->(a, b) { a + b }
+puts add_2.call(2, 3)
+
+NEXT
 *look through this list and do the highest priority thing first*
 have a regular tasks or Habits bucket?
 
