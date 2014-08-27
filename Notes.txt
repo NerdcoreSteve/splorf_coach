@@ -10,6 +10,12 @@ do this on the home page, since you'll probably delete all other pages
         How do I establish the relationship for a bucket and it's bucket items?
         programatically and after the fact?
         what about showing and editing the bucket in a bucket_item's field?
+        How do I make sure that there can be no orphan bucket items? Is this true
+        by default?
+            *i*
+            I want to add bucket_id to bucket_items but I wrote it wrong.
+            Also I want to add a default value
+            db/migrate/20140826230741_add_bucket_id_to_bucket_item.rb
         *i*
         any new account creates the standard buckets
     ???
