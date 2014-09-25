@@ -138,6 +138,14 @@ scaloid android app connects to this app via rest api
 after it's done, make sure any new fix/feature/whatever is done on both the web and mobile app at roughly the same time.
 
 NOTES
+Scheduler
+Employ rpp strategies like mailing lists?
+Should I ever hire a ui design person?
+Be prepared to give money back and give free credit.
+Look to start business books, other resources, look for govt programs and other assistance.
+What about a what I'm going to do today block?
+Maybe have some kind of immediate todo in WIP?
+
 *ruby*
 you can do -> instead of lambda!
 add_2 = ->(a, b) { a + b }
